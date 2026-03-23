@@ -23,6 +23,28 @@
     --gold08:  rgba(201,148,58,0.08);
     --gold20:  rgba(201,148,58,0.2);
   }
+  
+  .hero-oval {
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%) rotate(20deg);
+  width: 520px;
+  height: 340px;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 2px solid rgba(201,148,58,0.2);
+  box-shadow: 0 0 80px rgba(201,148,58,0.08), inset 0 0 80px rgba(201,148,58,0.08);
+}
+
+.hero-oval::after {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,148,58,0.12);
+}
+
 
   /* RESET */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,7 +81,8 @@
   /* HERO */
   #hero {
     position: relative; min-height: 100vh;
-    display: flex; align-items: center; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    overflow: hidden; padding: 0 4rem;
   }
   #hero::before {
     content: ''; position: absolute; inset: 0;
@@ -74,24 +97,33 @@
       repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.025) 120px),
       repeating-linear-gradient(0deg,  transparent, transparent  79px, rgba(255,255,255,0.025)  80px);
   }
-  .hero-oval {
-    position: absolute; right: -80px; top: 50%;
-    transform: translateY(-50%) rotate(20deg);
-    width: 520px; height: 340px; border-radius: 50%; pointer-events: none;
-    border: 2px solid var(--gold20);
-    box-shadow: 0 0 80px var(--gold08), inset 0 0 80px var(--gold08);
-    z-index: 1;
+  .hero-content { position: relative; z-index: 2; max-width: 680px; animation: fadeUp 1s ease both; }
+  .hero-visual {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    height: 100%;
+    overflow: hidden;
   }
-  .hero-oval::after { content: ''; position: absolute; inset: 20px; border-radius: 50%; border: 1px solid rgba(201,148,58,0.12); }
-  .hero-content { position: relative; z-index: 2; padding: 0 4rem; max-width: 760px; animation: fadeUp 1s ease both; }
+  .rugby-scene { width: 100%; height: 100%; position: absolute; inset: 0; }
+  .rugby-scene svg { width: 100%; height: 100%; }
+  @keyframes b1 { 0%,100%{transform:translate(0,0) rotate(-25deg)} 50%{transform:translate(0,-18px) rotate(-14deg)} }
+  @keyframes b2 { 0%,100%{transform:translate(0,0) rotate(22deg)}  50%{transform:translate(0,-14px) rotate(36deg)} }
+  @keyframes b3 { 0%,100%{transform:translate(0,0) rotate(-38deg)} 50%{transform:translate(0,-20px) rotate(-24deg)} }
+  @keyframes b4 { 0%,100%{transform:translate(0,0) rotate(12deg)}  50%{transform:translate(0,-10px) rotate(26deg)} }
+  @keyframes b5 { 0%,100%{transform:translate(0,0) rotate(-16deg)} 50%{transform:translate(0,-16px) rotate(-4deg)} }
+  #rb1 { animation: b1 9s  ease-in-out infinite; transform-origin: 55px 32px; }
+  #rb2 { animation: b2 12s ease-in-out infinite -3s; transform-origin: 38px 23px; }
+  #rb3 { animation: b3 10s ease-in-out infinite -6s; transform-origin: 62px 37px; }
+  #rb4 { animation: b4 7s  ease-in-out infinite -1.5s; transform-origin: 28px 17px; }
+  #rb5 { animation: b5 11s ease-in-out infinite -4s; transform-origin: 44px 26px; }
   .hero-tag {
     display: inline-block; background: var(--gold); color: var(--dark);
     font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em;
     text-transform: uppercase; padding: 0.35rem 1rem; margin-bottom: 1.8rem;
   }
-  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 12vw, 10rem); line-height: 0.9; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 0.3em; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 8vw, 9rem); line-height: 0.9; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 0.3em; }
   .hero-title span { color: var(--gold); display: block; }
-  .hero-sub { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(245,240,232,0.7); font-style: italic; margin-bottom: 2.5rem; line-height: 1.6; max-width: 520px; }
+  .hero-sub { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 1.5vw, 1.2rem); color: rgba(245,240,232,0.7); font-style: italic; margin-bottom: 2.5rem; line-height: 1.6; max-width: 480px; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
   .hero-scroll {
     position: absolute; bottom: 2.5rem; left: 4rem; z-index: 2;
@@ -113,7 +145,7 @@
   .btn-ghost:hover { border-color: var(--gold); background: var(--gold08); }
 
   /* STATS STRIP */
-  .stats-strip { background: var(--gold); padding: 1.5rem 4rem; display: flex; gap: 3rem; overflow-x: auto; }
+  .stats-strip { background: var(--gold); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; overflow-x: auto; }
   .stat-item { display: flex; align-items: center; gap: 1rem; white-space: nowrap; }
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--dark); line-height: 1; }
   .stat-label { font-size: 0.75rem; font-weight: 500; color: rgba(14,31,23,0.75); text-transform: uppercase; letter-spacing: 0.1em; max-width: 90px; line-height: 1.3; }
@@ -254,14 +286,14 @@
   .footer-logo   { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gold); letter-spacing: 0.12em; }
   .footer-tag    { font-size: 0.78rem; color: rgba(245,240,232,0.4); margin-top: 0.2rem; letter-spacing: 0.1em; text-transform: uppercase; }
   .footer-reg    { font-size: 0.7rem; color: rgba(245,240,232,0.22); margin-top: 0.5rem; line-height: 1.6; }
-  .footer-credit { font-size: 0.7rem; color: rgba(245,240,232,0.3); margin-top: 0.6rem; font-style: italic; }
   .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
   .footer-col a, .footer-col p { display: block; color: var(--cream50); font-size: 0.82rem; text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; line-height: 1.5; }
   .footer-col a:hover { color: var(--gold); }
-  .social-link { display: flex; align-items: center; gap: 0.5rem; }
-  .social-link + .social-link { margin-top: 0; }
-  .footer-col .social-link:first-of-type { margin-top: 0.8rem; }
-  .footer-bottom { border-top: 1px solid var(--white06); padding-top: 1.5rem; }
+  .socials { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.8rem; }
+  .socials a { display: flex !important; align-items: center; gap: 0.7rem; color: var(--cream50); font-size: 0.82rem; text-decoration: none; transition: color 0.2s; line-height: 1; margin-bottom: 0; }
+  .socials a:hover { color: var(--gold); }
+  .socials svg { flex-shrink: 0; display: block; }
+  .footer-bottom { border-top: 1px solid var(--white06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
   .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.2); }
 
   /* ANIMATIONS */
@@ -275,6 +307,8 @@
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     section { padding: 5rem 1.5rem; }
+    #hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 5rem; }
+    .hero-visual { display: none; }
     #mission { grid-template-columns: 1fr; gap: 3rem; }
     #founder { grid-template-columns: 1fr; }
     .founder-portrait svg { min-height: 380px; }
@@ -287,7 +321,7 @@
     .stats-strip  { padding: 1.5rem; gap: 2rem; }
     footer        { padding: 3rem 1.5rem 1.5rem; }
     .footer-top   { flex-direction: column; gap: 2rem; }
-    .hero-content { padding: 0 1.5rem; }
+    .hero-content { padding: 0; }
     .hero-scroll  { left: 1.5rem; }
   }
   @media (max-width: 480px) {
@@ -514,7 +548,6 @@
       <div class="footer-logo">QHAKAZA</div>
       <div class="footer-tag">Youth Community Foundation</div>
       <div class="footer-reg">NPO Registration: 227221 &nbsp;·&nbsp; SARS Tax No: 9176888254<br>Gamalakhe, UGU District, Southern KwaZulu-Natal</div>
-      <div class="footer-credit">Website created by Armiel Pillay</div>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
@@ -527,18 +560,21 @@
       <a href="tel:+27721949114">+27 72 194 9114</a>
       <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#46;&#113;&#121;&#102;&#111;&#117;&#110;&#100;&#97;&#116;&#105;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">info.qyfoundation&#64;gmail.com</a>
       <p>Gamalakhe, UGU District<br>Southern KwaZulu-Natal</p>
-      <a class="social-link" href="https://facebook.com/qycfoundation" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-        @qycfoundation
-      </a>
-      <a class="social-link" href="https://instagram.com/qyfoundation" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-        @qyfoundation
-      </a>
+      <div class="socials">
+        <a class="social-link" href="https://facebook.com/qycfoundation" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          @qycfoundation
+        </a>
+        <a class="social-link" href="https://instagram.com/qyfoundation" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          @qyfoundation
+        </a>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 Qhakaza Youth Community Foundation · NPO 227221 · All rights reserved.</div>
+    <div class="footer-copy">Website created by Armiel Pillay</div>
   </div>
 </footer>
 
