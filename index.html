@@ -7,55 +7,69 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  /* ── TOKENS ── */
+  /* TOKENS */
   :root {
-    --green:      #1a3a2a;
-    --gold:       #c9943a;
-    --gold-light: #e8b55a;
-    --cream:      #f5f0e8;
-    --dark:       #0e1f17;
+    --green:  #1a3a2a;
+    --gold:   #c9943a;
+    --gold-l: #e8b55a;
+    --cream:  #f5f0e8;
+    --dark:   #0e1f17;
+    --cream75: rgba(245,240,232,0.75);
+    --cream60: rgba(245,240,232,0.6);
+    --cream50: rgba(245,240,232,0.5);
+    --cream45: rgba(245,240,232,0.45);
+    --white06: rgba(255,255,255,0.06);
+    --white12: rgba(255,255,255,0.12);
+    --gold08:  rgba(201,148,58,0.08);
+    --gold20:  rgba(201,148,58,0.2);
   }
 
-  /* ── RESET ── */
+  /* RESET */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: #2a2a2a; overflow-x: hidden; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--dark); overflow-x: hidden; }
   img, svg { display: block; }
 
-  /* ── NAV ── */
+  /* SCROLLBARS */
+  html { scrollbar-width: thin; scrollbar-color: var(--green) var(--dark); }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--green); border: 2px solid var(--dark); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+  ::-webkit-scrollbar-corner { background: var(--dark); }
+
+  /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 4rem;
-    transition: background 0.4s;
+    position: fixed; inset: 0 0 auto;
+    z-index: 100; display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem; transition: background 0.4s;
   }
   nav.scrolled { background: rgba(14,31,23,0.95); backdrop-filter: blur(12px); }
   .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.12em; color: var(--gold); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
-    color: var(--cream); text-decoration: none;
-    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--cream); text-decoration: none; font-size: 0.8rem;
+    font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
     opacity: 0.85; transition: opacity 0.2s, color 0.2s;
   }
-  .nav-links a:hover { opacity: 1; color: var(--gold-light); }
-  .nav-cta { background: var(--gold) !important; color: var(--dark) !important; opacity: 1 !important; padding: 0.5rem 1.4rem; border-radius: 2px; }
-  .nav-cta:hover { background: var(--gold-light) !important; }
+  .nav-links a:hover { opacity: 1; color: var(--gold-l); }
+  .nav-links .cta { background: var(--gold); color: var(--dark); opacity: 1; padding: 0.5rem 1.4rem; border-radius: 2px; }
+  .nav-links .cta:hover { background: var(--gold-l); color: var(--dark); }
 
-  /* ── HERO ── */
+  /* HERO */
   #hero {
     position: relative; min-height: 100vh;
-    display: flex; align-items: center;
-    background: var(--dark); overflow: hidden;
+    display: flex; align-items: center; overflow: hidden;
   }
-  .hero-bg {
-    position: absolute; inset: 0;
+  #hero::before {
+    content: ''; position: absolute; inset: 0;
     background:
       radial-gradient(ellipse 80% 60% at 70% 50%, rgba(45,92,63,0.45) 0%, transparent 70%),
       radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,148,58,0.15) 0%, transparent 60%),
-      linear-gradient(135deg, #0e1f17 0%, #1a3a2a 50%, #0e1f17 100%);
+      linear-gradient(135deg, var(--dark) 0%, var(--green) 50%, var(--dark) 100%);
   }
-  .hero-grid {
-    position: absolute; inset: 0;
+  #hero::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
     background-image:
       repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.025) 120px),
       repeating-linear-gradient(0deg,  transparent, transparent  79px, rgba(255,255,255,0.025)  80px);
@@ -63,67 +77,65 @@
   .hero-oval {
     position: absolute; right: -80px; top: 50%;
     transform: translateY(-50%) rotate(20deg);
-    width: 520px; height: 340px; border-radius: 50%;
-    border: 2px solid rgba(201,148,58,0.2);
-    box-shadow: 0 0 80px rgba(201,148,58,0.08), inset 0 0 80px rgba(201,148,58,0.05);
-    pointer-events: none;
+    width: 520px; height: 340px; border-radius: 50%; pointer-events: none;
+    border: 2px solid var(--gold20);
+    box-shadow: 0 0 80px var(--gold08), inset 0 0 80px var(--gold08);
+    z-index: 1;
   }
   .hero-oval::after { content: ''; position: absolute; inset: 20px; border-radius: 50%; border: 1px solid rgba(201,148,58,0.12); }
-  .hero-content { position: relative; z-index: 1; padding: 0 4rem; max-width: 760px; animation: fadeUp 1s ease both; }
+  .hero-content { position: relative; z-index: 2; padding: 0 4rem; max-width: 760px; animation: fadeUp 1s ease both; }
   .hero-tag {
     display: inline-block; background: var(--gold); color: var(--dark);
-    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 0.35rem 1rem; margin-bottom: 1.8rem;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; padding: 0.35rem 1rem; margin-bottom: 1.8rem;
   }
   .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 12vw, 10rem); line-height: 0.9; color: var(--cream); letter-spacing: 0.04em; margin-bottom: 0.3em; }
   .hero-title span { color: var(--gold); display: block; }
   .hero-sub { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(245,240,232,0.7); font-style: italic; margin-bottom: 2.5rem; line-height: 1.6; max-width: 520px; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-gold {
-    display: inline-block; background: var(--gold); color: var(--dark);
-    padding: 1rem 2.5rem; font-size: 0.85rem; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
-    border-radius: 2px; border: none; cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .btn-ghost {
-    display: inline-block; border: 1.5px solid rgba(245,240,232,0.4); color: var(--cream);
-    padding: 1rem 2.5rem; font-size: 0.85rem; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
-    border-radius: 2px; transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-ghost:hover { border-color: var(--gold); background: rgba(201,148,58,0.1); }
   .hero-scroll {
-    position: absolute; bottom: 2.5rem; left: 4rem;
+    position: absolute; bottom: 2.5rem; left: 4rem; z-index: 2;
     display: flex; align-items: center; gap: 1rem;
     color: rgba(245,240,232,0.4); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
   }
   .hero-scroll::before { content: ''; width: 40px; height: 1px; background: var(--gold); opacity: 0.5; }
 
-  /* ── STATS STRIP ── */
+  /* BUTTONS */
+  .btn-gold, .btn-ghost {
+    display: inline-block; padding: 1rem 2.5rem; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px; cursor: pointer;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .btn-gold { background: var(--gold); color: var(--dark); border: none; }
+  .btn-gold:hover { background: var(--gold-l); transform: translateY(-2px); }
+  .btn-ghost { border: 1.5px solid rgba(245,240,232,0.4); color: var(--cream); background: transparent; }
+  .btn-ghost:hover { border-color: var(--gold); background: var(--gold08); }
+
+  /* STATS STRIP */
   .stats-strip { background: var(--gold); padding: 1.5rem 4rem; display: flex; gap: 3rem; overflow-x: auto; }
   .stat-item { display: flex; align-items: center; gap: 1rem; white-space: nowrap; }
   .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--dark); line-height: 1; }
   .stat-label { font-size: 0.75rem; font-weight: 500; color: rgba(14,31,23,0.75); text-transform: uppercase; letter-spacing: 0.1em; max-width: 90px; line-height: 1.3; }
   .stat-div { width: 1px; height: 40px; background: rgba(14,31,23,0.2); flex-shrink: 0; }
 
-  /* ── SHARED SECTION ── */
+  /* SHARED */
   section { padding: 7rem 4rem; }
-  .label { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
-  .title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 1.5rem; }
-  .body-text { font-size: 1rem; line-height: 1.75; color: rgba(245,240,232,0.75); max-width: 560px; }
+  .eyebrow { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+  .heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 1.5rem; }
+  .body-text { font-size: 1rem; line-height: 1.75; color: var(--cream75); max-width: 560px; }
+  .body-text + .body-text { margin-top: 1rem; }
 
-  /* ── MISSION ── */
+  /* MISSION */
   #mission {
     display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-    background: var(--dark); position: relative; overflow: hidden;
+    position: relative; overflow: hidden;
   }
   #mission::before {
     content: ''; position: absolute; inset: 0; pointer-events: none;
     background:
       radial-gradient(ellipse 60% 80% at 0% 50%, rgba(45,92,63,0.5) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 100% 80%, rgba(201,148,58,0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 40% 40% at 100% 80%, var(--gold08) 0%, transparent 60%);
   }
   #mission > * { position: relative; z-index: 1; }
   .mission-img-wrap { position: relative; }
@@ -138,116 +150,127 @@
   .mission-badge strong { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--dark); line-height: 1; }
   .mission-badge span { font-size: 0.6rem; font-weight: 500; color: var(--dark); text-transform: uppercase; letter-spacing: 0.08em; max-width: 70px; line-height: 1.3; text-align: center; }
   .pillars { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 3rem; }
-  .pillar { display: flex; gap: 1.2rem; align-items: flex-start; background: rgba(255,255,255,0.04); border-left: 2px solid rgba(201,148,58,0.35); border-radius: 2px; padding: 1rem 1.2rem; transition: background 0.2s, border-color 0.2s; }
+  .pillar { display: flex; gap: 1.2rem; align-items: flex-start; background: var(--white06); border-left: 2px solid rgba(201,148,58,0.35); border-radius: 2px; padding: 1rem 1.2rem; transition: background 0.2s, border-color 0.2s; }
   .pillar:hover { background: rgba(255,255,255,0.07); border-color: var(--gold); }
   .pillar-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(201,148,58,0.12); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-  .pillar h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.3rem; }
-  .pillar p { font-size: 0.875rem; color: rgba(245,240,232,0.6); line-height: 1.6; }
+  .pillar h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--gold-l); margin-bottom: 0.3rem; }
+  .pillar p  { font-size: 0.875rem; color: var(--cream60); line-height: 1.6; }
 
-  /* ── FOUNDER ── */
+  /* FOUNDER */
   #founder { background: var(--green); display: grid; grid-template-columns: 420px 1fr; min-height: 600px; padding: 0; }
   .founder-portrait { position: relative; overflow: hidden; background: var(--dark); }
   .founder-portrait svg { width: 100%; height: 100%; min-height: 560px; display: block; }
   .portrait-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
+    position: absolute; inset: auto 0 0;
     background: linear-gradient(to top, rgba(14,31,23,0.9) 0%, transparent 60%);
-    padding: 2rem;
-    font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(201,148,58,0.7);
+    padding: 2rem; font-size: 0.65rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(201,148,58,0.7);
   }
   .founder-text { padding: 5rem; display: flex; flex-direction: column; justify-content: center; }
-  .founder-quote {
-    font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2vw, 1.6rem);
-    font-style: italic; color: var(--gold-light); line-height: 1.6;
-    margin: 2rem 0; padding-left: 2rem; border-left: 3px solid var(--gold);
-  }
   .founder-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--cream); letter-spacing: 0.08em; margin-top: 1.2rem; }
-  .founder-role { font-size: 0.8rem; color: rgba(245,240,232,0.55); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.3rem; }
+  .founder-role { font-size: 0.8rem; color: var(--cream50); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.3rem; }
   .board { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
   .board-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(201,148,58,0.65); margin-bottom: 0.8rem; }
   .board-names { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .board-name { font-size: 0.8rem; color: rgba(245,240,232,0.6); background: rgba(255,255,255,0.06); padding: 0.3rem 0.8rem; border-radius: 2px; }
+  .board-name { font-size: 0.8rem; color: var(--cream60); background: var(--white06); padding: 0.3rem 0.8rem; border-radius: 2px; }
 
-  /* ── DONATE ── */
-  #donate { background: var(--dark); position: relative; overflow: hidden; }
+  /* DONATE */
+  #donate { position: relative; overflow: hidden; }
   #donate::before {
     content: ''; position: absolute; inset: 0; pointer-events: none;
     background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(45,92,63,0.4) 0%, transparent 70%);
   }
-  .donate-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-  .amount-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2.5rem 0 1.2rem; }
+  .donate-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .amount-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.75rem; margin: 2rem 0 1.2rem; }
   .amount-btn {
     border: 1.5px solid rgba(245,240,232,0.2); background: transparent; color: var(--cream);
-    padding: 1rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.06em;
-    cursor: pointer; border-radius: 2px; text-align: center;
+    padding: 0.9rem 0.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
+    letter-spacing: 0.04em; cursor: pointer; border-radius: 2px; width: 100%;
     transition: border-color 0.2s, background 0.2s, color 0.2s;
   }
-  .amount-btn:hover, .amount-btn.active { border-color: var(--gold); background: rgba(201,148,58,0.15); color: var(--gold-light); }
-  .amount-btn .sub { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.62rem; color: rgba(245,240,232,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem; }
-  .amount-btn.active .sub { color: rgba(232,181,90,0.6); }
-  .custom-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; }
-  .custom-row label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.5); white-space: nowrap; }
-  .custom-wrap { display: flex; flex: 1; align-items: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 2px; overflow: hidden; transition: border-color 0.2s; }
+  .amount-btn:hover, .amount-btn.active { border-color: var(--gold); background: rgba(201,148,58,0.15); color: var(--gold-l); }
+  .custom-row { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+  .custom-row label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream50); }
+  .custom-wrap { display: flex; align-items: center; background: var(--white06); border: 1px solid rgba(255,255,255,0.15); border-radius: 2px; overflow: hidden; transition: border-color 0.2s; }
   .custom-wrap:focus-within { border-color: var(--gold); }
-  .custom-prefix { padding: 0.75rem 0.9rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); background: rgba(201,148,58,0.1); border-right: 1px solid rgba(255,255,255,0.1); }
-  #customAmt { flex: 1; background: transparent; border: none; outline: none; padding: 0.75rem 1rem; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 1rem; }
+  .custom-prefix { flex-shrink: 0; padding: 0.75rem 1rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); background: var(--gold08); border-right: 1px solid rgba(255,255,255,0.1); }
+  #customAmt { flex: 1; min-width: 0; background: transparent; border: none; outline: none; padding: 0.75rem 1rem; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 1rem; }
   #customAmt::placeholder { color: rgba(245,240,232,0.25); }
-  .eft-box { background: rgba(201,148,58,0.08); border: 1px solid rgba(201,148,58,0.2); border-radius: 2px; padding: 1.4rem; margin-bottom: 2rem; }
+  .eft-box { background: var(--gold08); border: 1px solid var(--gold20); border-radius: 2px; padding: 1.4rem; margin-bottom: 2rem; }
   .eft-title { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
-  .eft-row { display: flex; justify-content: space-between; font-size: 0.82rem; padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .eft-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; justify-content: space-between; font-size: 0.82rem; padding: 0.4rem 0; border-bottom: 1px solid var(--white06); }
   .eft-row:last-child { border-bottom: none; }
-  .eft-row span:first-child { color: rgba(245,240,232,0.45); }
-  .eft-row span:last-child { color: var(--cream); font-weight: 500; }
-  .form-fields { display: flex; flex-direction: column; gap: 1rem; }
+  .eft-row span:first-child { color: var(--cream45); flex-shrink: 0; }
+  .eft-row span:last-child  { color: var(--cream); font-weight: 500; word-break: break-word; text-align: right; }
+  .form-fields { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.2rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .field { display: flex; flex-direction: column; gap: 0.4rem; }
   .field label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.55); }
-  .field input { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; padding: 0.8rem 1rem; color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+  .field input {
+    background: var(--white06); border: 1px solid var(--white12); border-radius: 2px;
+    padding: 0.85rem 1rem; color: var(--cream); font-family: 'DM Sans', sans-serif;
+    font-size: 1rem; outline: none; transition: border-color 0.2s; width: 100%;
+  }
   .field input:focus { border-color: var(--gold); }
   .field input::placeholder { color: rgba(245,240,232,0.3); }
-  .donate-note { font-size: 0.75rem; color: rgba(245,240,232,0.4); margin-top: 1rem; line-height: 1.6; }
+  .donate-submit { width: 100%; margin-top: 0.4rem; }
+  .donate-note { font-size: 0.75rem; color: rgba(245,240,232,0.4); margin-top: 1rem; line-height: 1.7; }
   .donate-note a { color: var(--gold); text-decoration: none; }
 
-  /* ── MODAL ── */
-  .modal-overlay { position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
   .modal-box { background: var(--dark); border: 1px solid rgba(201,148,58,0.3); border-radius: 4px; max-width: 480px; width: 100%; overflow: hidden; transform: translateY(20px) scale(0.97); transition: transform 0.3s; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
   .modal-overlay.open .modal-box { transform: none; }
-  .modal-head { background: var(--green); padding: 2rem 2rem 1.5rem; border-bottom: 1px solid rgba(201,148,58,0.2); }
+  .modal-head { background: var(--green); padding: 2rem 2rem 1.5rem; border-bottom: 1px solid var(--gold20); }
   .modal-icon  { font-size: 2.2rem; margin-bottom: 0.8rem; }
   .modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--gold); letter-spacing: 0.06em; line-height: 1; }
   .modal-body  { padding: 1.8rem 2rem; }
-  .modal-body p { font-size: 0.9rem; color: rgba(245,240,232,0.75); line-height: 1.7; margin-bottom: 1rem; }
+  .modal-body p { font-size: 0.9rem; color: var(--cream75); line-height: 1.7; margin-bottom: 1rem; }
   .modal-body p:last-child { margin-bottom: 0; }
-  .modal-detail-box { background: rgba(201,148,58,0.08); border: 1px solid rgba(201,148,58,0.18); border-radius: 2px; padding: 1rem 1.2rem; margin: 1.2rem 0; }
+  .modal-detail-box { background: var(--gold08); border: 1px solid rgba(201,148,58,0.18); border-radius: 2px; padding: 1rem 1.2rem; margin: 1.2rem 0; }
   .modal-detail-box .eft-title { margin-bottom: 0.6rem; }
   .modal-foot { padding: 1rem 2rem 1.8rem; display: flex; gap: 0.8rem; }
-  .modal-btn-primary { flex: 1; background: var(--gold); color: var(--dark); border: none; padding: 0.9rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; cursor: pointer; transition: background 0.2s; }
-  .modal-btn-primary:hover { background: var(--gold-light); }
-  .modal-btn-ghost { background: transparent; color: rgba(245,240,232,0.5); border: 1px solid rgba(255,255,255,0.15); padding: 0.9rem 1.2rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .modal-foot button {
+    padding: 0.9rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+    font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: 2px; cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .modal-btn-primary { flex: 1; background: var(--gold); color: var(--dark); border: none; }
+  .modal-btn-primary:hover { background: var(--gold-l); }
+  .modal-btn-ghost { background: transparent; color: var(--cream50); border: 1px solid var(--white12); padding: 0.9rem 1.2rem; }
   .modal-btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: var(--cream); }
-  .modal-contact { font-size: 0.75rem !important; color: rgba(245,240,232,0.35) !important; margin-top: 0.8rem !important; }
+  .modal-contact { font-size: 0.75rem; color: rgba(245,240,232,0.35); margin-top: 0.8rem; }
   .modal-contact a { color: var(--gold); text-decoration: none; }
 
-  /* ── FOOTER ── */
-  footer { background: var(--dark); padding: 4rem 4rem 2rem; border-top: 1px solid rgba(201,148,58,0.2); }
+  /* FOOTER */
+  footer { padding: 4rem 4rem 2rem; border-top: 1px solid var(--gold20); }
   .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 3rem; margin-bottom: 3rem; }
-  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gold); letter-spacing: 0.12em; }
-  .footer-tag  { font-size: 0.78rem; color: rgba(245,240,232,0.4); margin-top: 0.2rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .footer-reg  { font-size: 0.7rem; color: rgba(245,240,232,0.22); margin-top: 0.5rem; line-height: 1.6; }
+  .footer-logo   { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gold); letter-spacing: 0.12em; }
+  .footer-tag    { font-size: 0.78rem; color: rgba(245,240,232,0.4); margin-top: 0.2rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .footer-reg    { font-size: 0.7rem; color: rgba(245,240,232,0.22); margin-top: 0.5rem; line-height: 1.6; }
   .footer-credit { font-size: 0.7rem; color: rgba(245,240,232,0.3); margin-top: 0.6rem; font-style: italic; }
   .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-  .footer-col a, .footer-col p { display: block; color: rgba(245,240,232,0.5); font-size: 0.82rem; text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; line-height: 1.5; }
+  .footer-col a, .footer-col p { display: block; color: var(--cream50); font-size: 0.82rem; text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; line-height: 1.5; }
   .footer-col a:hover { color: var(--gold); }
-  .social-link { display: flex !important; align-items: center; gap: 0.5rem; }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .social-link { display: flex; align-items: center; gap: 0.5rem; }
+  .social-link + .social-link { margin-top: 0; }
+  .footer-col .social-link:first-of-type { margin-top: 0.8rem; }
+  .footer-bottom { border-top: 1px solid var(--white06); padding-top: 1.5rem; }
   .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.2); }
 
-  /* ── ANIMATIONS ── */
+  /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay { transition-delay: 0.15s; }
 
-  /* ── RESPONSIVE ── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -256,32 +279,34 @@
     #founder { grid-template-columns: 1fr; }
     .founder-portrait svg { min-height: 380px; }
     .founder-text { padding: 3rem 1.5rem; }
-    .donate-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .stats-strip { padding: 1.5rem; gap: 2rem; }
-    footer { padding: 3rem 1.5rem 1.5rem; }
-    .footer-top { flex-direction: column; gap: 2rem; }
-    .form-row { grid-template-columns: 1fr; }
+    .donate-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .amount-grid  { grid-template-columns: 1fr 1fr; }
+    .form-row     { grid-template-columns: 1fr; }
+    .eft-row      { flex-direction: column; gap: 0.15rem; }
+    .eft-row span:last-child { text-align: left; }
+    .stats-strip  { padding: 1.5rem; gap: 2rem; }
+    footer        { padding: 3rem 1.5rem 1.5rem; }
+    .footer-top   { flex-direction: column; gap: 2rem; }
     .hero-content { padding: 0 1.5rem; }
-    .hero-scroll { left: 1.5rem; }
+    .hero-scroll  { left: 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .amount-btn { font-size: 1rem; padding: 0.75rem 0.25rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
   <div class="nav-logo">QHAKAZA</div>
   <ul class="nav-links">
     <li><a href="#mission">Mission</a></li>
     <li><a href="#founder">Founder</a></li>
-    <li><a href="#donate" class="nav-cta">Donate Now</a></li>
+    <li><a href="#donate" class="cta">Donate Now</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
   <div class="hero-oval"></div>
   <div class="hero-content">
     <div class="hero-tag">Gamalakhe · UGU District · KwaZulu-Natal · NPO 227221</div>
@@ -295,35 +320,16 @@
   <div class="hero-scroll">Scroll to explore</div>
 </section>
 
-<!-- STATS STRIP -->
 <div class="stats-strip">
-  <div class="stat-item">
-    <div class="stat-num">9–19</div>
-    <div class="stat-label">Ages We Serve</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">9–19</div><div class="stat-label">Ages We Serve</div></div>
   <div class="stat-div"></div>
-  <div class="stat-item">
-    <div class="stat-num">Both</div>
-    <div class="stat-label">Girls &amp; Boys</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">Both</div><div class="stat-label">Girls &amp; Boys</div></div>
   <div class="stat-div"></div>
-  <div class="stat-item">
-    <div class="stat-num">UGU</div>
-    <div class="stat-label">District · S. KZN</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">UGU</div><div class="stat-label">District · S. KZN</div></div>
   <div class="stat-div"></div>
-  <div class="stat-item">
-    <div class="stat-num">NPO</div>
-    <div class="stat-label">Registered 227221</div>
-  </div>
-  <div class="stat-div"></div>
-  <div class="stat-item">
-    <div class="stat-num">R0</div>
-    <div class="stat-label">Fees to Families</div>
-  </div>
+  <div class="stat-item"><div class="stat-num">NPO</div><div class="stat-label">Registered 227221</div></div>
 </div>
 
-<!-- MISSION -->
 <section id="mission">
   <div class="mission-img-wrap reveal">
     <div class="mission-img-frame">
@@ -351,19 +357,14 @@
         <rect x="230" y="30" width="4" height="40" fill="rgba(201,148,58,0.2)"/>
         <line x1="140" y1="30" x2="230" y2="30" stroke="rgba(201,148,58,0.2)" stroke-width="3"/>
         <ellipse cx="200" cy="460" rx="160" ry="40" fill="rgba(201,148,58,0.08)"/>
-        <text x="200" y="486" text-anchor="middle" font-family="sans-serif" font-size="10" fill="rgba(201,148,58,0.3)" letter-spacing="3">GLENWOOD U13 · 2022</text>
       </svg>
-      <div style="position:absolute;bottom:1.5rem;left:1.5rem;z-index:1;color:rgba(245,240,232,0.6);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">Youth in action · Gamalakhe, KZN</div>
     </div>
-    <div class="mission-badge">
-      <strong>2020</strong>
-      <span>Founded Gamalakhe</span>
-    </div>
+    <div class="mission-badge"><strong>UGU</strong><span>District, KZN</span></div>
   </div>
 
-  <div class="reveal" style="transition-delay:0.15s">
-    <div class="label">Vision &amp; Purpose</div>
-    <h2 class="title">SPORT AS A<br>PATHWAY OUT</h2>
+  <div class="reveal reveal-delay">
+    <div class="eyebrow">Vision &amp; Purpose</div>
+    <h2 class="heading">SPORT AS A<br>PATHWAY OUT</h2>
     <p class="body-text">QHAKAZA – meaning <em>"to shine"</em> in Zulu – works toward empowering youth and emerging communities through sport-based development within Southern KwaZulu-Natal, with ambitions to expand nationally. Grassroots sport should be accessible to all — especially in the least developed places where talent is most abundant.</p>
     <div class="pillars">
       <div class="pillar">
@@ -391,7 +392,6 @@
   </div>
 </section>
 
-<!-- FOUNDER -->
 <section id="founder">
   <div class="founder-portrait">
     <svg viewBox="0 0 420 560" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -420,7 +420,6 @@
       <path d="M 192 298 Q 210 314 228 298" stroke="#5a3520" stroke-width="3" fill="none" stroke-linecap="round"/>
       <path d="M 130 400 Q 210 382 290 400" stroke="rgba(201,148,58,0.6)" stroke-width="4" fill="none"/>
       <ellipse cx="210" cy="100" rx="120" ry="60" fill="rgba(201,148,58,0.06)"/>
-      <!-- Placeholder banner -->
       <rect x="0" y="468" width="420" height="92" fill="rgba(14,31,23,0.88)"/>
       <text x="210" y="492" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(201,148,58,0.95)" letter-spacing="1">This is a placeholder.</text>
       <text x="210" y="512" text-anchor="middle" font-family="sans-serif" font-size="10.5" fill="rgba(245,240,232,0.7)">I can take a nice portrait of you</text>
@@ -431,11 +430,10 @@
   </div>
 
   <div class="founder-text reveal">
-    <div class="label">The Man Behind The Mission</div>
-    <h2 class="title">GROMINGO B.<br>MZUNGA</h2>
-    <blockquote class="founder-quote">"I saw too many gifted children give up — not because they lacked talent, but because no one gave them a shirt, a ball, or a reason to believe. QHAKAZA is that reason."</blockquote>
-    <p class="body-text">Gromingo B. Mzunga is the Founder and CEO of Qhakaza Youth Community Foundation. Born and raised in the very communities he now serves, Gromingo channelled his intimate understanding of hardship, peer pressure, and untapped potential into building something permanent — a foundation that refuses to let circumstances determine destiny.</p>
-    <p class="body-text" style="margin-top:1rem;">Operating out of Gamalakhe in the UGU District of Southern KwaZulu-Natal, he built a registered, SARS-compliant NPO from the ground up — entirely free of charge to every family it serves. His vision is local today, and national tomorrow.</p>
+    <div class="eyebrow">The Man Behind The Mission</div>
+    <h2 class="heading">GROMINGO B.<br>MZUNGA</h2>
+    <p class="body-text">Gromingo B. Mzunga is the Founder and CEO of Qhakaza Community Youth Foundation, a registered non-profit organisation based in Gamalakhe, operating in Southern KwaZulu-Natal under the UGU District Municipality.</p>
+    <p class="body-text body-text + body-text">Under his leadership, QHAKAZA works to ensure that sport is accessible to all young people in rural and township communities — identifying talent, developing coaches, and creating league systems among local schools, entirely free of charge to the families it serves.</p>
     <div class="founder-name">Gromingo B. Mzunga</div>
     <div class="founder-role">Founder &amp; CEO · Qhakaza Youth Community Foundation · NPO 227221</div>
     <div class="board">
@@ -451,18 +449,17 @@
   </div>
 </section>
 
-<!-- DONATE -->
 <section id="donate">
   <div class="donate-grid">
     <div>
-      <div class="label">Be Part of the Change</div>
-      <h2 class="title">MAKE A<br>DIFFERENCE<br>TODAY</h2>
+      <div class="eyebrow">Be Part of the Change</div>
+      <h2 class="heading">MAKE A<br>DIFFERENCE<br>TODAY</h2>
       <p class="body-text">No donation is too small — every amount matters. Select a suggested amount or type in whatever you can give. Every rand goes directly to the children of Gamalakhe.</p>
       <div class="amount-grid">
-        <button class="amount-btn" data-amount="100">R 100<span class="sub">Socks &amp; tape</span></button>
-        <button class="amount-btn" data-amount="500">R 500<span class="sub">A pair of boots</span></button>
-        <button class="amount-btn" data-amount="1500">R 1,500<span class="sub">Full kit — 1 player</span></button>
-        <button class="amount-btn" data-amount="5000">R 5,000<span class="sub">Month of ops</span></button>
+        <button class="amount-btn" data-amount="100">R 100</button>
+        <button class="amount-btn" data-amount="500">R 500</button>
+        <button class="amount-btn" data-amount="1500">R 1,500</button>
+        <button class="amount-btn" data-amount="5000">R 5,000</button>
       </div>
       <div class="custom-row">
         <label for="customAmt">Your own amount:</label>
@@ -481,24 +478,25 @@
         <div class="eft-row"><span>NPO Registration</span><span>227221</span></div>
         <div class="eft-row"><span>SARS Tax No.</span><span>9176888254</span></div>
       </div>
-      <div class="label">Notify Us of Your Donation</div>
-      <div class="form-fields" style="margin-top:1.2rem;">
+      <div class="eyebrow">Notify Us of Your Donation</div>
+      <div class="form-fields">
         <div class="form-row">
           <div class="field"><label>First Name</label><input type="text" id="fname" placeholder="Your name"></div>
           <div class="field"><label>Surname</label><input type="text" id="lname" placeholder="Your surname"></div>
         </div>
         <div class="field"><label>Email Address</label><input type="email" id="email" placeholder="you@example.com"></div>
         <div class="field"><label>Donation Amount (ZAR)</label><input type="number" id="confirmAmt" placeholder="Confirm amount" min="1"></div>
-        <button class="btn-gold" onclick="confirmDonation()" style="width:100%;margin-top:0.4rem;">Confirm My Donation →</button>
-        <p class="donate-note">🔒 After confirming, complete your EFT using the details above. We will email your tax receipt within 24 hours.<br><br>
-        📞 <a href="tel:+27721949114">+27 72 194 9114</a> &nbsp;·&nbsp;
-        ✉️ <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#46;&#113;&#121;&#102;&#111;&#117;&#110;&#100;&#97;&#116;&#105;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">info.qyfoundation&#64;gmail.com</a></p>
+        <button class="btn-gold donate-submit" onclick="confirmDonation()">Confirm My Donation →</button>
+        <p class="donate-note">
+          🔒 After confirming, complete your EFT using the details above. We will email your tax receipt within 24 hours.<br><br>
+          📞 <a href="tel:+27721949114">+27 72 194 9114</a> &nbsp;·&nbsp;
+          ✉️ <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#46;&#113;&#121;&#102;&#111;&#117;&#110;&#100;&#97;&#116;&#105;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">info.qyfoundation&#64;gmail.com</a>
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modal">
   <div class="modal-box">
     <div class="modal-head">
@@ -510,7 +508,6 @@
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
@@ -529,8 +526,8 @@
       <h4>Get In Touch</h4>
       <a href="tel:+27721949114">+27 72 194 9114</a>
       <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#46;&#113;&#121;&#102;&#111;&#117;&#110;&#100;&#97;&#116;&#105;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">info.qyfoundation&#64;gmail.com</a>
-      <p style="margin-top:0.3rem;">Gamalakhe, UGU District<br>Southern KwaZulu-Natal</p>
-      <a class="social-link" href="https://facebook.com/qycfoundation" target="_blank" rel="noopener" style="margin-top:0.8rem;">
+      <p>Gamalakhe, UGU District<br>Southern KwaZulu-Natal</p>
+      <a class="social-link" href="https://facebook.com/qycfoundation" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
         @qycfoundation
       </a>
@@ -546,11 +543,11 @@
 </footer>
 
 <script>
-  // Nav scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  // Nav
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
 
-  // Scroll reveal
+  // Reveal on scroll
   const io = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0.1 }
@@ -558,21 +555,22 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // Amount buttons
-  document.querySelectorAll('.amount-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      document.getElementById('customAmt').value = '';
-      document.getElementById('confirmAmt').value = this.dataset.amount;
-    });
-  });
+  const amtBtns = document.querySelectorAll('.amount-btn');
+  amtBtns.forEach(btn => btn.addEventListener('click', function () {
+    amtBtns.forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('customAmt').value = '';
+    document.getElementById('confirmAmt').value = this.dataset.amount;
+  }));
 
   function onCustomInput() {
-    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    amtBtns.forEach(b => b.classList.remove('active'));
     document.getElementById('confirmAmt').value = document.getElementById('customAmt').value || '';
   }
 
   // Modal
+  const modalEl = document.getElementById('modal');
+
   function showModal({ icon, title, bodyHTML, buttons }) {
     document.getElementById('modalIcon').textContent  = icon;
     document.getElementById('modalTitle').textContent = title;
@@ -583,23 +581,23 @@
       const btn = document.createElement('button');
       btn.textContent = label;
       btn.className   = primary ? 'modal-btn-primary' : 'modal-btn-ghost';
-      btn.onclick     = () => { closeModal(); if (action) action(); };
+      btn.onclick     = () => { closeModal(); action?.(); };
       foot.appendChild(btn);
     });
-    document.getElementById('modal').classList.add('open');
+    modalEl.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
-    document.getElementById('modal').classList.remove('open');
+    modalEl.classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+  modalEl.addEventListener('click', e => { if (e.target === modalEl) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
   function warn(msg) {
-    showModal({ icon: '⚠️', title: 'One moment', bodyHTML: '<p>' + msg + '</p>', buttons: [{ label: 'Got it', primary: true }] });
+    showModal({ icon: '⚠️', title: 'One moment', bodyHTML: `<p>${msg}</p>`, buttons: [{ label: 'Got it', primary: true }] });
   }
 
   function confirmDonation() {
@@ -611,23 +609,23 @@
     if (!email)            return warn('Please enter your email address — we need it to send your tax receipt.');
     if (!amt || +amt <= 0) return warn('Please select or enter a donation amount before confirming.');
 
-    const R = 'R\u00a0' + Number(amt).toLocaleString('en-ZA');
+    const R = `R\u00a0${Number(amt).toLocaleString('en-ZA')}`;
 
     showModal({
       icon: '🙏',
-      title: 'Siyabonga, ' + name + '!',
-      bodyHTML:
-        '<p>Your pledge of <strong style="color:var(--gold-light)">' + R + '</strong> will make a real difference to the youth of Gamalakhe. Every rand goes directly to the children — thank you from the whole QHAKAZA family.</p>' +
-        '<div class="modal-detail-box">' +
-          '<div class="eft-title">🏦 Complete your EFT using these details</div>' +
-          '<div class="eft-row"><span>Account Name</span><span>Qhakaza Youth Community Foundation</span></div>' +
-          '<div class="eft-row"><span>Amount</span><span>' + R + '</span></div>' +
-          '<div class="eft-row"><span>Reference</span><span>DONATION \u2013 ' + name + '</span></div>' +
-          '<div class="eft-row"><span>NPO Registration</span><span>227221</span></div>' +
-          '<div class="eft-row"><span>SARS Tax No.</span><span>9176888254</span></div>' +
-        '</div>' +
-        '<p>We will email your official tax receipt to <strong style="color:var(--cream)">' + email + '</strong> within 24 hours of receiving your payment.</p>' +
-        '<p class="modal-contact">Questions? <a href="tel:+27721949114">+27 72 194 9114</a> &nbsp;&middot;&nbsp; <a href="mailto:info.qyfoundation@gmail.com">info.qyfoundation@gmail.com</a></p>',
+      title: `Siyabonga, ${name}!`,
+      bodyHTML: `
+        <p>Your pledge of <strong style="color:var(--gold-l)">${R}</strong> will make a real difference to the youth of Gamalakhe. Every rand goes directly to the children — thank you from the whole QHAKAZA family.</p>
+        <div class="modal-detail-box">
+          <div class="eft-title">🏦 Complete your EFT using these details</div>
+          <div class="eft-row"><span>Account Name</span><span>Qhakaza Youth Community Foundation</span></div>
+          <div class="eft-row"><span>Amount</span><span>${R}</span></div>
+          <div class="eft-row"><span>Reference</span><span>DONATION \u2013 ${name}</span></div>
+          <div class="eft-row"><span>NPO Registration</span><span>227221</span></div>
+          <div class="eft-row"><span>SARS Tax No.</span><span>9176888254</span></div>
+        </div>
+        <p>We will email your official tax receipt to <strong style="color:var(--cream)">${email}</strong> within 24 hours of receiving your payment.</p>
+        <p class="modal-contact">Questions? <a href="tel:+27721949114">+27 72 194 9114</a> &nbsp;&middot;&nbsp; <a href="mailto:info.qyfoundation@gmail.com">info.qyfoundation@gmail.com</a></p>`,
       buttons: [
         { label: "✓ I've noted the details", primary: true },
         { label: 'Close', primary: false }
