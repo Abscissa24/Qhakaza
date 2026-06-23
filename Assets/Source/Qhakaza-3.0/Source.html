@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QHAKAZA – Youth Community Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+        /* ── TOKENS ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --green: #1a3a2a;
+            --gold: #c9943a;
+            --gold-l: #e8b55a;
+            --cream: #f5f0e8;
+            --dark: #0e1f17;
+            --cream75: rgba(245, 240, 232, 0.75);
+            --cream60: rgba(245, 240, 232, 0.6);
+            --cream50: rgba(245, 240, 232, 0.5);
+            --cream45: rgba(245, 240, 232, 0.45);
+            --white06: rgba(255, 255, 255, 0.06);
+            --white12: rgba(255, 255, 255, 0.12);
+            --gold08: rgba(201, 148, 58, 0.08);
+            --gold20: rgba(201, 148, 58, 0.2);
+
+            /* ── Bouncy / Expressive Easing ── */
+            --bounce-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --elastic-ease: cubic-bezier(0.5, 1.2, 0.4, 1.2);
+            --rubber-ease: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--dark);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            overflow-x: hidden;
+            color: var(--cream);
+        }
+
+        /* ── SCROLLBARS ── */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--green);
+            border-radius: 4px;
+            border: 1px solid var(--dark);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold);
+        }
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: var(--green) var(--dark);
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 3rem;
+            transition: background 0.6s var(--bounce-ease), backdrop-filter 0.6s var(--bounce-ease);
+            pointer-events: none;
+        }
+        nav * {
+            pointer-events: auto;
+        }
+        nav.scrolled {
+            background: rgba(14, 31, 23, 0.92);
+            backdrop-filter: blur(14px);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 0.12em;
+            color: var(--gold);
+            transition: transform 0.3s var(--rubber-ease);
+        }
+        .nav-logo:hover {
+            transform: scale(1.1) rotate(-2deg);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.85;
+            transition: opacity 0.3s var(--bounce-ease), color 0.3s var(--bounce-ease),
+                transform 0.3s var(--rubber-ease);
+            position: relative;
+            padding: 0.3rem 0;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--gold);
+            transition: width 0.5s var(--bounce-ease);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--gold-l);
+            transform: translateY(-2px) scale(1.05);
+        }
+        .nav-links .cta {
+            background: var(--gold);
+            color: var(--dark);
+            opacity: 1;
+            padding: 0.5rem 1.4rem;
+            border-radius: 2px;
+            transition: background 0.3s var(--bounce-ease), transform 0.3s var(--rubber-ease),
+                box-shadow 0.3s var(--bounce-ease);
+        }
+        .nav-links .cta::after {
+            display: none;
+        }
+        .nav-links .cta:hover {
+            background: var(--gold-l);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(201, 148, 58, 0.3);
+            color: var(--dark);
+        }
+
+        /* ── SHARED SECTION STYLING ── */
+        section {
+            position: relative;
+            padding: 6rem 4rem;
+            overflow: hidden;
+        }
+        section:first-of-type {
+            padding-top: 8rem;
+        }
+
+        .bg-blend {
+            background: var(--dark);
+        }
+        .bg-blend-alt {
+            background: var(--green);
+        }
+
+        /* Soft blend gradient between sections */
+        section::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--dark));
+            pointer-events: none;
+            z-index: 1;
+        }
+        section.bg-blend-alt::after {
+            background: linear-gradient(to bottom, transparent, var(--green));
+        }
+        section:last-of-type::after {
+            display: none;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+        .heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            line-height: 1;
+            letter-spacing: 0.04em;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+        }
+        .body-text {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--cream75);
+            max-width: 560px;
+        }
+        .body-text+.body-text {
+            margin-top: 1rem;
+        }
+
+        /* ── BUTTONS (Bouncy) ── */
+        .btn-gold,
+        .btn-ghost {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.3s var(--bounce-ease), transform 0.4s var(--rubber-ease),
+                border-color 0.3s var(--bounce-ease), box-shadow 0.3s var(--bounce-ease);
+            will-change: transform;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+        }
+        .btn-gold:hover {
+            background: var(--gold-l);
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 12px 35px rgba(201, 148, 58, 0.35);
+        }
+        .btn-ghost {
+            border: 1.5px solid rgba(245, 240, 232, 0.3);
+            color: var(--cream);
+            background: transparent;
+        }
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            background: rgba(201, 148, 58, 0.1);
+            transform: translateY(-5px) scale(1.04);
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 4rem 6rem;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 50%, rgba(45, 92, 63, 0.45) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201, 148, 58, 0.15) 0%, transparent 60%),
+                linear-gradient(135deg, var(--dark) 0%, var(--green) 50%, var(--dark) 100%);
+            position: relative;
+            animation: heroBgShift 12s ease-in-out infinite alternate;
+        }
+        @keyframes heroBgShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+        #hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255, 255, 255, 0.025) 120px),
+                repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255, 255, 255, 0.025) 80px);
+        }
+        #hero .hero-oval {
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            width: 480px;
+            height: 320px;
+            border-radius: 50%;
+            pointer-events: none;
+            border: 2px solid rgba(201, 148, 58, 0.18);
+            box-shadow: 0 0 80px rgba(201, 148, 58, 0.06), inset 0 0 80px rgba(201, 148, 58, 0.06);
+            animation: ovalPulse 6s ease-in-out infinite;
+        }
+        @keyframes ovalPulse {
+            0%,
+            100% {
+                transform: translateY(-50%) rotate(20deg) scale(1);
+            }
+            50% {
+                transform: translateY(-50%) rotate(26deg) scale(1.08);
+                border-color: rgba(201, 148, 58, 0.35);
+            }
+        }
+        #hero .hero-oval::after {
+            content: '';
+            position: absolute;
+            inset: 20px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 148, 58, 0.1);
+            animation: ovalInnerPulse 6s ease-in-out infinite 0.5s;
+        }
+        @keyframes ovalInnerPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 680px;
+        }
+        .hero-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            margin-bottom: 1.8rem;
+            animation: tagBounce 1.5s var(--rubber-ease) both;
+        }
+        @keyframes tagBounce {
+            0% {
+                transform: scale(0) rotate(-10deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.15) rotate(2deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4.5rem, 8vw, 8.5rem);
+            line-height: 0.9;
+            color: var(--cream);
+            letter-spacing: 0.04em;
+            margin-bottom: 0.3em;
+            animation: titleFloat 4s ease-in-out infinite;
+        }
+        @keyframes titleFloat {
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                transform: translateY(-8px) scale(1.02);
+            }
+        }
+        .hero-title span {
+            color: var(--gold);
+            display: block;
+            text-shadow: 0 0 30px rgba(201, 148, 58, 0.15);
+            animation: spanGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes spanGlow {
+            0% {
+                text-shadow: 0 0 20px rgba(201, 148, 58, 0.1);
+            }
+            100% {
+                text-shadow: 0 0 50px rgba(201, 148, 58, 0.3);
+            }
+        }
+        .hero-sub {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+            color: rgba(245, 240, 232, 0.7);
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 480px;
+            animation: subFade 1.2s var(--bounce-ease) 0.3s both;
+        }
+        @keyframes subFade {
+            0% {
+                opacity: 0;
+                transform: translateX(-40px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: actionsBounce 1s var(--rubber-ease) 0.6s both;
+        }
+        @keyframes actionsBounce {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.8);
+            }
+            60% {
+                transform: translateY(-10px) scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 4rem;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(245, 240, 232, 0.3);
+            font-size: 0.65rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(6px);
+                opacity: 1;
+            }
+        }
+        .hero-scroll::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.4;
+            transition: width 0.4s var(--bounce-ease);
+        }
+        .hero-scroll:hover::before {
+            width: 60px;
+        }
+
+        /* ── STATS STRIP (Bouncy) ── */
+        .stats-strip {
+            background: var(--gold);
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+            transform-origin: top center;
+            animation: stripBounce 1.2s var(--rubber-ease) both;
+        }
+        @keyframes stripBounce {
+            0% {
+                transform: scaleY(0) scaleX(0.8);
+                opacity: 0;
+            }
+            60% {
+                transform: scaleY(1.1) scaleX(1.02);
+                opacity: 1;
+            }
+            80% {
+                transform: scaleY(0.95) scaleX(0.99);
+            }
+            100% {
+                transform: scaleY(1) scaleX(1);
+                opacity: 1;
+            }
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s var(--rubber-ease);
+        }
+        .stat-item:hover {
+            transform: scale(1.08) rotate(-2deg);
+        }
+        .stat-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            color: var(--dark);
+            line-height: 1;
+            display: inline-block;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: rgba(14, 31, 23, 0.75);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            max-width: 90px;
+            line-height: 1.3;
+        }
+        .stat-div {
+            width: 1px;
+            height: 40px;
+            background: rgba(14, 31, 23, 0.2);
+            flex-shrink: 0;
+        }
+
+        /* ── MISSION ── */
+        #mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            background: var(--dark);
+            position: relative;
+        }
+        #mission::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 60% 80% at 0% 50%, rgba(45, 92, 63, 0.4) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 100% 80%, var(--gold08) 0%, transparent 60%);
+        }
+        #mission>* {
+            position: relative;
+            z-index: 1;
+        }
+        .mission-img-wrap {
+            position: relative;
+        }
+        .mission-img-frame {
+            aspect-ratio: 4/5;
+            background: var(--green);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s var(--rubber-ease), box-shadow 0.5s var(--bounce-ease);
+        }
+        .mission-img-frame:hover {
+            transform: scale(1.02) rotate(1deg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        .mission-img-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(14, 31, 23, 0.7) 0%, transparent 50%);
+        }
+        .mission-img-frame svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .mission-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 40px rgba(201, 148, 58, 0.25);
+            animation: badgePulse 3s ease-in-out infinite;
+            transition: transform 0.4s var(--rubber-ease);
+        }
+        .mission-badge:hover {
+            transform: scale(1.12) rotate(8deg);
+        }
+        @keyframes badgePulse {
+            0%,
+            100% {
+                box-shadow: 0 12px 40px rgba(201, 148, 58, 0.25);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 12px 70px rgba(201, 148, 58, 0.5);
+                transform: scale(1.05);
+            }
+        }
+        .mission-badge strong {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--dark);
+            line-height: 1;
+        }
+        .mission-badge span {
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            max-width: 70px;
+            line-height: 1.3;
+            text-align: center;
+        }
+        .pillars {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+        .pillar {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            background: var(--white06);
+            border-left: 2px solid rgba(201, 148, 58, 0.3);
+            border-radius: 2px;
+            padding: 1rem 1.2rem;
+            transition: background 0.4s var(--bounce-ease), border-color 0.4s var(--bounce-ease),
+                transform 0.5s var(--rubber-ease), box-shadow 0.4s var(--bounce-ease);
+            cursor: default;
+        }
+        .pillar:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            transform: translateX(12px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        .pillar-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 148, 58, 0.12);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: transform 0.4s var(--rubber-ease);
+        }
+        .pillar:hover .pillar-icon {
+            transform: scale(1.2) rotate(-10deg);
+        }
+        .pillar h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gold-l);
+            margin-bottom: 0.2rem;
+        }
+        .pillar p {
+            font-size: 0.85rem;
+            color: var(--cream60);
+            line-height: 1.6;
+        }
+
+        /* ── FOUNDER ── */
+        #founder {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            min-height: 600px;
+            padding: 0;
+            background: var(--green);
+            position: relative;
+        }
+        #founder::after {
+            background: linear-gradient(to bottom, transparent, var(--green));
+        }
+        .founder-portrait {
+            position: relative;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        .founder-portrait img {
+            width: 100%;
+            height: 100%;
+            min-height: 560px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s var(--rubber-ease), filter 0.6s var(--bounce-ease);
+        }
+        .founder-portrait:hover img {
+            transform: scale(1.06) rotate(1deg);
+            filter: brightness(1.1);
+        }
+        .portrait-label {
+            position: absolute;
+            inset: auto 0 0;
+            background: linear-gradient(to top, rgba(14, 31, 23, 0.85) 0%, transparent 60%);
+            padding: 2rem;
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(201, 148, 58, 0.6);
+            transition: transform 0.4s var(--rubber-ease);
+        }
+        .founder-portrait:hover .portrait-label {
+            transform: translateY(-4px);
+        }
+        .founder-text {
+            padding: 4rem 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .founder-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--cream);
+            letter-spacing: 0.08em;
+            margin-top: 1rem;
+            transition: transform 0.3s var(--rubber-ease);
+        }
+        .founder-name:hover {
+            transform: translateX(6px) scale(1.02);
+            color: var(--gold-l);
+        }
+        .founder-role {
+            font-size: 0.75rem;
+            color: var(--cream50);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+        .board {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .board-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(201, 148, 58, 0.6);
+            margin-bottom: 0.6rem;
+        }
+        .board-names {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .board-name {
+            font-size: 0.75rem;
+            color: var(--cream60);
+            background: var(--white06);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2px;
+            transition: background 0.3s var(--bounce-ease), color 0.3s var(--bounce-ease),
+                transform 0.4s var(--rubber-ease);
+            cursor: default;
+        }
+        .board-name:hover {
+            background: rgba(201, 148, 58, 0.2);
+            color: var(--gold-l);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* ── DONATE ── */
+        #donate {
+            background: var(--dark);
+            position: relative;
+        }
+        #donate::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(45, 92, 63, 0.3) 0%, transparent 70%);
+        }
+        .donate-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0 1rem;
+        }
+        .amount-btn {
+            border: 1.5px solid rgba(245, 240, 232, 0.15);
+            background: transparent;
+            color: var(--cream);
+            padding: 0.8rem 0.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            border-radius: 2px;
+            width: 100%;
+            transition: border-color 0.3s var(--bounce-ease), background 0.3s var(--bounce-ease),
+                color 0.3s var(--bounce-ease), transform 0.4s var(--rubber-ease),
+                box-shadow 0.3s var(--bounce-ease);
+        }
+        .amount-btn:hover {
+            border-color: var(--gold);
+            background: rgba(201, 148, 58, 0.1);
+            color: var(--gold-l);
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 10px 30px rgba(201, 148, 58, 0.15);
+        }
+        .amount-btn.active {
+            border-color: var(--gold);
+            background: rgba(201, 148, 58, 0.2);
+            color: var(--gold-l);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(201, 148, 58, 0.2);
+        }
+        .custom-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+        }
+        .custom-row label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cream50);
+        }
+        .custom-wrap {
+            display: flex;
+            align-items: center;
+            background: var(--white06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: border-color 0.3s var(--bounce-ease), transform 0.3s var(--rubber-ease);
+        }
+        .custom-wrap:focus-within {
+            border-color: var(--gold);
+            transform: scale(1.01);
+        }
+        .custom-prefix {
+            flex-shrink: 0;
+            padding: 0.7rem 1rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            background: var(--gold08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        #customAmt {
+            flex: 1;
+            min-width: 0;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 0.7rem 1rem;
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+        }
+        #customAmt::placeholder {
+            color: rgba(245, 240, 232, 0.2);
+        }
+        .eft-box {
+            background: var(--gold08);
+            border: 1px solid var(--gold20);
+            border-radius: 2px;
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.4s var(--bounce-ease), transform 0.4s var(--rubber-ease),
+                box-shadow 0.4s var(--bounce-ease);
+        }
+        .eft-box:hover {
+            border-color: rgba(201, 148, 58, 0.5);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+        .eft-title {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+        }
+        .eft-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 1rem;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            padding: 0.35rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .eft-row:last-child {
+            border-bottom: none;
+        }
+        .eft-row span:first-child {
+            color: var(--cream45);
+            flex-shrink: 0;
+        }
+        .eft-row span:last-child {
+            color: var(--cream);
+            font-weight: 500;
+            word-break: break-word;
+            text-align: right;
+        }
+        .form-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .field label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.5);
+        }
+        .field input {
+            background: var(--white06);
+            border: 1px solid var(--white12);
+            border-radius: 2px;
+            padding: 0.75rem 1rem;
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s var(--bounce-ease), background 0.3s var(--bounce-ease),
+                transform 0.3s var(--rubber-ease);
+            width: 100%;
+        }
+        .field input:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.06);
+            transform: scale(1.01);
+        }
+        .field input::placeholder {
+            color: rgba(245, 240, 232, 0.2);
+        }
+        .donate-submit {
+            width: 100%;
+            margin-top: 0.2rem;
+        }
+        .donate-note {
+            font-size: 0.72rem;
+            color: rgba(245, 240, 232, 0.35);
+            margin-top: 0.8rem;
+            line-height: 1.7;
+        }
+        .donate-note a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s var(--bounce-ease), transform 0.3s var(--rubber-ease);
+            display: inline-block;
+        }
+        .donate-note a:hover {
+            color: var(--gold-l);
+            transform: translateX(4px) scale(1.05);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--dark);
+            padding: 4rem 4rem 2rem;
+            border-top: 1px solid var(--gold20);
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 60% at 30% 80%, rgba(45, 92, 63, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .footer-wrap {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            letter-spacing: 0.12em;
+            transition: transform 0.3s var(--rubber-ease);
+            display: inline-block;
+        }
+        .footer-logo:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+        .footer-tag {
+            font-size: 0.75rem;
+            color: rgba(245, 240, 232, 0.4);
+            margin-top: 0.2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .footer-reg {
+            font-size: 0.68rem;
+            color: rgba(245, 240, 232, 0.2);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+        .footer-col h4 {
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            color: var(--cream50);
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-bottom: 0.4rem;
+            transition: color 0.3s var(--bounce-ease), transform 0.4s var(--rubber-ease);
+            line-height: 1.5;
+        }
+        .footer-col a:hover {
+            color: var(--gold);
+            transform: translateX(8px) scale(1.02);
+        }
+        .socials {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+        }
+        .socials a {
+            display: flex !important;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--cream50);
+            font-size: 0.78rem;
+            text-decoration: none;
+            transition: color 0.3s var(--bounce-ease), transform 0.4s var(--rubber-ease);
+            line-height: 1;
+            margin-bottom: 0;
+        }
+        .socials a:hover {
+            color: var(--gold);
+            transform: translateX(6px) scale(1.05);
+        }
+        .socials svg {
+            flex-shrink: 0;
+            display: block;
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--white06);
+            padding-top: 1.2rem;
+            margin-top: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            grid-column: 1 / -1;
+        }
+        .footer-copy {
+            font-size: 0.68rem;
+            color: rgba(245, 240, 232, 0.18);
+            transition: color 0.3s var(--bounce-ease);
+        }
+        .footer-copy:hover {
+            color: rgba(245, 240, 232, 0.4);
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s var(--bounce-ease);
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-box {
+            background: var(--dark);
+            border: 1px solid rgba(201, 148, 58, 0.25);
+            border-radius: 4px;
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+            transform: translateY(40px) scale(0.9);
+            transition: transform 0.6s var(--rubber-ease);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        }
+        .modal-overlay.open .modal-box {
+            transform: translateY(0) scale(1);
+        }
+        .modal-head {
+            background: var(--green);
+            padding: 1.8rem 2rem 1.2rem;
+            border-bottom: 1px solid var(--gold20);
+        }
+        .modal-icon {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+            animation: iconBounce 1s var(--rubber-ease) both;
+        }
+        @keyframes iconBounce {
+            0% {
+                transform: scale(0) rotate(-20deg);
+            }
+            60% {
+                transform: scale(1.3) rotate(5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        .modal-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+            line-height: 1;
+        }
+        .modal-body {
+            padding: 1.6rem 2rem;
+        }
+        .modal-body p {
+            font-size: 0.88rem;
+            color: var(--cream75);
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+        .modal-body p:last-child {
+            margin-bottom: 0;
+        }
+        .modal-detail-box {
+            background: var(--gold08);
+            border: 1px solid rgba(201, 148, 58, 0.15);
+            border-radius: 2px;
+            padding: 0.8rem 1rem;
+            margin: 1rem 0;
+        }
+        .modal-detail-box .eft-title {
+            margin-bottom: 0.4rem;
+        }
+        .modal-detail-box .eft-row {
+            font-size: 0.75rem;
+            padding: 0.25rem 0;
+        }
+        .modal-foot {
+            padding: 0.8rem 2rem 1.6rem;
+            display: flex;
+            gap: 0.8rem;
+        }
+        .modal-foot button {
+            padding: 0.8rem 1.2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.3s var(--bounce-ease), border-color 0.3s var(--bounce-ease),
+                color 0.3s var(--bounce-ease), transform 0.4s var(--rubber-ease);
+        }
+        .modal-btn-primary {
+            flex: 1;
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+        }
+        .modal-btn-primary:hover {
+            background: var(--gold-l);
+            transform: translateY(-3px) scale(1.02);
+        }
+        .modal-btn-ghost {
+            background: transparent;
+            color: var(--cream50);
+            border: 1px solid var(--white12);
+        }
+        .modal-btn-ghost:hover {
+            border-color: rgba(255, 255, 255, 0.35);
+            color: var(--cream);
+            transform: translateY(-3px);
+        }
+        .modal-contact {
+            font-size: 0.72rem;
+            color: rgba(245, 240, 232, 0.3);
+            margin-top: 0.6rem;
+        }
+        .modal-contact a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s var(--bounce-ease), transform 0.3s var(--rubber-ease);
+            display: inline-block;
+        }
+        .modal-contact a:hover {
+            color: var(--gold-l);
+            transform: translateX(3px) scale(1.05);
+        }
+
+        /* ── REVEAL ANIMATIONS (BOUNCY & EXPRESSIVE) ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(70px) scale(0.92);
+            transition: opacity 0.8s var(--bounce-ease), transform 0.8s var(--bounce-ease);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .reveal-delay {
+            transition-delay: 0.15s;
+        }
+        .reveal-delay-2 {
+            transition-delay: 0.3s;
+        }
+        .reveal-delay-3 {
+            transition-delay: 0.45s;
+        }
+
+        /* Additional expressive stagger for pillar children */
+        .pillar:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        .pillar:nth-child(2) {
+            transition-delay: 0.25s;
+        }
+        .pillar:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 1.8rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+            section {
+                padding: 5rem 2rem;
+            }
+            #hero {
+                padding: 8rem 2rem 5rem;
+                min-height: 90vh;
+            }
+            #mission {
+                gap: 3rem;
+            }
+            #founder {
+                grid-template-columns: 320px 1fr;
+            }
+            .founder-text {
+                padding: 3rem 2rem;
+            }
+            .donate-grid {
+                gap: 2.5rem;
+            }
+            footer {
+                padding: 3rem 2rem 1.5rem;
+            }
+            .footer-wrap {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            .hero-scroll {
+                left: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+            #hero {
+                padding: 6rem 1.5rem 3rem;
+                min-height: 100vh;
+            }
+            .hero-title {
+                font-size: clamp(3.2rem, 12vw, 4.8rem);
+            }
+            .hero-oval {
+                display: none;
+            }
+            .stats-strip {
+                padding: 1.2rem 1.5rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .stat-item {
+                flex: 1 0 40%;
+                justify-content: center;
+            }
+            .stat-div {
+                display: none;
+            }
+            #mission {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem;
+                gap: 2rem;
+            }
+            .mission-badge {
+                width: 90px;
+                height: 90px;
+                bottom: -12px;
+                right: -12px;
+            }
+            .mission-badge strong {
+                font-size: 1.4rem;
+            }
+            .mission-badge span {
+                font-size: 0.5rem;
+                max-width: 50px;
+            }
+            #founder {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .founder-portrait img {
+                min-height: 320px;
+            }
+            .founder-text {
+                padding: 2rem 1.5rem;
+            }
+            #donate {
+                padding: 3rem 1.5rem;
+            }
+            .donate-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .amount-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .eft-row {
+                flex-direction: column;
+                gap: 0.1rem;
+            }
+            .eft-row span:last-child {
+                text-align: left;
+            }
+            footer {
+                padding: 2rem 1.5rem 1rem;
+            }
+            .footer-wrap {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero-scroll {
+                display: none;
+            }
+            section::after {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stat-num {
+                font-size: 1.8rem;
+            }
+            .stat-label {
+                font-size: 0.6rem;
+                max-width: 70px;
+            }
+            .amount-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 0.25rem;
+            }
+            .btn-gold,
+            .btn-ghost {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.7rem;
+            }
+            .mission-img-frame {
+                aspect-ratio: 1/1.2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <div class="nav-logo">QHAKAZA</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#founder">Founder</a></li>
+            <li><a href="#donate" class="cta">Donate</a></li>
+        </ul>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section id="hero">
+        <div class="hero-oval"></div>
+        <div class="hero-content">
+            <div class="hero-tag">Gamalakhe · UGU District · KwaZulu-Natal · NPO 227221</div>
+            <h1 class="hero-title">QHAKAZA<span>SPORTS FOUNDATION</span></h1>
+            <p class="hero-sub">Empowering youth aged 9–19 from rural and township communities in Southern KwaZulu-Natal — through sport, mentorship, and the belief that talent is everywhere, but opportunity is not.</p>
+            <div class="hero-actions">
+                <a href="#donate" class="btn-gold">Make a Donation</a>
+                <a href="#mission" class="btn-ghost">Our Mission</a>
+            </div>
+        </div>
+        <div class="hero-scroll">Scroll to explore ↓</div>
+    </section>
+
+    <!-- ─── STATS STRIP ─── -->
+    <div class="stats-strip">
+        <div class="stat-item"><div class="stat-num">9–19</div><div class="stat-label">Ages We Serve</div></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><div class="stat-num">Both</div><div class="stat-label">Girls &amp; Boys</div></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><div class="stat-num">UGU</div><div class="stat-label">District · S. KZN</div></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><div class="stat-num">NPO</div><div class="stat-label">Registered 227221</div></div>
+    </div>
+
+    <!-- ─── MISSION ─── -->
+    <section id="mission">
+        <div class="mission-img-wrap reveal">
+            <div class="mission-img-frame">
+                <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                    <rect width="400" height="500" fill="#1a3a2a"/>
+                    <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <line x1="0" y1="300" x2="400" y2="300" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <line x1="0" y1="400" x2="400" y2="400" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                    <line x1="100" y1="0" x2="100" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                    <line x1="200" y1="0" x2="200" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                    <line x1="300" y1="0" x2="300" y2="500" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                    <ellipse cx="180" cy="240" rx="18" ry="24" fill="rgba(201,148,58,0.7)" transform="rotate(-10 180 240)"/>
+                    <circle cx="180" cy="208" r="14" fill="rgba(201,148,58,0.8)"/>
+                    <ellipse cx="165" cy="270" rx="10" ry="22" fill="rgba(201,148,58,0.6)" transform="rotate(15 165 270)"/>
+                    <ellipse cx="196" cy="268" rx="10" ry="22" fill="rgba(201,148,58,0.55)" transform="rotate(-5 196 268)"/>
+                    <ellipse cx="145" cy="248" rx="20" ry="10" fill="rgba(201,148,58,0.5)" transform="rotate(-20 145 248)"/>
+                    <ellipse cx="126" cy="252" rx="14" ry="9" fill="rgba(245,240,232,0.6)" transform="rotate(-20 126 252)"/>
+                    <ellipse cx="230" cy="260" rx="15" ry="22" fill="rgba(45,92,63,0.9)" transform="rotate(20 230 260)"/>
+                    <circle cx="235" cy="230" r="12" fill="rgba(45,92,63,0.95)"/>
+                    <ellipse cx="218" cy="285" rx="9" ry="20" fill="rgba(45,92,63,0.85)" transform="rotate(10 218 285)"/>
+                    <ellipse cx="246" cy="282" rx="9" ry="20" fill="rgba(45,92,63,0.8)" transform="rotate(-15 246 282)"/>
+                    <rect x="185" y="10" width="4" height="60" fill="rgba(201,148,58,0.3)"/>
+                    <rect x="140" y="30" width="4" height="40" fill="rgba(201,148,58,0.2)"/>
+                    <rect x="230" y="30" width="4" height="40" fill="rgba(201,148,58,0.2)"/>
+                    <line x1="140" y1="30" x2="230" y2="30" stroke="rgba(201,148,58,0.2)" stroke-width="3"/>
+                    <ellipse cx="200" cy="460" rx="160" ry="40" fill="rgba(201,148,58,0.08)"/>
+                </svg>
+            </div>
+            <div class="mission-badge"><strong>UGU</strong><span>District, KZN</span></div>
+        </div>
+
+        <div class="reveal reveal-delay">
+            <div class="eyebrow">Vision &amp; Purpose</div>
+            <h2 class="heading">SPORT AS A<br>PATHWAY OUT</h2>
+            <p class="body-text">QHAKAZA – meaning <em>"to shine"</em> in Zulu – works toward empowering youth and emerging communities through sport-based development within Southern KwaZulu-Natal, with ambitions to expand nationally. Grassroots sport should be accessible to all — especially in the least developed places where talent is most abundant.</p>
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">🏉</div>
+                    <div>
+                        <h3>School Sport Programs &amp; Leagues</h3>
+                        <p>We target primary schools, establish league systems, and identify talent — creating structured pathways for young athletes to grow and compete.</p>
+                    </div>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">🛡️</div>
+                    <div>
+                        <h3>Safety Net Against Peer Pressure</h3>
+                        <p>QHAKAZA provides a structured alternative to poverty, drugs, teenage pregnancy and peer pressure — giving children a positive environment where they belong.</p>
+                    </div>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">🤝</div>
+                    <div>
+                        <h3>Skills, Mentorship &amp; Wellness</h3>
+                        <p>Beyond the field, we run workshops focused on health, wellness, teamwork and life skills — equipping young people for everything life brings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOUNDER ─── -->
+    <section id="founder">
+        <div class="founder-portrait">
+            <!-- ★ REPLACE THE SRC BELOW WITH YOUR GITHUB PNG LINK ★ -->
+            <img src="https://picsum.photos/seed/gromingo/420/560" alt="Gromingo B. Mzunga – Founder & CEO, QHAKAZA" loading="lazy" />
+            <div class="portrait-label">Founder &amp; CEO · QHAKAZA</div>
+        </div>
+
+        <div class="founder-text reveal reveal-delay">
+            <div class="eyebrow">The Man Behind The Mission</div>
+            <h2 class="heading">GROMINGO B.<br>MZUNGA</h2>
+            <p class="body-text">Gromingo B. Mzunga is the Founder and CEO of Qhakaza Community Youth Foundation, a registered non-profit organisation based in Gamalakhe, operating in Southern KwaZulu-Natal under the UGU District Municipality.</p>
+            <p class="body-text" style="margin-top:0.8rem;">Under his leadership, QHAKAZA works to ensure that sport is accessible to all young people in rural and township communities — identifying talent, developing coaches, and creating league systems among local schools, entirely free of charge to the families it serves.</p>
+            <div class="founder-name">Gromingo B. Mzunga</div>
+            <div class="founder-role">Founder &amp; CEO · Qhakaza Youth Community Foundation · NPO 227221</div>
+            <div class="board">
+                <div class="board-label">Board of Directors</div>
+                <div class="board-names">
+                    <span class="board-name">Gromingo Mzunga</span>
+                    <span class="board-name">Kevin Dladla</span>
+                    <span class="board-name">Zoliswa Phakathi</span>
+                    <span class="board-name">Sabelo Zama</span>
+                    <span class="board-name">Jarrod</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── DONATE ─── -->
+    <section id="donate">
+        <div class="donate-grid">
+            <div class="reveal">
+                <div class="eyebrow">Be Part of the Change</div>
+                <h2 class="heading">MAKE A<br>DIFFERENCE<br>TODAY</h2>
+                <p class="body-text">No donation is too small — every amount matters. Select a suggested amount or type in whatever you can give. Every rand goes directly to the children of Gamalakhe.</p>
+                <div class="amount-grid">
+                    <button class="amount-btn" data-amount="100">R 100</button>
+                    <button class="amount-btn" data-amount="500">R 500</button>
+                    <button class="amount-btn" data-amount="1500">R 1,500</button>
+                    <button class="amount-btn" data-amount="5000">R 5,000</button>
+                </div>
+                <div class="custom-row">
+                    <label for="customAmt">Your own amount:</label>
+                    <div class="custom-wrap">
+                        <span class="custom-prefix">R</span>
+                        <input id="customAmt" type="number" min="1" placeholder="e.g. 20, 250, 10 000…" oninput="onCustomInput()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal reveal-delay">
+                <div class="eft-box">
+                    <div class="eft-title">🏦 EFT / Banking Details</div>
+                    <div class="eft-row"><span>Account Name</span><span>Qhakaza Youth Community Foundation</span></div>
+                    <div class="eft-row"><span>Reference</span><span>DONATION – [Your Name]</span></div>
+                    <div class="eft-row"><span>NPO Registration</span><span>227221</span></div>
+                    <div class="eft-row"><span>SARS Tax No.</span><span>9176888254</span></div>
+                </div>
+                <div class="eyebrow">Notify Us of Your Donation</div>
+                <div class="form-fields">
+                    <div class="form-row">
+                        <div class="field"><label>First Name</label><input type="text" id="fname" placeholder="Your name"></div>
+                        <div class="field"><label>Surname</label><input type="text" id="lname" placeholder="Your surname"></div>
+                    </div>
+                    <div class="field"><label>Email Address</label><input type="email" id="email" placeholder="you@example.com"></div>
+                    <div class="field"><label>Donation Amount (ZAR)</label><input type="number" id="confirmAmt" placeholder="Confirm amount" min="1"></div>
+                    <button class="btn-gold donate-submit" onclick="confirmDonation()">Confirm My Donation →</button>
+                    <p class="donate-note">
+                        🔒 After confirming, complete your EFT using the details above. We will email your tax receipt within 24 hours.<br><br>
+                        📞 <a href="tel:+27721949114">+27 72 194 9114</a> &nbsp;·&nbsp;
+                        ✉️ <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#46;&#113;&#121;&#102;&#111;&#117;&#110;&#100;&#97;&#116;&#105;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">info.qyfoundation&#64;gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="footer-wrap reveal">
+            <div>
+                <div class="footer-logo">QHAKAZA</div>
+                <div class="footer-tag">Youth Community Foundation</div>
+                <div class="footer-reg">NPO Registration: 227221 &nbsp;·&nbsp; SARS Tax No: 9176888254<br>Gamalakhe, UGU District, Southern KwaZulu-Natal</div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigate</h4>
+                <a href="#hero">Home</a>
+                <a href="#mission">Mission &amp; Vision</a>
+                <a href="#founder">Our Founder</a>
+                <a href="#donate">Donate</a>
+            </div>
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <a href="tel:+27721949114">+27 72 194 9114</a>
+                <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#46;&#113;&#121;&#102;&#111;&#117;&#110;&#100;&#97;&#116;&#105;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">info.qyfoundation&#64;gmail.com</a>
+                <p>Gamalakhe, UGU District<br>Southern KwaZulu-Natal</p>
+                <div class="socials">
+                    <a class="social-link" href="https://facebook.com/qycfoundation" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        @qycfoundation
+                    </a>
+                    <a class="social-link" href="https://instagram.com/qyfoundation" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+                        @qyfoundation
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2025 Qhakaza Youth Community Foundation · NPO 227221 · All rights reserved.</div>
+                <div class="footer-copy">Website created by Armiel Pillay</div>
+                <div class="footer-copy">armielpillay24@gmail.com</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── MODAL ─── -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-box">
+            <div class="modal-head">
+                <div class="modal-icon" id="modalIcon"></div>
+                <div class="modal-title" id="modalTitle"></div>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-foot" id="modalFoot"></div>
+        </div>
+    </div>
+
+    <script>
+        // ─── Nav scroll background ───
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ─── Reveal on scroll ───
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ─── Amount buttons ───
+        const amtBtns = document.querySelectorAll('.amount-btn');
+        amtBtns.forEach(btn => btn.addEventListener('click', function() {
+            amtBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById('customAmt').value = '';
+            document.getElementById('confirmAmt').value = this.dataset.amount;
+        }));
+
+        function onCustomInput() {
+            amtBtns.forEach(b => b.classList.remove('active'));
+            document.getElementById('confirmAmt').value = document.getElementById('customAmt').value || '';
+        }
+
+        // ─── Modal ───
+        const modalEl = document.getElementById('modal');
+
+        function showModal({ icon, title, bodyHTML, buttons }) {
+            document.getElementById('modalIcon').textContent = icon;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').innerHTML = bodyHTML;
+            const foot = document.getElementById('modalFoot');
+            foot.innerHTML = '';
+            buttons.forEach(({ label, primary, action }) => {
+                const btn = document.createElement('button');
+                btn.textContent = label;
+                btn.className = primary ? 'modal-btn-primary' : 'modal-btn-ghost';
+                btn.onclick = () => { closeModal();
+                    action?.(); };
+                foot.appendChild(btn);
+            });
+            modalEl.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalEl.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        modalEl.addEventListener('click', e => { if (e.target === modalEl) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        function warn(msg) {
+            showModal({
+                icon: '⚠️',
+                title: 'One moment',
+                bodyHTML: `<p>${msg}</p>`,
+                buttons: [{ label: 'Got it', primary: true }]
+            });
+        }
+
+        function confirmDonation() {
+            const name = document.getElementById('fname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const amt = document.getElementById('confirmAmt').value || document.getElementById('customAmt').value;
+
+            if (!name) return warn('Please enter your first name so we can personalise your receipt.');
+            if (!email) return warn('Please enter your email address — we need it to send your tax receipt.');
+            if (!amt || +amt <= 0) return warn('Please select or enter a donation amount before confirming.');
+
+            const R = `R\u00a0${Number(amt).toLocaleString('en-ZA')}`;
+
+            showModal({
+                icon: '🙏',
+                title: `Siyabonga, ${name}!`,
+                bodyHTML: `
+              <p>Your pledge of <strong style="color:var(--gold-l)">${R}</strong> will make a real difference to the youth of KwaZulu-Natal. Every rand goes directly to the children — thank you from the whole QHAKAZA family.</p>
+              <div class="modal-detail-box">
+                <div class="eft-title">🏦 Complete your EFT using these details</div>
+                <div class="eft-row"><span>Account Name</span><span>Qhakaza Youth Community Foundation</span></div>
+                <div class="eft-row"><span>Amount</span><span>${R}</span></div>
+                <div class="eft-row"><span>Reference</span><span>DONATION \u2013 ${name}</span></div>
+                <div class="eft-row"><span>NPO Registration</span><span>227221</span></div>
+                <div class="eft-row"><span>SARS Tax No.</span><span>9176888254</span></div>
+              </div>
+              <p>We will email your official tax receipt to <strong style="color:var(--cream)">${email}</strong> within 24 hours of receiving your payment.</p>
+              <p class="modal-contact">Questions? <a href="tel:+27721949114">+27 72 194 9114</a> &nbsp;&middot;&nbsp; <a href="mailto:info.qyfoundation@gmail.com">info.qyfoundation@gmail.com</a></p>`,
+                buttons: [
+                    { label: "✓ I've noted the details", primary: true },
+                    { label: 'Close', primary: false }
+                ]
+            });
+        }
+    </script>
+
+</body>
+</html>
