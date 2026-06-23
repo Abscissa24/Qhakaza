@@ -649,6 +649,9 @@
             display: flex;
             gap: 0.6rem;
             z-index: 5;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 90%;
         }
         .carousel-dots button {
             width: 10px;
@@ -659,6 +662,7 @@
             cursor: pointer;
             transition: background 0.3s var(--bounce-ease), transform 0.3s var(--rubber-ease);
             padding: 0;
+            flex-shrink: 0;
         }
         .carousel-dots button.active {
             background: var(--gold);
@@ -1600,18 +1604,105 @@
         <div class="mission-img-wrap reveal">
             <div class="carousel-container" id="missionCarousel">
                 <div class="carousel-slides" id="carouselSlides">
-                    <!-- Each slide: image + optional caption -->
+                    <!-- Slide 1 -->
                     <div class="carousel-slide">
-                        <img src="https://picsum.photos/seed/rugby1/800/1000" alt="QHAKAZA sports action" loading="lazy" />
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.43.jpeg" alt="QHAKAZA action" loading="lazy" />
                         <div class="slide-caption"><strong>Game On</strong> Young athletes in full flight</div>
                     </div>
+                    <!-- Slide 2 -->
                     <div class="carousel-slide">
-                        <img src="https://picsum.photos/seed/rugby2/800/1000" alt="Community training" loading="lazy" />
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.47.jpeg" alt="Community training" loading="lazy" />
                         <div class="slide-caption"><strong>Team Spirit</strong> Building bonds through sport</div>
                     </div>
+                    <!-- Slide 3 -->
                     <div class="carousel-slide">
-                        <img src="https://picsum.photos/seed/rugby3/800/1000" alt="Coaching session" loading="lazy" />
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.48%20(2).jpeg" alt="Coaching session" loading="lazy" />
                         <div class="slide-caption"><strong>Mentorship</strong> Coaching the next generation</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.48.jpeg" alt="Match day" loading="lazy" />
+                        <div class="slide-caption"><strong>Match Day</strong> Competition builds character</div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.51.jpeg" alt="Training drills" loading="lazy" />
+                        <div class="slide-caption"><strong>Drills</strong> Perfecting the basics</div>
+                    </div>
+                    <!-- Slide 6 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.52%20(1).jpeg" alt="Youth league" loading="lazy" />
+                        <div class="slide-caption"><strong>Youth League</strong> Where stars are born</div>
+                    </div>
+                    <!-- Slide 7 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.52.jpeg" alt="Girls in sport" loading="lazy" />
+                        <div class="slide-caption"><strong>Girls in Sport</strong> Breaking barriers</div>
+                    </div>
+                    <!-- Slide 8 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.12%20(1).jpeg" alt="Coach talk" loading="lazy" />
+                        <div class="slide-caption"><strong>Coach Talk</strong> Mentorship in action</div>
+                    </div>
+                    <!-- Slide 9 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.12.jpeg" alt="Tournament" loading="lazy" />
+                        <div class="slide-caption"><strong>Tournament</strong> Community pride</div>
+                    </div>
+                    <!-- Slide 10 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.13%20(1).jpeg" alt="Celebration" loading="lazy" />
+                        <div class="slide-caption"><strong>Celebration</strong> Joy of victory</div>
+                    </div>
+                    <!-- Slide 11 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.13.jpeg" alt="Team huddle" loading="lazy" />
+                        <div class="slide-caption"><strong>Team Huddle</strong> Unity and focus</div>
+                    </div>
+                    <!-- Slide 12 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.14%20(1).jpeg" alt="Skills workshop" loading="lazy" />
+                        <div class="slide-caption"><strong>Skills Workshop</strong> Beyond the field</div>
+                    </div>
+                    <!-- Slide 13 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.14%20(2).jpeg" alt="Fitness session" loading="lazy" />
+                        <div class="slide-caption"><strong>Fitness</strong> Building strength</div>
+                    </div>
+                    <!-- Slide 14 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.14.jpeg" alt="Post-match" loading="lazy" />
+                        <div class="slide-caption"><strong>Post-Match</strong> Respect and reflection</div>
+                    </div>
+                    <!-- Slide 15 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.15%20(1).jpeg" alt="Community support" loading="lazy" />
+                        <div class="slide-caption"><strong>Community</strong> We are one</div>
+                    </div>
+                    <!-- Slide 16 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.15%20(2).jpeg" alt="Young star" loading="lazy" />
+                        <div class="slide-caption"><strong>Young Star</strong> Future champion</div>
+                    </div>
+                    <!-- Slide 17 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.15%20(3).jpeg" alt="Rugby clinic" loading="lazy" />
+                        <div class="slide-caption"><strong>Rugby Clinic</strong> Learning from the best</div>
+                    </div>
+                    <!-- Slide 18 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.15.jpeg" alt="Girls team" loading="lazy" />
+                        <div class="slide-caption"><strong>Girls Team</strong> Strong and proud</div>
+                    </div>
+                    <!-- Slide 19 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.18%20(1).jpeg" alt="Final whistle" loading="lazy" />
+                        <div class="slide-caption"><strong>Final Whistle</strong> Hard work pays off</div>
+                    </div>
+                    <!-- Slide 20 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.18.jpeg" alt="QHAKAZA family" loading="lazy" />
+                        <div class="slide-caption"><strong>QHAKAZA Family</strong> Together we shine</div>
                     </div>
                 </div>
 
@@ -1662,7 +1753,7 @@
     <section id="founder">
         <div class="founder-portrait">
             <!-- ★ REPLACE THE SRC BELOW WITH YOUR GITHUB PNG LINK ★ -->
-            <img src="https://picsum.photos/seed/gromingo/420/560" alt="Gromingo B. Mzunga – Founder & CEO, QHAKAZA" loading="lazy" />
+            <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/WhatsApp%20Image%202026-05-13%20at%2007.45.48%20(1).jpeg" alt="Gromingo B. Mzunga – Founder & CEO, QHAKAZA" loading="lazy" />
             <div class="portrait-label">Founder &amp; CEO · QHAKAZA</div>
         </div>
 
@@ -1829,6 +1920,7 @@
 
         // Create dots
         const dotsContainer = document.getElementById('carouselDots');
+        dotsContainer.innerHTML = '';
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement('button');
             dot.dataset.index = i;
@@ -1844,7 +1936,6 @@
             if (index >= totalSlides) index = 0;
             currentIndex = index;
             slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            // Update dots
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentIndex);
             });
@@ -1853,7 +1944,7 @@
         document.getElementById('carouselPrev').addEventListener('click', () => goToSlide(currentIndex - 1));
         document.getElementById('carouselNext').addEventListener('click', () => goToSlide(currentIndex + 1));
 
-        // Optional: auto-play (pause on hover)
+        // Auto-play
         let autoPlayInterval = setInterval(() => goToSlide(currentIndex + 1), 4500);
         const carouselEl = document.getElementById('missionCarousel');
         carouselEl.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
