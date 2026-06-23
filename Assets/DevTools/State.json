@@ -1,5 +1,5 @@
 {
-  "disabled": true,
-  "maintenance": false,
+  "disabled": false,
+  "maintenance": true,
   "payfast": false
 }
