@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="boot-locked">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QHAKAZA – Sports Foundation</title>
+    <link rel="icon" type="image/svg+xml" href="Assets/Media/Logo/image.svg" />
+    <link rel="apple-touch-icon" href="Assets/Media/Logo/image.svg" />
     
     <meta property="og:title" content="QHAKAZA – Sports Foundation" />
     <meta property="og:description" content="Empowering communities through sports and development." />
@@ -11,9 +13,11 @@
     <meta property="og:url" content="https://abscissa24.github.io/Qhakaza/" />
     <meta property="og:type" content="website" />
     
+    <script>try{history.scrollRestoration='manual'}catch(e){}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" defer></script>
     <style>
         /* ── RESET & TOKENS ── */
         *,
@@ -67,7 +71,6 @@
             --dark: #f5f0e8;
             --white06: rgba(0, 0, 0, 0.04);
             --white12: rgba(0, 0, 0, 0.08);
-            --gold08: rgba(201, 148, 58, 0.08);
             --gold20: rgba(201, 148, 58, 0.15);
             --gold30: rgba(201, 148, 58, 0.25);
             --gold50: rgba(201, 148, 58, 0.4);
@@ -222,8 +225,8 @@
             background: radial-gradient(circle at 30% 40%, #1a3a2a, #0e1f17 70%);
             background-size: 200% 200%;
             animation: bgShift 8s ease-in-out infinite alternate;
-            will-change: background-position;
             pointer-events: none;
+            contain: strict;
         }
         @keyframes bgShift {
             0% {
@@ -284,7 +287,6 @@
             transition: background 0.6s var(--bounce-ease), backdrop-filter 0.6s var(--bounce-ease),
                 box-shadow 0.6s var(--smooth-ease);
             pointer-events: none;
-            will-change: background, backdrop-filter;
         }
         nav * {
             pointer-events: auto;
@@ -304,7 +306,6 @@
             align-items: center;
             gap: 0.75rem;
             transition: transform 0.3s var(--rubber-ease);
-            will-change: transform;
         }
         .nav-logo:hover {
             transform: scale(1.1);
@@ -333,7 +334,6 @@
             position: relative;
             transition: opacity 0.3s var(--bounce-ease), color 0.3s var(--bounce-ease),
                 transform 0.3s var(--rubber-ease);
-            will-change: transform, opacity;
         }
         .nav-links a::after {
             content: '';
@@ -462,7 +462,7 @@
                 repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255, 255, 255, 0.015) 80px),
                 repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255, 255, 255, 0.015) 80px);
             animation: gridPulse 12s ease-in-out infinite alternate;
-            will-change: opacity;
+            contain: strict;
         }
         @keyframes gridPulse {
             0% {
@@ -634,7 +634,6 @@
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.4s var(--bounce-ease);
-            will-change: transform, box-shadow;
             position: relative;
             overflow: hidden;
         }
@@ -761,7 +760,7 @@
             z-index: 2;
             transform-origin: top center;
             animation: stripReveal 1.2s var(--ease-out-expo) 1.2s both;
-            will-change: transform, opacity;
+            contain: layout style;
         }
         @keyframes stripReveal {
             0% {
@@ -782,7 +781,6 @@
             align-items: center;
             gap: 1rem;
             transition: transform 0.4s var(--rubber-ease);
-            will-change: transform;
         }
         .stat-item:hover {
             transform: scale(1.06);
@@ -868,7 +866,6 @@
             padding: 2rem;
             border: 1px solid var(--cream06);
             transition: all 0.6s var(--bounce-ease);
-            will-change: transform, border-color, box-shadow;
         }
 
         .mission-row:hover {
@@ -892,7 +889,6 @@
             aspect-ratio: 4 / 3;
             background: var(--dark);
             transition: transform 0.6s var(--rubber-ease);
-            will-change: transform;
         }
 
         .image-carousel {
@@ -1009,7 +1005,6 @@
             position: relative;
             margin-bottom: 2rem;
             animation: float 6s ease-in-out infinite;
-            will-change: transform;
         }
         @keyframes float {
             0% {
@@ -1031,7 +1026,6 @@
             border: 3px solid rgba(201, 148, 58, 0.3);
             animation: spin 20s linear infinite;
             z-index: -1;
-            will-change: transform;
         }
         @keyframes spin {
             100% {
@@ -1051,8 +1045,6 @@
             z-index: -2;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            will-change: transform, opacity;
         }
         @keyframes orbFloat {
             0%,
@@ -1075,7 +1067,6 @@
             box-shadow: 0 0 60px rgba(201, 148, 58, 0.25);
             transition: transform 0.5s var(--rubber-ease), box-shadow 0.5s var(--bounce-ease);
             display: block;
-            will-change: transform, box-shadow;
         }
         .founder-image-wrapper img:hover {
             transform: scale(1.05);
@@ -1239,7 +1230,6 @@
             background: var(--white06);
             border: 2px solid var(--cream12);
             transition: all 0.5s var(--bounce-ease);
-            will-change: transform, background, border-color, color;
         }
         .step-dot.active .circle {
             background: var(--gold);
@@ -1338,7 +1328,6 @@
             cursor: pointer;
             border-radius: 12px;
             transition: all 0.3s var(--bounce-ease);
-            will-change: transform, border-color, background, box-shadow;
             position: relative;
             overflow: hidden;
         }
@@ -1397,7 +1386,6 @@
             overflow: hidden;
             transition: border-color 0.3s var(--bounce-ease), transform 0.3s var(--rubber-ease),
                 box-shadow 0.3s var(--bounce-ease);
-            will-change: transform, border-color, box-shadow;
         }
         .custom-wrap:focus-within {
             border-color: var(--gold);
@@ -1513,7 +1501,6 @@
             transition: border-color 0.3s var(--bounce-ease), background 0.3s var(--bounce-ease),
                 transform 0.3s var(--rubber-ease), box-shadow 0.3s var(--bounce-ease);
             width: 100%;
-            will-change: transform, border-color, box-shadow;
         }
         .field input:focus,
         .field textarea:focus {
@@ -1559,7 +1546,6 @@
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.4s var(--bounce-ease);
-            will-change: transform, box-shadow;
             border: none;
             font-family: 'DM Sans', sans-serif;
         }
@@ -1835,11 +1821,6 @@
             animation: spin 0.9s linear infinite;
             margin-bottom: 1.5rem;
         }
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
         .processing-overlay h3 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.6rem;
@@ -1878,6 +1859,81 @@
             }
             100% {
                 width: 100%;
+            }
+        }
+
+        /* ── BOOT OVERLAY ── */
+        #boot-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0e1f17;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.85s var(--ease-out-expo), visibility 0.85s var(--ease-out-expo);
+            overflow: hidden;
+        }
+        #boot-overlay.is-hiding {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #boot-overlay.is-hidden {
+            display: none;
+        }
+        #bootVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            background: #0e1f17;
+        }
+        @media (max-width: 768px) {
+            #bootVideo {
+                object-fit: cover;
+            }
+        }
+        .boot-skip {
+            position: absolute;
+            right: 1.25rem;
+            bottom: 1.25rem;
+            z-index: 2;
+            padding: 0.45rem 0.9rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cream60);
+            background: rgba(245, 240, 232, 0.08);
+            border: 1px solid rgba(245, 240, 232, 0.14);
+            border-radius: 999px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            cursor: pointer;
+            transition: all 0.3s var(--bounce-ease);
+        }
+        .boot-skip:hover {
+            color: var(--cream);
+            border-color: var(--gold30);
+            background: rgba(201, 148, 58, 0.16);
+            transform: translateY(-1px);
+        }
+        .boot-skip:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+        html.boot-locked,
+        body.boot-locked {
+            overflow: hidden !important;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #boot-overlay {
+                transition: none;
             }
         }
 
@@ -1927,6 +1983,104 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--cream50);
+        }
+
+        /* Force instant native scrolling while the showcase rAF loop drives
+           position itself — smooth-scroll + scrollBy fighting every frame is
+           what was causing the stutter/jitter. */
+        html.showcase-active {
+            scroll-behavior: auto !important;
+        }
+
+        .showcase-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-l));
+            box-shadow: 0 0 16px var(--gold50);
+            z-index: 10001;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .showcase-progress.active {
+            opacity: 1;
+        }
+
+        .showcase-exit-hint {
+            position: fixed;
+            bottom: 1.75rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(12px);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.1rem;
+            border-radius: 999px;
+            background: rgba(14, 31, 23, 0.75);
+            border: 1px solid var(--gold20);
+            backdrop-filter: blur(10px);
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cream60);
+            z-index: 10001;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s var(--ease-out-expo);
+            pointer-events: none;
+        }
+
+        .showcase-exit-hint.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .showcase-exit-hint kbd {
+            font-family: inherit;
+            font-size: 0.68rem;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            background: var(--gold-pale);
+            border: 1px solid var(--gold30);
+            color: var(--gold-l);
+        }
+
+        #showcaseFade {
+            position: fixed;
+            inset: 0;
+            z-index: 10002;
+            background: #0e1f17;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.72s ease, visibility 0.72s ease;
+        }
+        #showcaseFade.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* ── HERO — pause reveals until boot completes ── */
+        html.boot-locked .hero-tag,
+        html.boot-locked .hero-title,
+        html.boot-locked .hero-sub,
+        html.boot-locked .hero-actions,
+        html.boot-locked .hero-indicator,
+        html.boot-locked .stats-strip,
+        html.boot-locked .hero-tag .dot,
+        html.boot-locked .hero-title .highlight::after,
+        html.boot-locked .hero-indicator .mouse .wheel,
+        body.boot-locked .hero-tag,
+        body.boot-locked .hero-title,
+        body.boot-locked .hero-sub,
+        body.boot-locked .hero-actions,
+        body.boot-locked .hero-indicator,
+        body.boot-locked .stats-strip {
+            animation-play-state: paused !important;
         }
 
         .payfast-btn-wrap {
@@ -2236,7 +2390,6 @@
             line-height: 1;
             display: inline-block;
             transition: transform 0.4s var(--rubber-ease);
-            will-change: transform;
         }
         .footer-brand .footer-logo:hover {
             transform: scale(1.04) translateX(3px);
@@ -2302,10 +2455,9 @@
             color: var(--cream50);
             font-size: 0.85rem;
             text-decoration: none;
-            margin-bottom: 0.5rem; /* reduced from 0.65rem */
+            margin-bottom: 0.5rem;
             transition: color 0.3s var(--bounce-ease), transform 0.4s var(--rubber-ease), padding-left 0.3s var(--bounce-ease);
             line-height: 1.5;
-            will-change: transform, color, padding-left;
             font-weight: 400;
         }
         .footer-col a:hover {
@@ -2357,7 +2509,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 44px; /* slightly reduced from 46px */
+            width: 44px;
             height: 44px;
             border-radius: 50%;
             border: 1.5px solid var(--cream12);
@@ -2365,7 +2517,6 @@
             transition: all 0.4s var(--bounce-ease);
             text-decoration: none;
             background: rgba(255, 255, 255, 0.02);
-            will-change: transform, background, border-color, color, box-shadow;
         }
         .footer-socials a:hover {
             background: var(--gold);
@@ -2450,7 +2601,6 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s var(--bounce-ease);
-            will-change: opacity;
         }
         .modal-overlay.open {
             opacity: 1;
@@ -2466,7 +2616,6 @@
             transform: translateY(40px) scale(0.9);
             transition: transform 0.6s var(--rubber-ease);
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
-            will-change: transform;
         }
         .modal-overlay.open .modal-box {
             transform: translateY(0) scale(1);
@@ -2512,7 +2661,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s var(--bounce-ease);
-            will-change: transform, background;
             border: none;
         }
         .modal-btn-primary {
@@ -2947,6 +3095,153 @@
             letter-spacing: 0.06em;
         }
 
+        /* ── ATHLETES VIDEO ── */
+        #athletes {
+            padding: 5rem 4rem 5.5rem;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            text-align: center;
+        }
+        #athletes::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 55% 55% at 50% 35%, rgba(201, 148, 58, 0.05) 0%, transparent 65%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .athletes-header {
+            max-width: 700px;
+            margin: 0 auto 2.8rem;
+        }
+        .athletes-header .eyebrow {
+            background: rgba(201, 148, 58, 0.1);
+            padding: 0.4rem 1.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--gold20);
+            display: inline-block;
+        }
+        .athletes-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            line-height: 1.1;
+            color: var(--cream);
+            letter-spacing: 0.04em;
+            margin: 0.5rem 0 0.8rem;
+        }
+        .athletes-header h2 .highlight {
+            color: var(--gold);
+        }
+        .athletes-header p {
+            font-size: 1rem;
+            color: var(--cream60);
+            line-height: 1.8;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .video-frame {
+            position: relative;
+            max-width: 980px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--cream08);
+            background: #0a1611;
+            box-shadow: var(--shadow-card), var(--shadow-glow);
+            aspect-ratio: 16 / 9;
+            contain: layout paint;
+        }
+        [data-theme="light"] .video-frame {
+            border-color: rgba(26, 26, 26, 0.08);
+            background: #111;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 0 40px rgba(201, 148, 58, 0.06);
+        }
+        .video-frame video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #0a1611;
+        }
+        .video-frame .video-scrim {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to top, rgba(14, 31, 23, 0.62) 0%, rgba(14, 31, 23, 0.0) 42%),
+                linear-gradient(to bottom, rgba(14, 31, 23, 0.18) 0%, transparent 25%);
+            pointer-events: none;
+        }
+        .video-mute-btn {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 2;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(14, 31, 23, 0.62);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 240, 232, 0.16);
+            color: var(--cream);
+            cursor: pointer;
+            transition: transform 0.3s var(--rubber-ease), background 0.3s var(--bounce-ease), border-color 0.3s var(--bounce-ease), color 0.3s var(--bounce-ease), box-shadow 0.3s var(--bounce-ease);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+        .video-mute-btn:hover {
+            transform: scale(1.06) translateY(-1px);
+            background: rgba(201, 148, 58, 0.22);
+            border-color: var(--gold30);
+            color: var(--gold-l);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+        .video-mute-btn:active {
+            transform: scale(0.97);
+        }
+        .video-mute-btn:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+        .video-mute-btn svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+        [data-theme="light"] .video-mute-btn {
+            background: rgba(245, 240, 232, 0.78);
+            border-color: rgba(26, 26, 26, 0.14);
+            color: #1a1a1a;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        [data-theme="light"] .video-mute-btn:hover {
+            background: rgba(201, 148, 58, 0.18);
+            border-color: var(--gold30);
+            color: #1a1a1a;
+        }
+        @media (max-width: 768px) {
+            #athletes {
+                padding: 3.5rem 1.5rem 4rem;
+            }
+            .video-frame {
+                border-radius: 12px;
+            }
+            .video-mute-btn {
+                width: 40px;
+                height: 40px;
+                right: 0.75rem;
+                bottom: 0.75rem;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .video-frame video {
+                animation: none !important;
+            }
+        }
+
         /* ── SPONSORS ── */
         #sponsors {
             padding: 5rem 4rem;
@@ -2999,12 +3294,11 @@
         }
 
         .sponsors-grid {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 3rem;
-            flex-wrap: wrap;
-            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+            gap: 2rem;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -3019,10 +3313,8 @@
             border: 1px solid var(--cream06);
             border-radius: 16px;
             transition: all 0.6s var(--bounce-ease);
-            will-change: transform, border-color, box-shadow;
-            flex: 1 1 0;
-            min-width: 280px;
-            max-width: 360px;
+            width: 100%;
+            max-width: 400px;
             text-align: center;
         }
 
@@ -3040,17 +3332,6 @@
             display: block;
             margin: 0 auto;
             transition: transform 0.5s var(--rubber-ease);
-            will-change: transform;
-        }
-
-        .sponsor-card:nth-child(2) .sponsor-logo {
-            max-width: 280px;
-            width: 100%;
-            margin-top: 3rem;
-        }
-
-        .sponsor-card:nth-child(2) .sponsor-name {
-            margin-top: 0.8rem;
         }
 
         .sponsor-card:hover .sponsor-logo {
@@ -3350,7 +3631,6 @@
             }
             .sponsor-card {
                 padding: 1.5rem 2rem;
-                flex: 1 1 220px;
             }
 
             .test-banner {
@@ -3468,7 +3748,7 @@
                 font-size: clamp(2rem, 6vw, 2.8rem);
             }
             .sponsors-grid {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 gap: 1.2rem;
             }
             .sponsor-card {
@@ -3611,7 +3891,21 @@
         }
     </style>
 </head>
-<body>
+<body class="boot-locked">
+
+    <!-- ─── BOOT ANIMATION ─── -->
+    <div id="boot-overlay" aria-label="Loading Qhakaza" aria-live="polite">
+        <video
+            id="bootVideo"
+            src="Assets/Media/Videos/Boot/qhakaza-boot.mp4"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+            aria-hidden="true"
+        ></video>
+        <button class="boot-skip" id="bootSkip" type="button" aria-label="Skip intro">Skip — Esc</button>
+    </div>
 
     <!-- ─── GLOBAL PARTICLES CANVAS ─── -->
     <canvas id="particles-canvas"></canvas>
@@ -3743,9 +4037,37 @@
                 <h2 class="heading">GROMINGO MZUNGA</h2>
             </div>
             <div class="reveal" style="--i:2;">
-                <p class="body-text">Gromingo Mzunga is the Founder and CEO of Qhakaza Sports Foundation, a registered non-profit organisation based in Southern KwaZulu-Natal under the UGU District Municipality.</p>
+                <p class="body-text">Gromingo Mzunga is the Founder and CEO of Qhakaza Sports Foundation, a registered non-profit organisation based in Southern KwaZulu-Natal under the UGU District Municipality. A former professional rugby player for the Lions and Free State Cheetahs, he brings first-hand experience of what elite sport can unlock.</p>
                 <p class="body-text" style="margin-top:0.8rem;">Under his leadership, QHAKAZA works to ensure that sport is accessible to all young people in rural and township communities — identifying talent, developing coaches, and creating league systems among local schools, entirely free of charge to the families it serves.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- ─── ATHLETES IN ACTION (video) ─── -->
+    <section id="athletes">
+        <div class="athletes-header reveal">
+            <span class="eyebrow">In Action</span>
+            <h2>HEART OF <span class="highlight">QHAKAZA</span></h2>
+            <p>From dusty fields to game day — our athletes train with grit, joy and the belief that opportunity changes everything.</p>
+        </div>
+        <div class="video-frame reveal">
+            <video
+                id="athletesVideo"
+                src="Assets/Media/Videos/Athletes/qhakaza-athletes.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="metadata"
+                disablePictureInPicture
+                disableremoteplayback
+                aria-label="Qhakaza athletes training and competing"
+            ></video>
+            <div class="video-scrim" aria-hidden="true"></div>
+            <button class="video-mute-btn" id="athletesMuteBtn" type="button" aria-label="Unmute video" aria-pressed="false">
+                <!-- icon injected by JS -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
         </div>
     </section>
 
@@ -3758,12 +4080,20 @@
         </div>
         <div class="sponsors-grid reveal">
             <div class="sponsor-card">
-                <img class="sponsor-logo" src="Assets/Media/Sponsors/orcas.png" alt="Orca's Beach Bar & Grill" loading="lazy" />
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/orcas.webp" alt="Orca's Beach Bar & Grill" loading="lazy" />
                 <div class="sponsor-name">Orca's Beach Bar &amp; Grill</div>
             </div>
             <div class="sponsor-card">
-                <img class="sponsor-logo" src="Assets/Media/Sponsors/freshstop.png" alt="FreshStop" loading="lazy" />
-                <div class="sponsor-name">FreshStop</div>
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/freshstop.webp" alt="FreshStop (Umtentweni)" loading="lazy" />
+                <div class="sponsor-name">FreshStop (Umtentweni)</div>
+            </div>
+            <div class="sponsor-card">
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/kzn-ru.webp" alt="KZN Rugby Union" loading="lazy" />
+                <div class="sponsor-name">KZN Rugby Union</div>
+            </div>
+            <div class="sponsor-card">
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/kzn-education.webp" alt="KZN Education" loading="lazy" />
+                <div class="sponsor-name">KZN Education</div>
             </div>
         </div>
         <div class="sponsors-note reveal">Interested in sponsoring? Reach out to us at <strong style="color:var(--cream50);">info.qyfoundation@gmail.com</strong></div>
@@ -3858,7 +4188,7 @@
                             </div>
                             <div class="field">
                                 <label>Phone Number <span style="color:var(--cream30);font-weight:400;">(optional)</span></label>
-                                <input type="tel" id="phone" placeholder="+27 82 123 4567" />
+                                <input type="tel" id="phone" placeholder="+27 83 595 0126" />
                             </div>
                             <div class="field">
                                 <label>Leave a message <span style="color:var(--cream30);font-weight:400;">(optional)</span></label>
@@ -3969,8 +4299,6 @@
                         </div>
                     </div>
 
-                    <div class="step-panel" data-step="4" style="display:none;"></div>
-
                 </div>
             </div>
         </div>
@@ -4009,7 +4337,7 @@
                 <h4>Connect</h4>
                 <div class="contact-item">
                     <span class="icon">📞</span>
-                    <a href="tel:+27721949114">+27 72 194 9114</a>
+                    <a href="tel:+27835950126">+27 83 595 0126</a>
                 </div>
                 <div class="contact-item">
                     <span class="icon">✉️</span>
@@ -4095,6 +4423,10 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         Email
                     </a>
+                    <a href="https://abscissa24.github.io/Portfolio/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Portfolio
+                    </a>
                 </div>
             </div>
             <div class="modal-foot">
@@ -4131,6 +4463,13 @@
     <div class="showcase-overlay" id="showcaseOverlay">
         <div class="showcase-countdown" id="showcaseCountdown">3</div>
         <div class="showcase-label">Showcase Mode</div>
+    </div>
+    <div id="showcaseFade" aria-hidden="true"></div>
+    <div class="showcase-progress" id="showcaseProgress"></div>
+    <div class="showcase-exit-hint" id="showcaseExitHint">
+        <span>Showcasing</span>
+        <kbd>Esc</kbd>
+        <span>or click to exit</span>
     </div>
 
     <!-- ─── STATE MODALS ─── -->
@@ -4176,6 +4515,146 @@
                 localStorage.setItem('qhakaza-theme', next);
                 applyTheme(next);
             });
+        })();
+
+        // ═══════════════════════════════════════════════════════════
+        //  BOOT ANIMATION (re-usable for showcase)
+        // ═══════════════════════════════════════════════════════════
+        (function initBoot() {
+            const overlay = document.getElementById('boot-overlay');
+            const video = document.getElementById('bootVideo');
+            const skipBtn = document.getElementById('bootSkip');
+            if (!overlay || !video) return;
+
+            let dismissed = false;
+            let safetyTimer = null;
+            let fadeTimer = null;
+            let currentResolve = null;
+
+            function cleanupTimers() {
+                clearTimeout(safetyTimer);
+                clearTimeout(fadeTimer);
+            }
+
+            function dismiss(instant) {
+                if (dismissed) return;
+                dismissed = true;
+                cleanupTimers();
+                try { video.pause(); } catch (_) {}
+                overlay.classList.add('is-hiding');
+                overlay.classList.remove('is-hidden');
+                document.documentElement.classList.remove('boot-locked');
+                document.body.classList.remove('boot-locked');
+                const delay = instant ? 0 : 850;
+                fadeTimer = setTimeout(() => {
+                    overlay.classList.add('is-hidden');
+                    overlay.classList.remove('is-hiding');
+                    // keep in DOM for showcase reuse
+                    overlay.style.display = 'none';
+                    // Always land on hero — fixes hard-refresh restoring footer scroll
+                    window.scrollTo(0, 0);
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                    if (currentResolve) { const r = currentResolve; currentResolve = null; r(); }
+                }, delay);
+            }
+
+            function resetAndPlay() {
+                dismissed = false;
+                cleanupTimers();
+                overlay.style.display = '';
+                // force reflow so transition restarts
+                void overlay.offsetWidth;
+                overlay.classList.remove('is-hidden', 'is-hiding');
+                document.documentElement.classList.add('boot-locked');
+                document.body.classList.add('boot-locked');
+                try { video.currentTime = 0; } catch (_) {}
+                video.muted = true;
+                const tryPlay = () => video.play().catch(() => {});
+                tryPlay();
+                safetyTimer = setTimeout(() => dismiss(false), 4600);
+                // retry on first interaction if autoplay blocked
+                document.addEventListener('click', function onFirstClick() {
+                    if (!dismissed && video.paused) tryPlay();
+                    document.removeEventListener('click', onFirstClick);
+                }, { once: true });
+            }
+
+            // Persistent listeners (only once)
+            video.addEventListener('ended', () => {
+                setTimeout(() => dismiss(false), 280);
+            });
+            video.addEventListener('error', () => dismiss(true));
+            if (skipBtn) skipBtn.addEventListener('click', (e) => { e.stopPropagation(); dismiss(false); });
+            overlay.addEventListener('click', () => dismiss(false));
+            window.addEventListener('keydown', (e) => {
+                if (dismissed) return;
+                // only handle when boot is visible
+                if (overlay.classList.contains('is-hidden') || overlay.style.display === 'none') return;
+                if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+                    const tag = document.activeElement && document.activeElement.tagName;
+                    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+                    e.preventDefault();
+                    dismiss(false);
+                }
+            });
+
+            // Expose for showcase: replay boot from absolute top and wait until hidden
+            window.__showBoot = function() {
+                return new Promise((resolve) => {
+                    // Reduced motion: skip immediately but still ensure top
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                        dismiss(true);
+                        // ensure top
+                        window.scrollTo(0, 0);
+                        document.documentElement.scrollTop = 0;
+                        document.body.scrollTop = 0;
+                        resolve();
+                        return;
+                    }
+                    // Force to absolute top before boot shows
+                    window.scrollTo(0, 0);
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                    // If already showing, just wait for it; otherwise reset
+                    if (!dismissed && !overlay.classList.contains('is-hidden') && overlay.style.display !== 'none') {
+                        // already playing initial boot — hook into its end
+                        currentResolve = resolve;
+                        return;
+                    }
+                    currentResolve = resolve;
+                    resetAndPlay();
+                });
+            };
+
+            // Initial boot on page load — always from hero
+            // Kill browser's scroll-restoration (footer after hard refresh)
+            try { history.scrollRestoration = 'manual'; } catch (_) {}
+            const forceTop = () => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            };
+            forceTop();
+            // Some browsers restore scroll after load — re-assert
+            window.addEventListener('load', forceTop, { once: true });
+            setTimeout(forceTop, 50);
+            setTimeout(forceTop, 300);
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                dismiss(true);
+                return;
+            }
+            // Overlay already visible via HTML — just start timers/play (already at top)
+            dismissed = false;
+            forceTop();
+            const tryPlayInit = () => video.play().catch(() => {});
+            tryPlayInit();
+            safetyTimer = setTimeout(() => dismiss(false), 4600);
+            document.addEventListener('click', function onFirstClickInit() {
+                if (!dismissed && video.paused) tryPlayInit();
+                document.removeEventListener('click', onFirstClickInit);
+            }, { once: true });
         })();
 
         // ═══════════════════════════════════════════════════════════
@@ -4264,13 +4743,14 @@
 
             function drawLines() {
                 const dist = config.connectionDistance;
+                const distSq = dist * dist;
                 for (let i = 0; i < particles.length; i++) {
                     for (let j = i + 1; j < particles.length; j++) {
                         const dx = particles[i].x - particles[j].x;
                         const dy = particles[i].y - particles[j].y;
-                        const d = Math.sqrt(dx * dx + dy * dy);
-                        if (d < dist) {
-                            const opacity = 1 - (d / dist);
+                        const dSq = dx * dx + dy * dy;
+                        if (dSq < distSq) {
+                            const opacity = 1 - Math.sqrt(dSq) / dist;
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
@@ -4283,6 +4763,7 @@
             }
 
             function animate() {
+                if (!isRunning) return;
                 ctx.clearRect(0, 0, width, height);
                 for (const p of particles) {
                     p.update();
@@ -4304,6 +4785,14 @@
                 }
             }
 
+            function stopAnimation() {
+                isRunning = false;
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+            }
+
             function handleResize() {
                 initCanvas();
                 for (const p of particles) {
@@ -4313,6 +4802,7 @@
             }
 
             window.__setParticleMode = setMode;
+            window.__stopParticleAnimation = stopAnimation;
 
             initCanvas();
             initParticles('default');
@@ -4405,6 +4895,7 @@
             } else {
                 canvas.classList.remove('visible');
                 canvas.style.display = 'none';
+                if (window.__stopParticleAnimation) window.__stopParticleAnimation();
             }
         }
 
@@ -4497,9 +4988,13 @@
 
         // ─── NAV SCROLL ───
         const nav = document.getElementById('navbar');
+        let lastScrollCheck = 0;
         window.addEventListener('scroll', () => {
+            const now = performance.now();
+            if (now - lastScrollCheck < 16) return;
+            lastScrollCheck = now;
             nav.classList.toggle('scrolled', window.scrollY > 60);
-        });
+        }, { passive: true });
 
         // ─── REVEAL ON SCROLL ───
         const revealObserver = new IntersectionObserver((entries) => {
@@ -4524,6 +5019,58 @@
                     images[current].classList.add('active');
                 }, 4000);
             });
+        })();
+
+        // ─── ATHLETES VIDEO (autoplay loop muted, mute/unmute only) ───
+        (function initAthletesVideo() {
+            const video = document.getElementById('athletesVideo');
+            const btn = document.getElementById('athletesMuteBtn');
+            if (!video || !btn) return;
+
+            const iconMuted = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
+            const iconUnmuted = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
+
+            function updateBtn() {
+                const muted = video.muted;
+                btn.innerHTML = muted ? iconMuted : iconUnmuted;
+                btn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
+                btn.setAttribute('aria-pressed', String(!muted));
+            }
+
+            btn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                if (!video.muted) video.volume = 0.9;
+                updateBtn();
+            });
+            video.addEventListener('volumechange', updateBtn);
+            updateBtn();
+
+            const tryPlay = () => video.play().catch(() => {});
+            tryPlay();
+
+            // Pause off-screen to save battery/data, resume when visible
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        if (video.paused) tryPlay();
+                    } else {
+                        if (!video.paused) video.pause();
+                    }
+                });
+            }, { threshold: 0.18 });
+            io.observe(video);
+
+            // Respect reduced motion
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                video.pause();
+                video.removeAttribute('autoplay');
+            }
+
+            // If autoplay was blocked, retry on first interaction
+            document.addEventListener('click', function onFirstClick() {
+                if (video.paused) tryPlay();
+                document.removeEventListener('click', onFirstClick);
+            }, { once: true });
         })();
 
         // ─── DONATION STATE ───
@@ -4846,80 +5393,216 @@
         // ─── SHOWCASE MODE ───
         let showcaseRunning = false;
         let showcaseAnimId = null;
+        let showcaseExitBound = false;
 
-        function startShowcase() {
+        async function startShowcase() {
             if (showcaseRunning) return;
             closeDevOptionsModal();
 
+            // Absolute top before anything
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+
+            // Lock hero and reset so it will replay fresh after boot
+            document.documentElement.classList.add('boot-locked');
+            document.body.classList.add('boot-locked');
+            const heroEls = document.querySelectorAll('.hero-tag, .hero-title, .hero-sub, .hero-actions, .hero-indicator, .stats-strip');
+            heroEls.forEach(el => el.style.animation = 'none');
+            // force reflow to restart animations
+            void document.body.offsetHeight;
+            heroEls.forEach(el => el.style.animation = '');
+
+            showcaseRunning = true;
+
+            // ── 1) Countdown 3 → 2 → 1 ──
             const overlay = document.getElementById('showcaseOverlay');
             const countdownEl = document.getElementById('showcaseCountdown');
-
             overlay.classList.add('active');
             overlay.classList.remove('countdown-done');
             overlay.style.display = '';
             document.body.style.overflow = 'hidden';
-            showcaseRunning = true;
 
-            let count = 3;
-            countdownEl.textContent = count;
+            await new Promise(resolve => {
+                let count = 3;
+                countdownEl.textContent = count;
+                const countInterval = setInterval(() => {
+                    count--;
+                    if (count > 0) {
+                        countdownEl.textContent = count;
+                    } else {
+                        clearInterval(countInterval);
+                        overlay.classList.add('countdown-done');
+                        setTimeout(() => {
+                            overlay.style.display = 'none';
+                            resolve();
+                        }, 800);
+                    }
+                }, 1000);
+            });
 
-            const countInterval = setInterval(() => {
-                count--;
-                if (count > 0) {
-                    countdownEl.textContent = count;
-                } else {
-                    clearInterval(countInterval);
-                    overlay.classList.add('countdown-done');
-                    setTimeout(() => {
-                        overlay.style.display = 'none';
-                        document.body.style.overflow = '';
-                        window.scrollTo(0, 0);
-                        runShowcaseScroll();
-                    }, 800);
-                }
-            }, 1000);
+            // ── 2) Boot animation (then hero reveals play) ──
+            if (window.__showBoot) {
+                await window.__showBoot();
+                // ensure still at absolute top after boot
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            } else {
+                document.documentElement.classList.remove('boot-locked');
+                document.body.classList.remove('boot-locked');
+            }
+
+            // Brief pause so hero tag/title/sub/actions can start their
+            // 0.2s–1.6s reveals before we scroll away from hero
+            await new Promise(r => setTimeout(r, 520));
+
+            // ── 3) Hero now animating, start showcase scroll from top ──
+            document.documentElement.classList.add('showcase-active');
+            window.scrollTo(0, 0);
+            document.body.style.overflow = '';
+            bindShowcaseExit();
+            runShowcaseScroll();
         }
 
         function stopShowcase() {
+            if (!showcaseRunning) return;
             showcaseRunning = false;
             if (showcaseAnimId) {
                 cancelAnimationFrame(showcaseAnimId);
                 showcaseAnimId = null;
             }
             document.body.style.overflow = '';
+            document.documentElement.classList.remove('showcase-active');
+
+            const progress = document.getElementById('showcaseProgress');
+            const hint = document.getElementById('showcaseExitHint');
+            if (progress) progress.classList.remove('active');
+            if (hint) hint.classList.remove('active');
+        }
+
+        function bindShowcaseExit() {
+            if (showcaseExitBound) return;
+            showcaseExitBound = true;
+
+            window.addEventListener('keydown', (e) => {
+                if (showcaseRunning && e.key === 'Escape') stopShowcase();
+            });
+            window.addEventListener('pointerdown', () => {
+                if (showcaseRunning) stopShowcase();
+            });
+        }
+
+        // Smoothstep easing — used both to ease the whole run in/out and to
+        // gently dwell near each section so the viewer actually gets to look
+        // at the work instead of it blurring past.
+        function easeSmoothstep(t) {
+            t = Math.min(1, Math.max(0, t));
+            return t * t * (3 - 2 * t);
         }
 
         function runShowcaseScroll() {
             const speedMultiplier = devOptionsState.showcaseSpeed || 1;
-            const speed = 8 * speedMultiplier;
+            const baseSpeed = 6 * speedMultiplier;
 
-            // Pre-cache reveal elements
-            const revealEls = Array.from(document.querySelectorAll('.reveal')).map(el => ({
-                el,
-                offsetTop: el.getBoundingClientRect().top + window.scrollY
-            }));
+            const progress = document.getElementById('showcaseProgress');
+            const hint = document.getElementById('showcaseExitHint');
+            if (progress) progress.classList.add('active');
+            if (hint) hint.classList.add('active');
 
-            function step() {
+            // Section anchors to dwell near, so the camera "settles" on each
+            // part of the site rather than scrolling past it at a flat rate.
+            const sectionEls = Array.from(document.querySelectorAll('#hero, #mission, #founder, #athletes, #sponsors, #donate'));
+            const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+            const sectionTops = sectionEls
+                .map(el => el.getBoundingClientRect().top + window.scrollY)
+                .filter(top => top > 0 && top < maxScroll);
+
+            const rampDistance = Math.min(400, maxScroll * 0.15);
+            const dwellRadius = 220;
+
+            let pos = window.scrollY;
+            let lastTime = null;
+
+            function speedAt(p) {
+                // Ease in at the very start and ease out at the very end.
+                let ramp = 1;
+                if (p < rampDistance) ramp = Math.min(ramp, easeSmoothstep(p / rampDistance));
+                const distFromEnd = maxScroll - p;
+                if (distFromEnd < rampDistance) ramp = Math.min(ramp, easeSmoothstep(distFromEnd / rampDistance));
+
+                // Slow down while passing a section boundary, back to full
+                // speed in the open space between sections.
+                let dwell = 1;
+                for (const top of sectionTops) {
+                    const d = Math.abs(p - top);
+                    if (d < dwellRadius) {
+                        dwell = Math.min(dwell, 0.32 + 0.68 * easeSmoothstep(d / dwellRadius));
+                    }
+                }
+
+                return baseSpeed * Math.max(0.12, ramp) * dwell;
+            }
+
+            function reloadHeroAnimations() {
+                document.documentElement.classList.add('boot-locked');
+                document.body.classList.add('boot-locked');
+                const heroEls = document.querySelectorAll('.hero-tag, .hero-title, .hero-sub, .hero-actions, .hero-indicator, .stats-strip');
+                heroEls.forEach(el => el.style.animation = 'none');
+                void document.body.offsetHeight;
+                heroEls.forEach(el => el.style.animation = '');
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        document.documentElement.classList.remove('boot-locked');
+                        document.body.classList.remove('boot-locked');
+                    });
+                });
+            }
+
+            function fadeBackToHero() {
+                const fadeEl = document.getElementById('showcaseFade');
+                if (progress) progress.classList.remove('active');
+                if (hint) hint.classList.remove('active');
+                // Fade everything out
+                if (fadeEl) {
+                    fadeEl.style.display = '';
+                    void fadeEl.offsetWidth;
+                    fadeEl.classList.add('active');
+                }
+                setTimeout(() => {
+                    if (!showcaseRunning) return;
+                    // Instantly back to hero while hidden behind fade
+                    pos = 0;
+                    window.scrollTo(0, 0);
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                    if (progress) progress.style.width = '0%';
+                    // Prepare hero to replay, then fade in
+                    reloadHeroAnimations();
+                    if (fadeEl) fadeEl.classList.remove('active');
+                    setTimeout(() => {
+                        if (fadeEl) fadeEl.style.display = 'none';
+                        if (!showcaseRunning) return;
+                        stopShowcase();
+                    }, 820);
+                }, 720);
+            }
+
+            function step(now) {
                 if (!showcaseRunning) return;
+                if (lastTime === null) lastTime = now;
+                const dt = Math.min(48, now - lastTime);
+                lastTime = now;
 
-                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                const pos = window.scrollY;
-
-                if (pos >= maxScroll - 2) {
-                    stopShowcase();
+                if (pos >= maxScroll - 1) {
+                    fadeBackToHero();
                     return;
                 }
 
-                window.scrollBy(0, speed);
+                pos = Math.min(maxScroll, pos + speedAt(pos) * (dt / 16.6667));
+                window.scrollTo(0, pos);
 
-                // Trigger reveals
-                const viewTop = pos;
-                const viewBottom = pos + window.innerHeight;
-                revealEls.forEach(item => {
-                    if (!item.el.classList.contains('visible') && item.offsetTop < viewBottom) {
-                        item.el.classList.add('visible');
-                    }
-                });
+                if (progress) progress.style.width = ((pos / maxScroll) * 100).toFixed(2) + '%';
 
                 showcaseAnimId = requestAnimationFrame(step);
             }
@@ -4950,6 +5633,31 @@
                 }
             } else {
                 konamiPos = (k === KONAMI_SEQ[0]) ? 1 : 0;
+            }
+        }, true);
+
+        // ─── SHOWCASE SHORTCUT: type "showcase" ───
+        const SHOWCASE_SEQ = ['s','h','o','w','c','a','s','e'];
+        let showcasePos = 0;
+        window.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey || e.altKey) return;
+            const ae = document.activeElement;
+            if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.isContentEditable)) return;
+            const k = e.key.toLowerCase();
+            if (k.length !== 1) {
+                // non-character resets unless it's exactly the next char (already handled)
+                if (['shift','capslock'].includes(k)) return;
+                showcasePos = 0;
+                return;
+            }
+            if (k === SHOWCASE_SEQ[showcasePos]) {
+                showcasePos++;
+                if (showcasePos === SHOWCASE_SEQ.length) {
+                    showcasePos = 0;
+                    if (!showcaseRunning) startShowcase();
+                }
+            } else {
+                showcasePos = (k === SHOWCASE_SEQ[0]) ? 1 : 0;
             }
         }, true);
 
@@ -4997,7 +5705,6 @@
         function updateStepUI() {
             panels.forEach(p => {
                 const s = parseInt(p.dataset.step);
-                if (s === 4) return;
                 p.classList.toggle('active', s === currentStep);
                 p.style.display = s === currentStep ? 'block' : 'none';
             });
@@ -5153,7 +5860,6 @@
             panels.forEach(p => {
                 p.classList.remove('active');
                 p.style.display = '';
-                if (p.dataset.step == '4') p.style.display = 'none';
             });
             document.querySelector('.step-panel[data-step="1"]').classList.add('active');
 
