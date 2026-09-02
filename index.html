@@ -53,6 +53,153 @@
             --shadow-glow: 0 0 60px rgba(201, 148, 58, 0.12);
         }
 
+        [data-theme="light"] {
+            --cream: #1a1a1a;
+            --cream75: rgba(26, 26, 26, 0.75);
+            --cream60: rgba(26, 26, 26, 0.6);
+            --cream50: rgba(26, 26, 26, 0.5);
+            --cream45: rgba(26, 26, 26, 0.45);
+            --cream30: rgba(26, 26, 26, 0.3);
+            --cream20: rgba(26, 26, 26, 0.2);
+            --cream12: rgba(26, 26, 26, 0.12);
+            --cream08: rgba(26, 26, 26, 0.08);
+            --cream06: rgba(26, 26, 26, 0.06);
+            --dark: #f5f0e8;
+            --white06: rgba(0, 0, 0, 0.04);
+            --white12: rgba(0, 0, 0, 0.08);
+            --gold08: rgba(201, 148, 58, 0.08);
+            --gold20: rgba(201, 148, 58, 0.15);
+            --gold30: rgba(201, 148, 58, 0.25);
+            --gold50: rgba(201, 148, 58, 0.4);
+            --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.1);
+            --shadow-glow: 0 0 60px rgba(201, 148, 58, 0.08);
+        }
+
+        [data-theme="light"] body {
+            background: #f5f0e8;
+        }
+
+        [data-theme="light"] body::before {
+            background: radial-gradient(circle at 30% 40%, #e8e0d0, #f5f0e8 70%);
+        }
+
+        [data-theme="light"] nav.scrolled {
+            background: rgba(245, 240, 232, 0.92);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .stats-strip {
+            background: rgba(0, 0, 0, 0.03);
+            border-top-color: rgba(26, 26, 26, 0.08);
+            border-bottom-color: rgba(26, 26, 26, 0.08);
+        }
+
+        [data-theme="light"] .mission-row {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(26, 26, 26, 0.06);
+        }
+
+        [data-theme="light"] .mission-row:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .checkout-card {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(26, 26, 26, 0.12);
+        }
+
+        [data-theme="light"] footer {
+            background: linear-gradient(180deg, rgba(245, 240, 232, 0.95) 0%, rgba(230, 222, 210, 0.98) 100%);
+            border-top-color: var(--gold20);
+        }
+
+        [data-theme="light"] .sponsor-card {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(26, 26, 26, 0.06);
+        }
+
+        [data-theme="light"] .hero-tag {
+            background: rgba(201, 148, 58, 0.1);
+            border-color: var(--gold20);
+        }
+
+        [data-theme="light"] .amount-btn {
+            border-color: rgba(26, 26, 26, 0.12);
+        }
+
+        [data-theme="light"] .amount-btn:hover {
+            background: rgba(201, 148, 58, 0.06);
+        }
+
+        [data-theme="light"] .field input,
+        [data-theme="light"] .field textarea {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(26, 26, 26, 0.12);
+        }
+
+        [data-theme="light"] .custom-wrap {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(26, 26, 26, 0.12);
+        }
+
+        [data-theme="light"] .donation-preview-box {
+            background: rgba(201, 148, 58, 0.06);
+            border-color: var(--gold20);
+        }
+
+        [data-theme="light"] .btn-ghost {
+            border-color: rgba(26, 26, 26, 0.2);
+            color: var(--cream);
+        }
+
+        [data-theme="light"] .btn-ghost:hover {
+            border-color: var(--gold);
+            background: rgba(201, 148, 58, 0.06);
+        }
+
+        [data-theme="light"] .btn-prev {
+            border-color: rgba(26, 26, 26, 0.12);
+            color: var(--cream50);
+        }
+
+        [data-theme="light"] .payment-details-box {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: var(--gold20);
+        }
+
+        [data-theme="light"] .bank-details-box {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: var(--gold20);
+        }
+
+        [data-theme="light"] .hero-mute-btn,
+        [data-theme="light"] .footer-video-mute {
+            background: rgba(245, 240, 232, 0.7);
+            border-color: rgba(26, 26, 26, 0.15);
+            color: var(--cream);
+        }
+
+        [data-theme="light"] .modal-overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="light"] .modal-box {
+            background: #f5f0e8;
+            border-color: var(--gold20);
+        }
+
+        [data-theme="light"] .modal-head {
+            background: var(--green);
+        }
+
+        [data-theme="light"] ::-webkit-scrollbar-track {
+            background: #f5f0e8;
+        }
+
+        [data-theme="light"] .processing-overlay {
+            background: rgba(245, 240, 232, 0.85);
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -225,6 +372,34 @@
             color: var(--dark);
         }
 
+        /* ── THEME TOGGLE ── */
+        .theme-toggle {
+            background: transparent;
+            border: 1.5px solid var(--cream30);
+            color: var(--cream);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--bounce-ease);
+            padding: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(201, 148, 58, 0.2);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
         /* ── SECTIONS ── */
         section {
             position: relative;
@@ -279,54 +454,6 @@
             inset: 0;
             z-index: -1;
             overflow: hidden;
-        }
-        #hero .hero-bg .mesh {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: meshFloat 20s ease-in-out infinite alternate;
-            will-change: transform;
-        }
-        #hero .hero-bg .mesh:nth-child(1) {
-            width: 600px;
-            height: 600px;
-            top: -200px;
-            right: -100px;
-            background: radial-gradient(circle, rgba(45, 92, 63, 0.6), transparent 70%);
-            animation-duration: 25s;
-        }
-        #hero .hero-bg .mesh:nth-child(2) {
-            width: 400px;
-            height: 400px;
-            bottom: -100px;
-            left: -50px;
-            background: radial-gradient(circle, rgba(201, 148, 58, 0.15), transparent 70%);
-            animation-duration: 18s;
-            animation-delay: -5s;
-        }
-        #hero .hero-bg .mesh:nth-child(3) {
-            width: 300px;
-            height: 300px;
-            top: 40%;
-            left: 50%;
-            background: radial-gradient(circle, rgba(201, 148, 58, 0.08), transparent 70%);
-            animation-duration: 22s;
-            animation-delay: -10s;
-        }
-        @keyframes meshFloat {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(40px, -30px) scale(1.1);
-            }
-            66% {
-                transform: translate(-20px, 40px) scale(0.9);
-            }
-            100% {
-                transform: translate(30px, -20px) scale(1.05);
-            }
         }
         #hero .hero-bg .grid-overlay {
             position: absolute;
@@ -768,22 +895,32 @@
             will-change: transform;
         }
 
-        .mission-row:hover .row-image {
-            transform: scale(1.02);
+        .image-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
-        .mission-row .row-image img {
+        .image-carousel img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.8s var(--ease-out-expo);
-            will-change: transform;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            will-change: opacity;
         }
 
-        .mission-row:hover .row-image img {
-            transform: scale(1.05);
+        .image-carousel img.active {
+            opacity: 1;
         }
+
+        .mission-row:hover .row-image {
+            transform: scale(1.02);
+        }
+
 
         .mission-row .row-image .image-overlay {
             position: absolute;
@@ -862,14 +999,6 @@
             position: relative;
             overflow: hidden;
             background: transparent;
-        }
-        #founder::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 40%, rgba(201, 148, 58, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
         }
         #founder>* {
             position: relative;
@@ -950,7 +1079,6 @@
         }
         .founder-image-wrapper img:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 100px rgba(201, 148, 58, 0.4);
         }
 
         .founder-image-wrapper.reveal {
@@ -1751,6 +1879,54 @@
             100% {
                 width: 100%;
             }
+        }
+
+        /* ── SHOWCASE OVERLAY ── */
+        .showcase-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(14, 31, 23, 0.92);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .showcase-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .showcase-overlay.countdown-done {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+
+        .showcase-countdown {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(6rem, 15vw, 12rem);
+            color: var(--gold);
+            line-height: 1;
+            text-shadow: 0 0 80px rgba(201, 148, 58, 0.4);
+            animation: countdownPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes countdownPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+
+        .showcase-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream50);
         }
 
         .payfast-btn-wrap {
@@ -2771,6 +2947,132 @@
             letter-spacing: 0.06em;
         }
 
+        /* ── SPONSORS ── */
+        #sponsors {
+            padding: 5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+        #sponsors::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(201, 148, 58, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .sponsors-header {
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .sponsors-header .eyebrow {
+            background: rgba(201, 148, 58, 0.1);
+            padding: 0.4rem 1.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--gold20);
+            display: inline-block;
+        }
+
+        .sponsors-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            line-height: 1.1;
+            color: var(--cream);
+            letter-spacing: 0.04em;
+            margin: 0.5rem 0 0.8rem;
+        }
+
+        .sponsors-header h2 .highlight {
+            color: var(--gold);
+        }
+
+        .sponsors-header p {
+            font-size: 1rem;
+            color: var(--cream60);
+            line-height: 1.8;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .sponsors-grid {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sponsor-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--cream06);
+            border-radius: 16px;
+            transition: all 0.6s var(--bounce-ease);
+            will-change: transform, border-color, box-shadow;
+            flex: 1 1 0;
+            min-width: 280px;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        .sponsor-card:hover {
+            border-color: var(--gold20);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-6px);
+        }
+
+        .sponsor-card .sponsor-logo {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.5s var(--rubber-ease);
+            will-change: transform;
+        }
+
+        .sponsor-card:nth-child(2) .sponsor-logo {
+            max-width: 280px;
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+        .sponsor-card:nth-child(2) .sponsor-name {
+            margin-top: 0.8rem;
+        }
+
+        .sponsor-card:hover .sponsor-logo {
+            transform: scale(1.06);
+        }
+
+        .sponsor-card .sponsor-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--cream50);
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        .sponsors-note {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: var(--cream30);
+            letter-spacing: 0.06em;
+            font-style: italic;
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             nav {
@@ -2833,6 +3135,13 @@
             .nav-links {
                 display: none;
             }
+            .theme-toggle {
+                display: flex;
+                position: absolute;
+                right: 1.2rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
             .nav-logo {
                 font-size: 1.2rem;
             }
@@ -2842,18 +3151,6 @@
             #hero {
                 padding: 6rem 1.5rem 3rem;
                 min-height: 100vh;
-            }
-            #hero .hero-bg .mesh:nth-child(1) {
-                width: 300px;
-                height: 300px;
-                top: -100px;
-                right: -50px;
-            }
-            #hero .hero-bg .mesh:nth-child(2) {
-                width: 200px;
-                height: 200px;
-                bottom: -50px;
-                left: -30px;
             }
             .hero-title {
                 font-size: clamp(3.2rem, 12vw, 4.8rem);
@@ -3042,6 +3339,20 @@
                 font-size: 0.65rem;
             }
 
+            #sponsors {
+                padding: 4rem 2rem;
+            }
+            .sponsors-header {
+                margin-bottom: 2.5rem;
+            }
+            .sponsors-grid {
+                gap: 1.5rem;
+            }
+            .sponsor-card {
+                padding: 1.5rem 2rem;
+                flex: 1 1 220px;
+            }
+
             .test-banner {
                 font-size: 0.6rem;
                 padding: 0.4rem 0.8rem;
@@ -3148,6 +3459,27 @@
             }
             .mission-row .row-content h3 {
                 font-size: 1.6rem;
+            }
+
+            #sponsors {
+                padding: 3rem 1.5rem;
+            }
+            .sponsors-header h2 {
+                font-size: clamp(2rem, 6vw, 2.8rem);
+            }
+            .sponsors-grid {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .sponsor-card {
+                max-width: 100%;
+                padding: 1.2rem 1.5rem;
+            }
+            .sponsor-card .sponsor-logo {
+                max-width: 160px;
+            }
+            .sponsors-note {
+                font-size: 0.7rem;
             }
 
             .founder-image-wrapper img {
@@ -3287,7 +3619,7 @@
     <!-- ─── NAV ─── -->
     <nav id="navbar">
         <a href="#hero" class="nav-logo">
-            <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Logo/image.svg" alt="QHAKAZA logo" />
+            <img src="Assets/Media/Logo/image.svg" alt="QHAKAZA logo" />
             <span>QHAKAZA</span>
         </a>
         <ul class="nav-links">
@@ -3295,15 +3627,18 @@
             <li><a href="#mission">Mission</a></li>
             <li><a href="#founder">Founder</a></li>
             <li><a href="#donate" class="cta">Donate</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+            </li>
         </ul>
     </nav>
 
     <!-- ─── HERO ─── -->
     <section id="hero">
         <div class="hero-bg">
-            <div class="mesh"></div>
-            <div class="mesh"></div>
-            <div class="mesh"></div>
             <div class="grid-overlay"></div>
         </div>
 
@@ -3346,7 +3681,10 @@
             <!-- Row 1 -->
             <div class="mission-row reveal">
                 <div class="row-image">
-                    <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.52%20(1).jpeg" alt="School sport programs" loading="lazy" />
+                    <div class="image-carousel">
+                        <img src="Assets/Media/Images/school-sport-programs.webp" alt="School sport programs" loading="lazy" class="active" />
+                        <img src="Assets/Media/Images/coaching-and-administration.webp" alt="Coaching and administration" loading="lazy" />
+                    </div>
                     <div class="image-overlay"></div>
                 </div>
                 <div class="row-content">
@@ -3360,7 +3698,10 @@
             <!-- Row 2 (reverse) -->
             <div class="mission-row reverse reveal">
                 <div class="row-image">
-                    <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.54.15.jpeg" alt="Safety net" loading="lazy" />
+                    <div class="image-carousel">
+                        <img src="Assets/Media/Images/safety-net-community.webp" alt="Safety net" loading="lazy" class="active" />
+                        <img src="Assets/Media/Images/beach-training.webp" alt="Beach training" loading="lazy" />
+                    </div>
                     <div class="image-overlay"></div>
                 </div>
                 <div class="row-content">
@@ -3374,7 +3715,10 @@
             <!-- Row 3 -->
             <div class="mission-row reveal">
                 <div class="row-image">
-                    <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/1.45.52.jpeg" alt="Mentorship" loading="lazy" />
+                    <div class="image-carousel">
+                        <img src="Assets/Media/Images/mentorship-development.webp" alt="Mentorship" loading="lazy" class="active" />
+                        <img src="Assets/Media/Images/hardwork-and-perserverance.webp" alt="Hardwork and perseverance" loading="lazy" />
+                    </div>
                     <div class="image-overlay"></div>
                 </div>
                 <div class="row-content">
@@ -3391,7 +3735,7 @@
     <section id="founder">
         <div class="founder-image-wrapper reveal">
             <div class="orb"></div>
-            <img src="https://raw.githubusercontent.com/Abscissa24/Qhakaza/main/Assets/Media/Images/WhatsApp%20Image%202026-05-13%20at%2007.45.48%20(1).jpeg" alt="Gromingo Mzunga – Founder & CEO, QHAKAZA" loading="lazy" />
+            <img src="Assets/Media/Images/founder-gromingo-mzunga.webp" alt="Gromingo Mzunga – Founder & CEO, QHAKAZA" loading="lazy" />
         </div>
         <div class="founder-text">
             <div class="reveal" style="--i:1;">
@@ -3402,11 +3746,27 @@
                 <p class="body-text">Gromingo Mzunga is the Founder and CEO of Qhakaza Sports Foundation, a registered non-profit organisation based in Southern KwaZulu-Natal under the UGU District Municipality.</p>
                 <p class="body-text" style="margin-top:0.8rem;">Under his leadership, QHAKAZA works to ensure that sport is accessible to all young people in rural and township communities — identifying talent, developing coaches, and creating league systems among local schools, entirely free of charge to the families it serves.</p>
             </div>
-            <div class="reveal" style="--i:3;">
-                <div class="founder-name">Gromingo Mzunga</div>
-                <div class="founder-role">Founder &amp; CEO · Qhakaza Sports Foundation · NPO 227221</div>
+        </div>
+    </section>
+
+    <!-- ─── SPONSORS ─── -->
+    <section id="sponsors">
+        <div class="sponsors-header reveal">
+            <span class="eyebrow">Our Partners</span>
+            <h2>PROUDLY <span class="highlight">SPONSORED BY</span></h2>
+            <p>We're grateful for the generous support of our sponsors who share our vision of empowering youth through sport.</p>
+        </div>
+        <div class="sponsors-grid reveal">
+            <div class="sponsor-card">
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/orcas.png" alt="Orca's Beach Bar & Grill" loading="lazy" />
+                <div class="sponsor-name">Orca's Beach Bar &amp; Grill</div>
+            </div>
+            <div class="sponsor-card">
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/freshstop.png" alt="FreshStop" loading="lazy" />
+                <div class="sponsor-name">FreshStop</div>
             </div>
         </div>
+        <div class="sponsors-note reveal">Interested in sponsoring? Reach out to us at <strong style="color:var(--cream50);">info.qyfoundation@gmail.com</strong></div>
     </section>
 
     <!-- ─── DONATE ─── -->
@@ -3571,23 +3931,23 @@
                                 <div class="bank-grid">
                                     <div class="bg-item">
                                         <span class="bg-label">Bank</span>
-                                        <span class="bg-value gold">First National Bank (FNB)</span>
+                                        <span class="bg-value gold">Capitec Bank</span>
                                     </div>
                                     <div class="bg-item">
                                         <span class="bg-label">Account Holder</span>
-                                        <span class="bg-value">Qhakaza Sports Foundation</span>
+                                        <span class="bg-value">Mr GB Mzunga</span>
                                     </div>
                                     <div class="bg-item">
                                         <span class="bg-label">Account Number</span>
-                                        <span class="bg-value gold">6283 2487 512</span>
+                                        <span class="bg-value gold">2386254182</span>
                                     </div>
                                     <div class="bg-item">
                                         <span class="bg-label">Account Type</span>
-                                        <span class="bg-value">Cheque Account</span>
+                                        <span class="bg-value">Savings</span>
                                     </div>
                                     <div class="bg-item" style="grid-column:1/2;">
-                                        <span class="bg-label">Branch Code</span>
-                                        <span class="bg-value">255005</span>
+                                        <span class="bg-label">Cellphone Number</span>
+                                        <span class="bg-value">083 595 0126</span>
                                     </div>
                                     <div class="bg-item" style="grid-column:2/3;">
                                         <span class="bg-label">Reference</span>
@@ -3759,9 +4119,18 @@
                     <button class="btn-dev btn-dev-secondary" onclick="resetDevOptions()">↺ Reset</button>
                     <button class="btn-dev btn-dev-danger" onclick="closeDevOptionsModal()">✕ Close</button>
                 </div>
-                <button class="btn-dev btn-dev-primary" onclick="applyDevOptions()">✓ Apply Changes</button>
+                <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+                    <button class="btn-dev btn-dev-secondary" onclick="startShowcase()" style="background:rgba(201,148,58,0.15);color:var(--gold);border-color:var(--gold20);">▶ Showcase</button>
+                    <button class="btn-dev btn-dev-primary" onclick="applyDevOptions()">✓ Apply Changes</button>
+                </div>
             </div>
         </div>
+    </div>
+
+    <!-- ─── SHOWCASE OVERLAY ─── -->
+    <div class="showcase-overlay" id="showcaseOverlay">
+        <div class="showcase-countdown" id="showcaseCountdown">3</div>
+        <div class="showcase-label">Showcase Mode</div>
     </div>
 
     <!-- ─── STATE MODALS ─── -->
@@ -3778,6 +4147,37 @@
     </div>
 
     <script>
+        // ═══════════════════════════════════════════════════════════
+        //  THEME TOGGLE
+        // ═══════════════════════════════════════════════════════════
+
+        (function initTheme() {
+            const toggle = document.getElementById('themeToggle');
+            const iconSun = toggle.querySelector('.icon-sun');
+            const iconMoon = toggle.querySelector('.icon-moon');
+            const saved = localStorage.getItem('qhakaza-theme');
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                if (theme === 'light') {
+                    iconSun.style.display = 'none';
+                    iconMoon.style.display = 'block';
+                } else {
+                    iconSun.style.display = 'block';
+                    iconMoon.style.display = 'none';
+                }
+            }
+
+            applyTheme(saved || 'dark');
+
+            toggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('qhakaza-theme', next);
+                applyTheme(next);
+            });
+        })();
+
         // ═══════════════════════════════════════════════════════════
         //  GLOBAL PARTICLE SYSTEM (Canvas) — off by default
         // ═══════════════════════════════════════════════════════════
@@ -3954,6 +4354,7 @@
                     defaultParticleSpeed: data.defaultParticleSpeed || 0.6,
                     maintenanceParticleSpeed: data.maintenanceParticleSpeed || 1.2,
                     connectionDistance: data.connectionDistance || 120,
+                    showcaseSpeed: data.showcaseSpeed || 1,
                 };
                 originalState = JSON.parse(JSON.stringify(state));
                 console.log('✅ State loaded from Gist:', state);
@@ -3963,7 +4364,7 @@
                     maintenanceParticlesEnabled: false, defaultParticleCount: 120, maintenanceParticleCount: 150,
                     defaultParticleSizeMin: 2, defaultParticleSizeMax: 5, maintenanceParticleSizeMin: 1.5,
                     maintenanceParticleSizeMax: 4, defaultParticleSpeed: 0.6, maintenanceParticleSpeed: 1.2,
-                    connectionDistance: 120 };
+                    connectionDistance: 120, showcaseSpeed: 1 };
                 originalState = JSON.parse(JSON.stringify(state));
             }
 
@@ -4109,6 +4510,21 @@
             });
         }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ─── IMAGE CAROUSEL ───
+        (function initCarousels() {
+            const carousels = document.querySelectorAll('.image-carousel');
+            carousels.forEach(carousel => {
+                const images = carousel.querySelectorAll('img');
+                if (images.length <= 1) return;
+                let current = 0;
+                setInterval(() => {
+                    images[current].classList.remove('active');
+                    current = (current + 1) % images.length;
+                    images[current].classList.add('active');
+                }, 4000);
+            });
+        })();
 
         // ─── DONATION STATE ───
         let currentStep = 1;
@@ -4283,6 +4699,7 @@
                 { key: 'defaultParticleSpeed', label: 'Default Speed', min: 0.1, max: 3, step: 0.1 },
                 { key: 'maintenanceParticleSpeed', label: 'Maintenance Speed', min: 0.1, max: 3, step: 0.1 },
                 { key: 'connectionDistance', label: 'Connection Distance', min: 20, max: 300, step: 5 },
+                { key: 'showcaseSpeed', label: 'Showcase Speed', min: 0.25, max: 3, step: 0.25 },
             ];
 
             let html = '';
@@ -4341,7 +4758,7 @@
             const boolKeys = ['disabled', 'maintenance', 'payfast', 'defaultParticlesEnabled', 'maintenanceParticlesEnabled'];
             const numKeys = ['defaultParticleCount', 'maintenanceParticleCount', 'defaultParticleSizeMin',
                 'defaultParticleSizeMax', 'maintenanceParticleSizeMin', 'maintenanceParticleSizeMax',
-                'defaultParticleSpeed', 'maintenanceParticleSpeed', 'connectionDistance'
+                'defaultParticleSpeed', 'maintenanceParticleSpeed', 'connectionDistance', 'showcaseSpeed'
             ];
 
             boolKeys.forEach(key => {
@@ -4426,6 +4843,90 @@
             document.body.style.overflow = '';
         }
 
+        // ─── SHOWCASE MODE ───
+        let showcaseRunning = false;
+        let showcaseAnimId = null;
+
+        function startShowcase() {
+            if (showcaseRunning) return;
+            closeDevOptionsModal();
+
+            const overlay = document.getElementById('showcaseOverlay');
+            const countdownEl = document.getElementById('showcaseCountdown');
+
+            overlay.classList.add('active');
+            overlay.classList.remove('countdown-done');
+            overlay.style.display = '';
+            document.body.style.overflow = 'hidden';
+            showcaseRunning = true;
+
+            let count = 3;
+            countdownEl.textContent = count;
+
+            const countInterval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownEl.textContent = count;
+                } else {
+                    clearInterval(countInterval);
+                    overlay.classList.add('countdown-done');
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        document.body.style.overflow = '';
+                        window.scrollTo(0, 0);
+                        runShowcaseScroll();
+                    }, 800);
+                }
+            }, 1000);
+        }
+
+        function stopShowcase() {
+            showcaseRunning = false;
+            if (showcaseAnimId) {
+                cancelAnimationFrame(showcaseAnimId);
+                showcaseAnimId = null;
+            }
+            document.body.style.overflow = '';
+        }
+
+        function runShowcaseScroll() {
+            const speedMultiplier = devOptionsState.showcaseSpeed || 1;
+            const speed = 8 * speedMultiplier;
+
+            // Pre-cache reveal elements
+            const revealEls = Array.from(document.querySelectorAll('.reveal')).map(el => ({
+                el,
+                offsetTop: el.getBoundingClientRect().top + window.scrollY
+            }));
+
+            function step() {
+                if (!showcaseRunning) return;
+
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const pos = window.scrollY;
+
+                if (pos >= maxScroll - 2) {
+                    stopShowcase();
+                    return;
+                }
+
+                window.scrollBy(0, speed);
+
+                // Trigger reveals
+                const viewTop = pos;
+                const viewBottom = pos + window.innerHeight;
+                revealEls.forEach(item => {
+                    if (!item.el.classList.contains('visible') && item.offsetTop < viewBottom) {
+                        item.el.classList.add('visible');
+                    }
+                });
+
+                showcaseAnimId = requestAnimationFrame(step);
+            }
+
+            showcaseAnimId = requestAnimationFrame(step);
+        }
+
         // ─── KONAMI CODE ───
         const KONAMI_SEQ = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
             'b', 'a'
@@ -4441,7 +4942,11 @@
                 konamiPos++;
                 if (konamiPos === KONAMI_SEQ.length) {
                     konamiPos = 0;
-                    openDevOptionsModal();
+                    if (showcaseRunning) {
+                        stopShowcase();
+                    } else {
+                        openDevOptionsModal();
+                    }
                 }
             } else {
                 konamiPos = (k === KONAMI_SEQ[0]) ? 1 : 0;
