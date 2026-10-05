@@ -1,0 +1,133 @@
+/* ════════════════════════════════════════════════════════════════════
+   ATHLETES VIDEO COMPONENT
+   ════════════════════════════════════════════════════════════════════ */
+
+#athletes {
+  padding: 5rem 4rem 5.5rem;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  text-align: center;
+}
+#athletes::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 55% 55% at 50% 35%, rgba(201, 148, 58, 0.05) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.athletes-header { max-width: 700px; margin: 0 auto 2.8rem; }
+.athletes-header .eyebrow {
+  background: rgba(201, 148, 58, 0.1);
+  padding: 0.4rem 1.8rem;
+  border-radius: 20px;
+  border: 1px solid var(--gold20);
+  display: inline-block;
+}
+.athletes-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  line-height: 1.1;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  margin: 0.5rem 0 0.8rem;
+}
+.athletes-header p {
+  font-size: 1rem;
+  color: var(--cream60);
+  line-height: 1.8;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.video-frame {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--cream08);
+  background: #0a1611;
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+  aspect-ratio: 16 / 9;
+  contain: layout paint;
+}
+
+[data-theme="light"] .video-frame {
+  border-color: rgba(26, 26, 26, 0.08);
+  background: #111;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 0 40px rgba(201, 148, 58, 0.06);
+}
+
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0a1611;
+}
+
+.video-frame .video-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(14, 31, 23, 0.62) 0%, rgba(14, 31, 23, 0.0) 42%),
+    linear-gradient(to bottom, rgba(14, 31, 23, 0.18) 0%, transparent 25%);
+  pointer-events: none;
+}
+
+.video-mute-btn {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 31, 23, 0.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(245, 240, 232, 0.16);
+  color: var(--cream);
+  cursor: pointer;
+  transition: transform 0.3s var(--rubber-ease), background 0.3s var(--bounce-ease),
+              border-color 0.3s var(--bounce-ease), color 0.3s var(--bounce-ease),
+              box-shadow 0.3s var(--bounce-ease);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.video-mute-btn:hover {
+  transform: scale(1.06) translateY(-1px);
+  background: rgba(201, 148, 58, 0.22);
+  border-color: var(--gold30);
+  color: var(--gold-l);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+.video-mute-btn:active { transform: scale(0.97); }
+.video-mute-btn svg { width: 20px; height: 20px; display: block; }
+
+[data-theme="light"] .video-mute-btn {
+  background: rgba(245, 240, 232, 0.78);
+  border-color: rgba(26, 26, 26, 0.14);
+  color: #1a1a1a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] .video-mute-btn:hover {
+  background: rgba(201, 148, 58, 0.18);
+  border-color: var(--gold30);
+  color: #1a1a1a;
+}
+
+/* ── Athletes Responsive ── */
+@media (max-width: 768px) {
+  #athletes { padding: 3.5rem 1.5rem 4rem; }
+  .video-frame { border-radius: 12px; }
+  .video-mute-btn { width: 40px; height: 40px; right: 0.75rem; bottom: 0.75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .video-frame video { animation: none !important; }
+}
