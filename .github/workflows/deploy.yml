@@ -1,0 +1,42 @@
+name: Build and deploy site
+
+# Single-branch setup: the built site is committed to docs/ on main and
+# GitHub Pages serves main + /docs. The [skip ci] trailer plus paths-ignore
+# below keep the auto-commit from retriggering this workflow.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Sync build output to docs/
+        run: |
+          rm -rf docs
+          mkdir -p docs
+          cp -r dist/. docs/
+          touch docs/.nojekyll
+
+      - name: Commit updated site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git diff --cached --quiet || git commit -m "chore(site): rebuild public bundle [skip ci]"
+          git push

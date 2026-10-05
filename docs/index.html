@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="boot-locked">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QHAKAZA – Sports Foundation</title>
+    <link rel="icon" type="image/svg+xml" href="Assets/Media/Logo/image.svg" />
+    <link rel="apple-touch-icon" href="Assets/Media/Logo/image.svg" />
+
+    <meta property="og:title" content="QHAKAZA – Sports Foundation" />
+    <meta property="og:description" content="Empowering communities through sports and development." />
+    <meta property="og:image" content="https://abscissa24.github.io/Qhakaza/Assets/Media/Preview/preview.png" />
+    <meta property="og:url" content="https://abscissa24.github.io/Qhakaza/" />
+    <meta property="og:type" content="website" />
+
+    <script>try{history.scrollRestoration='manual'}catch(e){}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="./assets/main-BaGqJ8sU.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-RmUcXZ_S.css">
+</head>
+<body class="boot-locked">
+
+<!-- ─── BOOT ANIMATION ─── -->
+    <div id="boot-overlay" aria-label="Loading Qhakaza" aria-live="polite">
+        <video
+            id="bootVideo"
+            src="Assets/Media/Videos/Boot/qhakaza-boot.mp4"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+            aria-hidden="true"
+        ></video>
+        <button class="boot-skip" id="bootSkip" type="button" aria-label="Skip intro">Skip — Esc</button>
+    </div>
+
+    <!-- ─── GLOBAL PARTICLES CANVAS ─── -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <a href="#hero" class="nav-logo">
+            <img src="Assets/Media/Logo/image.svg" alt="QHAKAZA logo" />
+            <span>QHAKAZA</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#founder">Founder</a></li>
+            <li><a href="#donate" class="cta">Donate</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section id="hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-tag"><span class="dot"></span> UGU District · KwaZulu-Natal · NPO 227221</div>
+            <h1 class="hero-title">QHAKAZA <span class="highlight">SPORTS FOUNDATION</span></h1>
+            <p class="hero-sub">Empowering youth aged 9–19 from rural and township communities in Southern KwaZulu-Natal — through sport, mentorship, and the belief that talent is everywhere, but opportunity is not.</p>
+            <div class="hero-actions">
+                <a href="#donate" class="btn-gold"><span>Make a Donation</span><span class="btn-arrow">→</span></a>
+                <a href="#mission" class="btn-ghost"><span>Our Mission</span><span class="btn-arrow">→</span></a>
+            </div>
+        </div>
+        <div class="hero-indicator">
+            <span class="line"></span>
+            <span class="mouse"><span class="wheel"></span></span>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- ─── STATS STRIP ─── -->
+    <div class="stats-strip">
+        <div class="stat-item"><div class="stat-num">9–19</div><div class="stat-label">Ages We Serve</div></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><div class="stat-num">Both</div><div class="stat-label">Girls &amp; Boys</div></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><div class="stat-num">UGU</div><div class="stat-label">District · S. KZN</div></div>
+        <div class="stat-div"></div>
+        <div class="stat-item"><div class="stat-num">NPO</div><div class="stat-label">Registered 227221</div></div>
+    </div>
+
+    <!-- ─── MISSION ─── -->
+    <section id="mission">
+        <div class="mission-header reveal">
+            <span class="eyebrow">Our Mission &amp; Vision</span>
+            <h2>WHY WE <span class="highlight">DO IT</span></h2>
+            <p>QHAKAZA – meaning "to shine" in Zulu – works toward empowering youth and emerging communities through sport-based development within Southern KwaZulu-Natal, with ambitions to expand nationally.</p>
+        </div>
+
+        <div class="mission-rows">
+            <!-- Row 1 -->
+            <div class="mission-row reveal">
+                <div class="row-image">
+                    <div class="image-carousel">
+                        <img src="Assets/Media/Images/school-sport-programs.webp" alt="School sport programs" loading="lazy" class="active" />
+                        <img src="Assets/Media/Images/coaching-and-administration.webp" alt="Coaching and administration" loading="lazy" />
+                    </div>
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="row-content">
+                    <span class="row-number">01</span>
+                    <span class="eyebrow">Pathway to Growth</span>
+                    <h3>SCHOOL SPORT <span class="highlight">PROGRAMS &amp; LEAGUES</span></h3>
+                    <p>We target primary schools, establish league systems, and identify talent — creating structured pathways for young athletes to grow and compete.</p>
+                </div>
+            </div>
+
+            <!-- Row 2 (reverse) -->
+            <div class="mission-row reverse reveal">
+                <div class="row-image">
+                    <div class="image-carousel">
+                        <img src="Assets/Media/Images/safety-net-community.webp" alt="Safety net" loading="lazy" class="active" />
+                        <img src="Assets/Media/Images/beach-training.webp" alt="Beach training" loading="lazy" />
+                    </div>
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="row-content">
+                    <span class="row-number">02</span>
+                    <span class="eyebrow">Safe Haven</span>
+                    <h3>SAFETY NET AGAINST <span class="highlight">PEER PRESSURE</span></h3>
+                    <p>QHAKAZA provides a structured alternative to poverty, drugs, teenage pregnancy and peer pressure — giving children a positive environment where they belong.</p>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="mission-row reveal">
+                <div class="row-image">
+                    <div class="image-carousel">
+                        <img src="Assets/Media/Images/mentorship-development.webp" alt="Mentorship" loading="lazy" class="active" />
+                        <img src="Assets/Media/Images/hardwork-and-perserverance.webp" alt="Hardwork and perseverance" loading="lazy" />
+                    </div>
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="row-content">
+                    <span class="row-number">03</span>
+                    <span class="eyebrow">Holistic Development</span>
+                    <h3>SKILLS, MENTORSHIP <span class="highlight">&amp; WELLNESS</span></h3>
+                    <p>Beyond the field, we run workshops focused on health, wellness, teamwork and life skills — equipping young people for everything life brings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOUNDER ─── -->
+    <section id="founder">
+        <div class="founder-image-wrapper reveal">
+            <div class="orb"></div>
+            <img src="Assets/Media/Images/founder-gromingo-mzunga.webp" alt="Gromingo Mzunga – Founder & CEO, QHAKAZA" loading="lazy" />
+        </div>
+        <div class="founder-text">
+            <div class="reveal" style="--i:1;">
+                <div class="eyebrow">The Man Behind The Mission</div>
+                <h2 class="heading">GROMINGO MZUNGA</h2>
+            </div>
+            <div class="reveal" style="--i:2;">
+                <p class="body-text">Gromingo Mzunga is the Founder and CEO of Qhakaza Sports Foundation, a registered non-profit organisation based in Southern KwaZulu-Natal under the UGU District Municipality. A former professional rugby player for the Lions and Free State Cheetahs, he brings first-hand experience of what elite sport can unlock.</p>
+                <p class="body-text" style="margin-top:0.8rem;">Under his leadership, QHAKAZA works to ensure that sport is accessible to all young people in rural and township communities — identifying talent, developing coaches, and creating league systems among local schools, entirely free of charge to the families it serves.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ATHLETES IN ACTION (video) ─── -->
+    <section id="athletes">
+        <div class="athletes-header reveal">
+            <span class="eyebrow">In Action</span>
+            <h2>HEART OF <span class="highlight">QHAKAZA</span></h2>
+            <p>From dusty fields to game day — our athletes train with grit, joy and the belief that opportunity changes everything.</p>
+        </div>
+        <div class="video-frame reveal">
+            <video
+                id="athletesVideo"
+                src="Assets/Media/Videos/Athletes/qhakaza-athletes.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="metadata"
+                disablePictureInPicture
+                disableremoteplayback
+                aria-label="Qhakaza athletes training and competing"
+            ></video>
+            <div class="video-scrim" aria-hidden="true"></div>
+            <button class="video-mute-btn" id="athletesMuteBtn" type="button" aria-label="Unmute video" aria-pressed="false">
+                <!-- icon injected by JS -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ─── SPONSORS ─── -->
+    <section id="sponsors">
+        <div class="sponsors-header reveal">
+            <span class="eyebrow">Our Partners</span>
+            <h2>PROUDLY <span class="highlight">SPONSORED BY</span></h2>
+            <p>We're grateful for the generous support of our sponsors who share our vision of empowering youth through sport.</p>
+        </div>
+        <div class="sponsors-grid reveal">
+            <div class="sponsor-card">
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/orcas.webp" alt="Orca's Beach Bar & Grill" loading="lazy" />
+                <div class="sponsor-name">Orca's Beach Bar &amp; Grill</div>
+            </div>
+            <div class="sponsor-card">
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/freshstop.webp" alt="FreshStop (Umtentweni)" loading="lazy" />
+                <div class="sponsor-name">FreshStop (Umtentweni)</div>
+            </div>
+            <div class="sponsor-card">
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/kzn-ru.webp" alt="KZN Rugby Union" loading="lazy" />
+                <div class="sponsor-name">KZN Rugby Union</div>
+            </div>
+            <div class="sponsor-card">
+                <img class="sponsor-logo" src="Assets/Media/Sponsors/kzn-education.webp" alt="KZN Education" loading="lazy" />
+                <div class="sponsor-name">KZN Education</div>
+            </div>
+        </div>
+        <div class="sponsors-note reveal">Interested in sponsoring? Reach out to us at <strong style="color:var(--cream50);">info.qyfoundation@gmail.com</strong></div>
+    </section>
+
+    <!-- ─── DONATE ─── -->
+    <section id="donate" style="padding:0; background:transparent;">
+
+        <div class="donate-hero">
+            <span class="eyebrow">💛 Give Back</span>
+            <h1>SUPPORT <span class="highlight">QHAKAZA</span></h1>
+            <p>Your donation empowers young athletes in KwaZulu-Natal — providing sport, mentorship, and a pathway to a brighter future.</p>
+            <div class="secure-badge-hero" id="secureBadgeHero">🔒 Secured via PayFast · Tax Receipt Provided · NPO 227221</div>
+        </div>
+
+        <div id="checkout">
+            <div class="checkout-container">
+
+                <div class="step-indicator" id="stepIndicator">
+                    <div class="step-dot active" data-step="1">
+                        <div class="circle">1</div>
+                        <span class="label">Amount</span>
+                    </div>
+                    <div class="step-line" data-between="1-2"></div>
+                    <div class="step-dot" data-step="2">
+                        <div class="circle">2</div>
+                        <span class="label">Details</span>
+                    </div>
+                    <div class="step-line" data-between="2-3"></div>
+                    <div class="step-dot" data-step="3">
+                        <div class="circle">3</div>
+                        <span class="label">Pay</span>
+                    </div>
+                </div>
+
+                <div class="checkout-card" style="position:relative;">
+
+                    <div class="processing-overlay" id="processingOverlay">
+                        <div class="spinner"></div>
+                        <h3>Redirecting to PayFast</h3>
+                        <p>Please wait while we secure your transaction…</p>
+                        <div class="progress-bar"><div class="fill"></div></div>
+                    </div>
+
+                    <!-- STEP 1 -->
+                    <div class="step-panel active" data-step="1">
+                        <h2>Choose your amount</h2>
+                        <p class="subtitle">Every contribution, big or small, makes a lasting impact on a young athlete's life.</p>
+                        <div class="amount-grid">
+                            <button class="amount-btn" data-amount="100"><span>R 100</span></button>
+                            <button class="amount-btn" data-amount="500"><span>R 500</span></button>
+                            <button class="amount-btn" data-amount="1500"><span>R 1,500</span></button>
+                            <button class="amount-btn" data-amount="5000"><span>R 5,000</span></button>
+                        </div>
+                        <div class="custom-row">
+                            <label for="customAmt">Or enter a custom amount (ZAR)</label>
+                            <div class="custom-wrap">
+                                <span class="custom-prefix">R</span>
+                                <input id="customAmt" type="number" min="1" placeholder="e.g. 250, 750, 2 000…" />
+                            </div>
+                        </div>
+                        <div class="donation-preview-box">
+                            <span class="label">Your donation</span>
+                            <span class="amount-display" id="previewAmount">R 0.00</span>
+                        </div>
+                        <div class="step-actions">
+                            <button class="btn-next" onclick="goToStep(2)">Continue <span style="font-size:1.2rem;">→</span></button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="step-panel" data-step="2">
+                        <h2>Your details</h2>
+                        <p class="subtitle">We'll use this information to send your tax receipt and keep you updated on our impact.</p>
+                        <div class="form-fields">
+                            <div class="form-row">
+                                <div class="field">
+                                    <label>First Name <span class="required">*</span></label>
+                                    <input type="text" id="fname" placeholder="e.g. Thandi" />
+                                    <div class="error-msg" id="fnameError">Please enter your first name</div>
+                                </div>
+                                <div class="field">
+                                    <label>Surname <span class="required">*</span></label>
+                                    <input type="text" id="lname" placeholder="e.g. Mthembu" />
+                                    <div class="error-msg" id="lnameError">Please enter your surname</div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" placeholder="you@example.com" />
+                                <div class="error-msg" id="emailError">Please enter a valid email address</div>
+                            </div>
+                            <div class="field">
+                                <label>Phone Number <span style="color:var(--cream30);font-weight:400;">(optional)</span></label>
+                                <input type="tel" id="phone" placeholder="+27 83 595 0126" />
+                            </div>
+                            <div class="field">
+                                <label>Leave a message <span style="color:var(--cream30);font-weight:400;">(optional)</span></label>
+                                <textarea id="message" placeholder="Any special message or dedication…" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="step-actions">
+                            <button class="btn-prev" onclick="goToStep(1)">← Back</button>
+                            <button class="btn-next" onclick="validateAndProceed()">Review Donation <span style="font-size:1.2rem;">→</span></button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Payment Step -->
+                    <div class="step-panel" data-step="3">
+                        <h2>Complete Your Donation</h2>
+                        <p class="subtitle" id="step3Subtitle">Review your donation details below.</p>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;background:var(--white06);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;border:1px solid var(--cream12);">
+                            <div><span style="color:var(--cream45);font-size:0.7rem;letter-spacing:0.06em;display:block;">Donor</span><span style="font-weight:500;" id="reviewName">—</span></div>
+                            <div><span style="color:var(--cream45);font-size:0.7rem;letter-spacing:0.06em;display:block;">Email</span><span style="font-weight:500;" id="reviewEmail">—</span></div>
+                            <div style="grid-column:1/2;"><span style="color:var(--cream45);font-size:0.7rem;letter-spacing:0.06em;display:block;">Amount</span><span style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold);" id="reviewAmount">R 0.00</span></div>
+                            <div style="grid-column:2/3;display:flex;align-items:flex-end;justify-content:flex-end;">
+                                <span style="font-size:0.65rem;color:var(--cream30);background:var(--cream06);padding:0.2rem 1rem;border-radius:12px;border:1px solid var(--cream12);">NPO 227221</span>
+                            </div>
+                        </div>
+
+                        <div id="payfastSection">
+                            <div class="test-banner" id="testBanner">
+                                <span class="tag">🧪 Test Mode</span>
+                                <span><strong>Sandbox environment</strong> — use test card numbers.</span>
+                                <span style="margin-left:auto;font-size:0.6rem;color:var(--cream30);">Switch to production in the config below.</span>
+                            </div>
+
+                            <form id="payfastForm" method="POST" target="_blank">
+                                <input type="hidden" name="merchant_id" id="pfMerchantId" />
+                                <input type="hidden" name="merchant_key" id="pfMerchantKey" />
+                                <input type="hidden" name="return_url" id="pfReturnUrl" />
+                                <input type="hidden" name="cancel_url" id="pfCancelUrl" />
+                                <input type="hidden" name="notify_url" id="pfNotifyUrl" />
+                                <input type="hidden" name="name_first" id="pfNameFirst" />
+                                <input type="hidden" name="name_last" id="pfNameLast" />
+                                <input type="hidden" name="email_address" id="pfEmail" />
+                                <input type="hidden" name="m_payment_id" id="pfPaymentId" />
+                                <input type="hidden" name="amount" id="pfAmount" />
+                                <input type="hidden" name="item_name" value="QHAKAZA Sports Foundation Donation" />
+                                <input type="hidden" name="item_description" id="pfItemDesc" />
+                                <input type="hidden" name="custom_str1" id="pfCustomStr1" />
+                                <input type="hidden" name="signature" id="pfSignature" />
+                            </form>
+
+                            <div class="payfast-btn-wrap" id="payfastBtnWrap">
+                                <button class="btn-submit" id="payfastPayBtn" onclick="submitPayFast()">
+                                    Pay with PayFast
+                                </button>
+                            </div>
+
+                            <div style="display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap;margin-top:0.2rem;" id="payfastBadges">
+                                <span class="payfast-badge">💳 Credit/Debit Card</span>
+                                <span class="payfast-badge">🏦 Instant EFT</span>
+                                <span class="payfast-badge">📱 Mobicred</span>
+                                <span class="payfast-badge">🔒 256-bit SSL</span>
+                            </div>
+                        </div>
+
+                        <div id="bankDetailsSection" style="display:none;">
+                            <div class="bank-details-box">
+                                <div class="bank-icon">🏦</div>
+                                <h3>Manual EFT Transfer</h3>
+                                <p class="bank-sub">Please use the bank details below to make your donation via Electronic Funds Transfer (EFT).</p>
+                                <div class="bank-grid">
+                                    <div class="bg-item">
+                                        <span class="bg-label">Bank</span>
+                                        <span class="bg-value gold">Capitec Bank</span>
+                                    </div>
+                                    <div class="bg-item">
+                                        <span class="bg-label">Account Holder</span>
+                                        <span class="bg-value">Mr GB Mzunga</span>
+                                    </div>
+                                    <div class="bg-item">
+                                        <span class="bg-label">Account Number</span>
+                                        <span class="bg-value gold">2386254182</span>
+                                    </div>
+                                    <div class="bg-item">
+                                        <span class="bg-label">Account Type</span>
+                                        <span class="bg-value">Savings</span>
+                                    </div>
+                                    <div class="bg-item" style="grid-column:1/2;">
+                                        <span class="bg-label">Cellphone Number</span>
+                                        <span class="bg-value">083 595 0126</span>
+                                    </div>
+                                    <div class="bg-item" style="grid-column:2/3;">
+                                        <span class="bg-label">Reference</span>
+                                        <span class="bg-value gold">DONATION + Your Name</span>
+                                    </div>
+                                </div>
+                                <div class="bank-ref-note">
+                                    💡 Please use your <strong>full name</strong> as the reference so we can identify your donation and send your tax receipt.
+                                </div>
+                            </div>
+                            <div style="text-align:center;margin-top:0.5rem;font-size:0.75rem;color:var(--cream40);">
+                                <p>Once you've made the transfer, please email us at <strong style="color:var(--cream);">info.qyfoundation@gmail.com</strong> with proof of payment.</p>
+                                <p style="margin-top:0.3rem;">We'll confirm your donation within 24 hours and issue your Section 18A tax receipt.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-actions" style="margin-top:1.2rem;">
+                            <button class="btn-prev" onclick="goToStep(2)">← Back</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+    FOOTER — REDESIGNED (proportional, spacious & compact height)
+    ═══════════════════════════════════════════════════════════ -->
+    <footer>
+        <div class="footer-wrap reveal">
+            <!-- Brand Column -->
+            <div class="footer-brand">
+                <div class="footer-logo">QHAKAZA</div>
+                <div class="footer-tagline">Sports Foundation</div>
+                <p class="footer-desc">
+                    Empowering youth aged 9–19 in Southern KwaZulu-Natal through sport, mentorship, and opportunity.
+                    <span class="quote">"Talent is everywhere — opportunity is not."</span>
+                </p>
+                <div class="footer-reg">
+                    NPO Registration: 227221 &nbsp;·&nbsp; SARS Tax No: 9176888254<br>
+                    UGU District, Southern KwaZulu-Natal
+                </div>
+            </div>
+
+            <!-- Navigation Column -->
+            <div class="footer-col">
+                <h4>Navigate</h4>
+                <a href="#hero">Home</a>
+                <a href="#mission">Mission &amp; Vision</a>
+                <a href="#founder">Our Founder</a>
+                <a href="#donate">Donate</a>
+            </div>
+
+            <!-- Contact & Social Column -->
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <a href="tel:+27835950126">+27 83 595 0126</a>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#46;&#113;&#121;&#102;&#111;&#117;&#110;&#100;&#97;&#116;&#105;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" style="word-break:break-all;">
+                        info.qyfoundation&#64;gmail.com
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span style="color:var(--cream45);">UGU District, Southern KZN</span>
+                </div>
+
+                <div class="footer-socials">
+                    <a href="https://facebook.com/qycfoundation" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="https://instagram.com/qyfoundation" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+                    </a>
+                    <a href="https://wa.me/27835950126" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copy">© 2026 Qhakaza Sports Foundation · NPO 227221 · All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="#" onclick="event.preventDefault(); showDeveloperModal();">Built by Armiel Pillay</a>
+                    <a href="#" onclick="event.preventDefault(); showModal({icon:'📋',title:'Privacy Policy',body:'QHAKAZA respects your privacy. We collect only the information needed to process donations and issue tax receipts. Your data is never shared with third parties.'});">Privacy</a>
+                    <a href="#" onclick="event.preventDefault(); showModal({icon:'📄',title:'Terms of Use',body:'By donating to QHAKAZA, you agree that your contribution supports our registered NPO mission. All donations are final and non-refundable. Tax receipts are issued in accordance with Section 18A of the South African Income Tax Act.'});">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── MODAL (base) ─── -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-box">
+            <div class="modal-head">
+                <div class="modal-icon" id="modalIcon">⚠️</div>
+                <div class="modal-title" id="modalTitle">Notice</div>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-foot" id="modalFoot"></div>
+        </div>
+    </div>
+
+    <!-- ─── DEVELOPER PROFILE MODAL ─── -->
+    <div class="modal-overlay dev-profile-modal" id="devModal">
+        <div class="modal-box">
+            <div class="modal-head">
+                <img
+                src="https://abscissa24.github.io/Portfolio/Assets/Avatar/Profile.webp"
+                alt="Armiel Pillay"
+                class="dev-avatar"
+                loading="lazy"
+                />
+                <div class="modal-title">Armiel Pillay</div>
+                <div class="dev-role">Digital Director · QHAKAZA</div>
+            </div>
+            <div class="modal-body">
+                <p class="dev-bio">
+                    Final-year Applied Mathematics &amp; Computer Science student, open-source engineer, and research assistant.
+                </p>
+                <div class="dev-tags">
+                    <span>🧠 AI / ML</span>
+                    <span>🌐 Web Dev</span>
+                    <span>📊 Data Science</span>
+                    <span>⚡ Open Source</span>
+                </div>
+                <div class="dev-links">
+                    <a href="https://github.com/Abscissa24" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.62.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/armiel-pillay-3b4547266" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="mailto:armielpillay24@gmail.com">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Email
+                    </a>
+                    <a href="https://abscissa24.github.io/Portfolio/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Portfolio
+                    </a>
+                </div>
+            </div>
+            <div class="modal-foot">
+                <button class="btn-done" onclick="closeDevModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── DEVELOPER OPTIONS MODAL (Konami) ─── -->
+    <div class="modal-overlay dev-options-modal" id="devOptionsModal">
+        <div class="modal-box">
+            <div class="modal-head">
+                <div class="modal-icon" style="font-size:1.8rem;">⚙️</div>
+                <div class="modal-title">Developer Options</div>
+                <div class="dev-sub">Master control switches — local overrides</div>
+            </div>
+            <div class="modal-body" id="devOptionsBody">
+                <!-- Populated by JS -->
+            </div>
+            <div class="modal-foot" style="justify-content:space-between;flex-wrap:wrap;gap:0.5rem;padding:0.8rem 1.8rem 1.4rem;">
+                <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+                    <button class="btn-dev btn-dev-secondary" onclick="resetDevOptions()">↺ Reset</button>
+                    <button class="btn-dev btn-dev-danger" onclick="closeDevOptionsModal()">✕ Close</button>
+                </div>
+                <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+                    <button class="btn-dev btn-dev-secondary" onclick="startShowcase()" style="background:rgba(201,148,58,0.15);color:var(--gold);border-color:var(--gold20);">▶ Showcase</button>
+                    <button class="btn-dev btn-dev-primary" onclick="applyDevOptions()">✓ Apply Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SHOWCASE OVERLAY ─── -->
+    <div class="showcase-overlay" id="showcaseOverlay">
+        <div class="showcase-countdown" id="showcaseCountdown">3</div>
+        <div class="showcase-label">Showcase Mode</div>
+    </div>
+    <div id="showcaseFade" aria-hidden="true"></div>
+    <div class="showcase-progress" id="showcaseProgress"></div>
+    <div class="showcase-exit-hint" id="showcaseExitHint">
+        <span>Showcasing</span>
+        <kbd>Esc</kbd>
+        <span>or click to exit</span>
+    </div>
+
+    <!-- ─── STATE MODALS ─── -->
+    <div class="state-modal-overlay" id="stateModal">
+        <div class="state-modal-box">
+            <div class="state-modal-icon" id="stateModalIcon">🔧</div>
+            <div class="state-modal-title" id="stateModalTitle">Maintenance Mode</div>
+            <div class="state-modal-body" id="stateModalBody">
+                We're currently performing scheduled maintenance. Please check back soon.
+            </div>
+            <button class="state-modal-btn" id="stateModalBtn">OK</button>
+            <div class="state-modal-sub" id="stateModalSub"></div>
+        </div>
+    </div>
+
+
+</body>
+</html>
