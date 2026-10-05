@@ -1,0 +1,606 @@
+/* ════════════════════════════════════════════════════════════════════
+   MODALS — base, dev options, dev profile, state, payfast overrides
+   (extracted verbatim)
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── MODAL (base) ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s var(--bounce-ease);
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-box {
+            background: var(--dark);
+            border: 1px solid rgba(201, 148, 58, 0.25);
+            border-radius: 16px;
+            max-width: 520px;
+            width: 100%;
+            overflow: hidden;
+            transform: translateY(40px) scale(0.9);
+            transition: transform 0.6s var(--rubber-ease);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        }
+        .modal-overlay.open .modal-box {
+            transform: translateY(0) scale(1);
+        }
+        .modal-head {
+            background: var(--green);
+            padding: 1.8rem 2rem 1.2rem;
+            border-bottom: 1px solid var(--gold20);
+        }
+        .modal-icon {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+        }
+        .modal-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+            line-height: 1;
+        }
+        .modal-body {
+            padding: 1.6rem 2rem;
+            color: var(--cream75);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .modal-body strong {
+            color: var(--cream);
+        }
+        .modal-foot {
+            padding: 0.8rem 2rem 1.6rem;
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-end;
+        }
+        .modal-foot button {
+            padding: 0.8rem 1.6rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s var(--bounce-ease);
+            border: none;
+        }
+        .modal-btn-primary {
+            background: var(--gold);
+            color: var(--dark);
+        }
+        .modal-btn-primary:hover {
+            background: var(--gold-l);
+            transform: translateY(-3px) scale(1.02);
+        }
+        .modal-btn-ghost {
+            background: transparent;
+            color: var(--cream50);
+            border: 1px solid var(--cream12);
+        }
+        .modal-btn-ghost:hover {
+            border-color: var(--cream30);
+            color: var(--cream);
+            transform: translateY(-3px);
+        }
+
+        /* ─── DEVELOPER OPTIONS MODAL ─── */
+        .dev-options-modal .modal-box {
+            max-width: 620px;
+            border-color: var(--gold);
+        }
+        .dev-options-modal .modal-head {
+            background: var(--green);
+            border-bottom: 2px solid var(--gold);
+        }
+        .dev-options-modal .modal-head .modal-title {
+            font-size: 1.6rem;
+            color: var(--gold-l);
+        }
+        .dev-options-modal .modal-head .dev-sub {
+            font-size: 0.7rem;
+            color: var(--cream50);
+            letter-spacing: 0.06em;
+            margin-top: 0.2rem;
+        }
+        .dev-options-modal .modal-body {
+            padding: 1.2rem 1.8rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        .dev-options-modal .modal-body::-webkit-scrollbar {
+            width: 4px;
+        }
+        .dev-options-modal .modal-body::-webkit-scrollbar-thumb {
+            background: var(--gold30);
+            border-radius: 2px;
+        }
+        .dev-section {
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid var(--cream06);
+            padding-bottom: 1rem;
+        }
+        .dev-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .dev-section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.6rem;
+        }
+        .dev-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+            gap: 1rem;
+        }
+        .dev-row .dev-label {
+            font-size: 0.75rem;
+            color: var(--cream60);
+            flex: 0 0 170px;
+            font-weight: 500;
+        }
+        .dev-row .dev-label .dev-hint {
+            font-size: 0.6rem;
+            color: var(--cream30);
+            font-weight: 400;
+            display: block;
+        }
+        .dev-row .dev-control {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        /* Toggle switch */
+        .dev-toggle {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        .dev-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .dev-toggle .slider {
+            position: absolute;
+            inset: 0;
+            background: var(--cream12);
+            border-radius: 12px;
+            transition: background 0.3s var(--bounce-ease);
+        }
+        .dev-toggle .slider::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: var(--cream);
+            border-radius: 50%;
+            transition: transform 0.3s var(--bounce-ease);
+        }
+        .dev-toggle input:checked+.slider {
+            background: var(--gold);
+        }
+        .dev-toggle input:checked+.slider::before {
+            transform: translateX(20px);
+        }
+        .dev-toggle .toggle-label {
+            position: absolute;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--cream30);
+            right: calc(100% + 8px);
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+        }
+        .dev-toggle input:checked+.slider .toggle-label {
+            color: var(--gold);
+        }
+        .dev-number {
+            background: var(--white06);
+            border: 1px solid var(--cream12);
+            border-radius: 6px;
+            padding: 0.2rem 0.5rem;
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            width: 70px;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s var(--bounce-ease);
+        }
+        .dev-number:focus {
+            border-color: var(--gold);
+        }
+        .dev-number::-webkit-inner-spin-button {
+            opacity: 0.5;
+        }
+        .dev-number.small {
+            width: 55px;
+        }
+        .dev-number.medium {
+            width: 70px;
+        }
+        .dev-actions {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-end;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--cream06);
+            margin-top: 0.8rem;
+        }
+        .dev-actions .btn-dev {
+            padding: 0.5rem 1.6rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s var(--bounce-ease);
+            border: none;
+        }
+        .dev-actions .btn-dev-primary {
+            background: var(--gold);
+            color: var(--dark);
+        }
+        .dev-actions .btn-dev-primary:hover {
+            background: var(--gold-l);
+            transform: translateY(-2px) scale(1.02);
+        }
+        .dev-actions .btn-dev-secondary {
+            background: transparent;
+            color: var(--cream50);
+            border: 1px solid var(--cream12);
+        }
+        .dev-actions .btn-dev-secondary:hover {
+            border-color: var(--cream30);
+            color: var(--cream);
+            transform: translateY(-2px);
+        }
+        .dev-actions .btn-dev-danger {
+            background: rgba(212, 88, 88, 0.15);
+            color: #d45858;
+            border: 1px solid rgba(212, 88, 88, 0.2);
+        }
+        .dev-actions .btn-dev-danger:hover {
+            background: rgba(212, 88, 88, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* ─── DEVELOPER MODAL (profile) ─── */
+        .dev-profile-modal .modal-box {
+            max-width: 600px;
+            border-color: var(--gold);
+            overflow: hidden;
+        }
+        .dev-profile-modal .modal-head {
+            background: var(--green);
+            border-bottom: 2px solid var(--gold);
+            text-align: center;
+            padding: 2rem 2rem 1.2rem;
+            position: relative;
+        }
+        .dev-profile-modal .modal-head .dev-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 40px rgba(201, 148, 58, 0.2);
+            display: block;
+            margin: 0 auto 0.8rem;
+            transition: transform 0.5s var(--rubber-ease);
+        }
+        .dev-profile-modal .modal-head .dev-avatar:hover {
+            transform: scale(1.05) rotate(-3deg);
+        }
+        .dev-profile-modal .modal-head .modal-title {
+            font-size: 1.8rem;
+            color: var(--gold-l);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.1rem;
+        }
+        .dev-profile-modal .modal-head .dev-role {
+            font-size: 0.75rem;
+            color: var(--cream50);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        .dev-profile-modal .modal-body {
+            padding: 1.8rem 2.2rem 1.2rem;
+            text-align: center;
+        }
+        .dev-profile-modal .modal-body .dev-bio {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--cream75);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .dev-profile-modal .modal-body .dev-bio strong {
+            color: var(--cream);
+        }
+        .dev-profile-modal .modal-body .dev-bio .highlight {
+            color: var(--gold-l);
+        }
+        .dev-profile-modal .modal-body .dev-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+            margin: 0.8rem 0 0.2rem;
+        }
+        .dev-profile-modal .modal-body .dev-tags span {
+            background: var(--gold08);
+            border: 1px solid var(--gold20);
+            color: var(--cream60);
+            font-size: 0.6rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            letter-spacing: 0.06em;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        .dev-profile-modal .modal-body .dev-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0 0.2rem;
+            flex-wrap: wrap;
+        }
+        .dev-profile-modal .modal-body .dev-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cream50);
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 0.4rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--cream12);
+            transition: all 0.3s var(--bounce-ease);
+            font-weight: 500;
+        }
+        .dev-profile-modal .modal-body .dev-links a:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(201, 148, 58, 0.06);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .dev-profile-modal .modal-body .dev-links a svg {
+            width: 16px;
+            height: 16px;
+            display: block;
+            flex-shrink: 0;
+        }
+        .dev-profile-modal .modal-foot {
+            justify-content: center;
+            padding: 0.2rem 2rem 1.8rem;
+        }
+        .dev-profile-modal .modal-foot .btn-done {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 0.8rem 2.8rem;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s var(--bounce-ease);
+            font-family: 'DM Sans', sans-serif;
+            box-shadow: 0 4px 20px rgba(201, 148, 58, 0.15);
+        }
+        .dev-profile-modal .modal-foot .btn-done:hover {
+            background: var(--gold-l);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(201, 148, 58, 0.3);
+        }
+
+        /* ─── STATE MODALS ─── */
+        .state-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s var(--bounce-ease);
+        }
+        .state-modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .state-modal-box {
+            background: var(--dark);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            max-width: 520px;
+            width: 100%;
+            padding: 2.5rem 2.8rem;
+            text-align: center;
+            transform: translateY(40px) scale(0.92);
+            transition: transform 0.6s var(--rubber-ease);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+        }
+        .state-modal-overlay.open .state-modal-box {
+            transform: translateY(0) scale(1);
+        }
+        .state-modal-icon {
+            font-size: 3.6rem;
+            margin-bottom: 0.8rem;
+        }
+        .state-modal-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.4rem;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+            margin-bottom: 0.6rem;
+        }
+        .state-modal-body {
+            color: var(--cream75);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+        }
+        .state-modal-btn {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 0.8rem 2.8rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s var(--bounce-ease);
+            font-family: 'DM Sans', sans-serif;
+        }
+        .state-modal-btn:hover {
+            background: var(--gold-l);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(201, 148, 58, 0.3);
+        }
+        .state-modal-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        .state-modal-sub {
+            font-size: 0.75rem;
+            color: var(--cream30);
+            margin-top: 1rem;
+            letter-spacing: 0.06em;
+        }
+
+/* ── CUSTOM PAYFAST MODAL OVERRIDES ── */
+        .payfast-modal .modal-box {
+            max-width: 560px;
+            border-color: var(--gold);
+        }
+        .payfast-modal .modal-head {
+            background: var(--green);
+            border-bottom: 2px solid var(--gold);
+            text-align: center;
+        }
+        .payfast-modal .modal-icon {
+            font-size: 3.2rem;
+            margin-bottom: 0.2rem;
+        }
+        .payfast-modal .modal-title {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+        .payfast-modal .modal-body {
+            text-align: center;
+            padding: 2rem 2rem 1.2rem;
+        }
+        .payfast-modal .modal-body .receipt-box {
+            background: var(--white06);
+            border: 1px solid var(--cream12);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0 0.5rem;
+            text-align: left;
+        }
+        .payfast-modal .modal-body .receipt-box .r-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--cream06);
+        }
+        .payfast-modal .modal-body .receipt-box .r-row:last-child {
+            border-bottom: none;
+        }
+        .payfast-modal .modal-body .receipt-box .r-row .r-label {
+            color: var(--cream45);
+        }
+        .payfast-modal .modal-body .receipt-box .r-row .r-value {
+            color: var(--cream);
+            font-weight: 500;
+        }
+        .payfast-modal .modal-body .receipt-box .r-row .r-value.gold {
+            color: var(--gold);
+        }
+        .payfast-modal .modal-foot {
+            justify-content: center;
+            padding: 0.2rem 2rem 1.8rem;
+            gap: 0.8rem;
+        }
+        .payfast-modal .modal-foot .btn-done {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 0.8rem 2.8rem;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s var(--bounce-ease);
+            font-family: 'DM Sans', sans-serif;
+        }
+        .payfast-modal .modal-foot .btn-done:hover {
+            background: var(--gold-l);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(201, 148, 58, 0.3);
+        }
+        .payfast-modal .modal-foot .btn-ghost-modal {
+            background: transparent;
+            color: var(--cream50);
+            border: 1px solid var(--cream12);
+            padding: 0.8rem 2rem;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s var(--bounce-ease);
+            font-family: 'DM Sans', sans-serif;
+        }
+        .payfast-modal .modal-foot .btn-ghost-modal:hover {
+            border-color: var(--cream30);
+            color: var(--cream);
+            transform: translateY(-3px);
+        }

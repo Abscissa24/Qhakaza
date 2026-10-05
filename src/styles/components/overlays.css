@@ -1,0 +1,224 @@
+/* ════════════════════════════════════════════════════════════════════
+   BOOT + SHOWCASE OVERLAYS (extracted verbatim)
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── BOOT OVERLAY ── */
+        #boot-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0e1f17;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.85s var(--ease-out-expo), visibility 0.85s var(--ease-out-expo);
+            overflow: hidden;
+        }
+        #boot-overlay.is-hiding {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #boot-overlay.is-hidden {
+            display: none;
+        }
+        #bootVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            background: #0e1f17;
+        }
+        @media (max-width: 768px) {
+            #bootVideo {
+                object-fit: cover;
+            }
+        }
+        .boot-skip {
+            position: absolute;
+            right: 1.25rem;
+            bottom: 1.25rem;
+            z-index: 2;
+            padding: 0.45rem 0.9rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cream60);
+            background: rgba(245, 240, 232, 0.08);
+            border: 1px solid rgba(245, 240, 232, 0.14);
+            border-radius: 999px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            cursor: pointer;
+            transition: all 0.3s var(--bounce-ease);
+        }
+        .boot-skip:hover {
+            color: var(--cream);
+            border-color: var(--gold30);
+            background: rgba(201, 148, 58, 0.16);
+            transform: translateY(-1px);
+        }
+        .boot-skip:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+        html.boot-locked,
+        body.boot-locked {
+            overflow: hidden !important;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #boot-overlay {
+                transition: none;
+            }
+        }
+
+        /* ── SHOWCASE OVERLAY ── */
+        .showcase-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(14, 31, 23, 0.92);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .showcase-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .showcase-overlay.countdown-done {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+
+        .showcase-countdown {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(6rem, 15vw, 12rem);
+            color: var(--gold);
+            line-height: 1;
+            text-shadow: 0 0 80px rgba(201, 148, 58, 0.4);
+            animation: countdownPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes countdownPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+
+        .showcase-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream50);
+        }
+
+        /* Force instant native scrolling while the showcase rAF loop drives
+           position itself — smooth-scroll + scrollBy fighting every frame is
+           what was causing the stutter/jitter. */
+        html.showcase-active {
+            scroll-behavior: auto !important;
+        }
+
+        .showcase-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-l));
+            box-shadow: 0 0 16px var(--gold50);
+            z-index: 10001;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .showcase-progress.active {
+            opacity: 1;
+        }
+
+        .showcase-exit-hint {
+            position: fixed;
+            bottom: 1.75rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(12px);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.1rem;
+            border-radius: 999px;
+            background: rgba(14, 31, 23, 0.75);
+            border: 1px solid var(--gold20);
+            backdrop-filter: blur(10px);
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cream60);
+            z-index: 10001;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s var(--ease-out-expo);
+            pointer-events: none;
+        }
+
+        .showcase-exit-hint.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .showcase-exit-hint kbd {
+            font-family: inherit;
+            font-size: 0.68rem;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            background: var(--gold-pale);
+            border: 1px solid var(--gold30);
+            color: var(--gold-l);
+        }
+
+        #showcaseFade {
+            position: fixed;
+            inset: 0;
+            z-index: 10002;
+            background: #0e1f17;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.72s ease, visibility 0.72s ease;
+        }
+        #showcaseFade.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* ── HERO — pause reveals until boot completes ── */
+        html.boot-locked .hero-tag,
+        html.boot-locked .hero-title,
+        html.boot-locked .hero-sub,
+        html.boot-locked .hero-actions,
+        html.boot-locked .hero-indicator,
+        html.boot-locked .stats-strip,
+        html.boot-locked .hero-tag .dot,
+        html.boot-locked .hero-title .highlight::after,
+        html.boot-locked .hero-indicator .mouse .wheel,
+        body.boot-locked .hero-tag,
+        body.boot-locked .hero-title,
+        body.boot-locked .hero-sub,
+        body.boot-locked .hero-actions,
+        body.boot-locked .hero-indicator,
+        body.boot-locked .stats-strip {
+            animation-play-state: paused !important;
+        }

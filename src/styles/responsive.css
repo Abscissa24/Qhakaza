@@ -1,0 +1,541 @@
+/* ════════════════════════════════════════════════════════════════════
+   RESPONSIVE (extracted verbatim from original — authoritative)
+   Note: component files also contain co-located responsive snippets
+   for readability; this file wins on cascade (imported last).
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+            section {
+                padding: 5rem 2rem;
+            }
+            #hero {
+                padding: 7rem 2.5rem 5rem;
+                min-height: 90vh;
+            }
+            .mission-row {
+                gap: 2rem;
+                padding: 1.5rem;
+            }
+            .mission-row .row-content h3 {
+                font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+            }
+            #mission {
+                padding: 3rem 2rem 5rem;
+            }
+            #founder {
+                padding: 3rem 2rem;
+                min-height: auto;
+            }
+            footer {
+                padding: 3rem 2rem 1.2rem; /* adjusted for tablet */
+            }
+            .footer-wrap {
+                grid-template-columns: 1.8fr 1fr 1.2fr;
+                gap: 2.5rem; /* reduced */
+            }
+            .hero-indicator {
+                left: 2.5rem;
+            }
+            .stats-strip {
+                padding: 1.2rem 2.5rem;
+            }
+            .checkout-card {
+                padding: 2rem;
+            }
+            .dev-options-modal .modal-body {
+                padding: 1rem 1.2rem;
+                max-height: 50vh;
+            }
+            .dev-row .dev-label {
+                flex: 0 0 130px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .theme-toggle {
+                display: flex;
+                position: absolute;
+                right: 1.2rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+            .nav-logo img {
+                height: 24px;
+            }
+            #hero {
+                padding: 6rem 1.5rem 3rem;
+                min-height: 100vh;
+            }
+            .hero-title {
+                font-size: clamp(3.2rem, 12vw, 4.8rem);
+            }
+            .hero-tag {
+                font-size: 0.55rem;
+                padding: 0.3rem 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .hero-sub {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+            .hero-actions {
+                gap: 0.8rem;
+            }
+            .btn-gold,
+            .btn-ghost {
+                padding: 0.75rem 1.8rem;
+                font-size: 0.65rem;
+            }
+            .hero-indicator {
+                display: none;
+            }
+            .stats-strip {
+                padding: 1rem 1.2rem;
+                gap: 0.8rem;
+                justify-content: center;
+            }
+            .stat-item {
+                flex: 1 0 40%;
+                justify-content: center;
+            }
+            .stat-div {
+                display: none;
+            }
+            .stat-num {
+                font-size: 1.8rem;
+            }
+            .stat-label {
+                font-size: 0.6rem;
+                max-width: 70px;
+            }
+
+            #mission {
+                padding: 3rem 1.5rem 4rem;
+            }
+            .mission-header {
+                margin-bottom: 2.5rem;
+            }
+            .mission-header h2 {
+                font-size: clamp(2.2rem, 6vw, 3rem);
+            }
+            .mission-rows {
+                gap: 2.5rem;
+            }
+            .mission-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.2rem;
+                direction: ltr !important;
+            }
+            .mission-row.reverse {
+                direction: ltr !important;
+            }
+            .mission-row.reverse>* {
+                direction: ltr !important;
+            }
+            .mission-row .row-image {
+                aspect-ratio: 16 / 9;
+            }
+            .mission-row .row-content p {
+                max-width: 100%;
+            }
+
+            #founder {
+                padding: 2.5rem 1.5rem;
+                min-height: auto;
+            }
+            .founder-image-wrapper img {
+                width: min(240px, 60vw);
+                height: min(240px, 60vw);
+            }
+            .founder-text .body-text {
+                font-size: 0.95rem;
+            }
+            .donate-hero {
+                padding: 5rem 1.5rem 2.5rem;
+            }
+            .donate-hero h1 {
+                font-size: clamp(2.8rem, 10vw, 4rem);
+            }
+            #checkout {
+                padding: 1.5rem 1rem 4rem;
+            }
+            .checkout-card {
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+            .amount-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            .step-indicator {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+            }
+            .step-dot .label {
+                display: none;
+            }
+            .step-line {
+                width: 20px;
+            }
+            .step-panel h2 {
+                font-size: 1.5rem;
+            }
+            .donation-preview-box {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                padding: 1rem;
+            }
+            .donation-preview-box .amount-display {
+                font-size: 1.8rem;
+            }
+            .step-actions {
+                flex-direction: column;
+            }
+            .step-actions .btn-next {
+                flex: 1;
+                width: 100%;
+            }
+            .step-actions .btn-prev {
+                width: 100%;
+                justify-content: center;
+            }
+            .payment-details-box {
+                padding: 1rem 1.2rem;
+            }
+            .pd-row {
+                flex-direction: column;
+                gap: 0.1rem;
+                padding: 0.4rem 0;
+            }
+            .pd-row .pd-value {
+                text-align: left;
+            }
+            .secure-footer {
+                gap: 0.8rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .success-panel .receipt-box {
+                padding: 1rem;
+            }
+
+            /* ── FOOTER MOBILE ── */
+            footer {
+                padding: 2.5rem 1.5rem 1rem; /* reduced for mobile */
+            }
+            .footer-wrap {
+                grid-template-columns: 1fr;
+                gap: 2rem; /* reduced */
+            }
+            .footer-brand .footer-desc {
+                max-width: 100%;
+            }
+            .footer-brand .footer-reg {
+                max-width: 100%;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding-top: 1.2rem; /* reduced */
+                margin-top: 1.5rem; /* reduced */
+            }
+            .footer-legal {
+                gap: 1rem;
+            }
+            .footer-legal a {
+                font-size: 0.65rem;
+            }
+
+            #sponsors {
+                padding: 4rem 2rem;
+            }
+            .sponsors-header {
+                margin-bottom: 2.5rem;
+            }
+            .sponsors-grid {
+                gap: 1.5rem;
+            }
+            .sponsor-card {
+                padding: 1.5rem 2rem;
+            }
+
+            .test-banner {
+                font-size: 0.6rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .bank-grid {
+                grid-template-columns: 1fr;
+                gap: 0.3rem;
+            }
+            .bank-details-box {
+                padding: 1.5rem 1.2rem;
+            }
+            .dev-options-modal .modal-box {
+                max-width: 100%;
+                margin: 0.5rem;
+            }
+            .dev-options-modal .modal-body {
+                padding: 0.8rem 1rem;
+                max-height: 40vh;
+            }
+            .dev-row {
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+            .dev-row .dev-label {
+                flex: 0 0 100%;
+                font-size: 0.7rem;
+            }
+            .dev-row .dev-control {
+                flex: 1;
+                justify-content: flex-start;
+            }
+            .dev-number {
+                width: 60px;
+                font-size: 0.7rem;
+            }
+            .dev-number.small {
+                width: 50px;
+            }
+            .dev-actions {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .dev-actions .btn-dev {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.6rem;
+                flex: 1;
+                min-width: 80px;
+            }
+            .dev-profile-modal .modal-head .dev-avatar {
+                width: 72px;
+                height: 72px;
+            }
+            .dev-profile-modal .modal-head .modal-title {
+                font-size: 1.4rem;
+            }
+            .dev-profile-modal .modal-body {
+                padding: 1.2rem 1.2rem 0.8rem;
+            }
+            .dev-profile-modal .modal-body .dev-links a {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
+            }
+            .dev-profile-modal .modal-body .dev-tags span {
+                font-size: 0.5rem;
+                padding: 0.1rem 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero {
+                padding: 5rem 1rem 2.5rem;
+            }
+            .hero-title {
+                font-size: clamp(2.8rem, 14vw, 3.8rem);
+            }
+            .btn-gold,
+            .btn-ghost {
+                padding: 0.6rem 1.4rem;
+                font-size: 0.6rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .stat-num {
+                font-size: 1.5rem;
+            }
+            .stat-label {
+                font-size: 0.55rem;
+                max-width: 60px;
+            }
+
+            #mission {
+                padding: 2rem 1rem 3rem;
+            }
+            .mission-row {
+                padding: 0.8rem;
+                gap: 1rem;
+            }
+            .mission-row .row-image {
+                aspect-ratio: 4 / 3;
+            }
+            .mission-row .row-content h3 {
+                font-size: 1.6rem;
+            }
+
+            #sponsors {
+                padding: 3rem 1.5rem;
+            }
+            .sponsors-header h2 {
+                font-size: clamp(2rem, 6vw, 2.8rem);
+            }
+            .sponsors-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .sponsor-card {
+                max-width: 100%;
+                padding: 1.2rem 1.5rem;
+            }
+            .sponsor-card .sponsor-logo {
+                max-width: 160px;
+            }
+            .sponsors-note {
+                font-size: 0.7rem;
+            }
+
+            .founder-image-wrapper img {
+                width: min(180px, 50vw);
+                height: min(180px, 50vw);
+                border-width: 4px;
+            }
+            .founder-image-wrapper::before {
+                inset: -12px;
+                border-width: 2px;
+            }
+            .checkout-card {
+                padding: 1.2rem;
+            }
+            .amount-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.4rem;
+            }
+            .amount-btn {
+                font-size: 0.85rem;
+                padding: 0.7rem 0.2rem;
+            }
+            .custom-prefix {
+                padding: 0.6rem 0.8rem;
+                font-size: 1rem;
+            }
+            #customAmt {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            .step-dot .circle {
+                width: 30px;
+                height: 30px;
+                font-size: 0.65rem;
+            }
+            .donate-hero {
+                padding: 4rem 1rem 2rem;
+            }
+            .payfast-btn-wrap .btn-submit {
+                font-size: 0.75rem;
+                padding: 0.8rem 1.2rem;
+            }
+            .bank-details-box .bank-grid {
+                grid-template-columns: 1fr;
+            }
+            .bank-details-box h3 {
+                font-size: 1.4rem;
+            }
+
+            footer {
+                padding: 2rem 1rem 0.8rem; /* further reduced for small phones */
+            }
+            .footer-wrap {
+                gap: 1.8rem;
+            }
+            .footer-brand .footer-logo {
+                font-size: 2.4rem;
+            }
+            .footer-brand .footer-desc {
+                font-size: 0.85rem;
+            }
+            .footer-col h4 {
+                font-size: 0.65rem;
+            }
+            .footer-col a,
+            .footer-col .contact-item {
+                font-size: 0.78rem;
+            }
+            .footer-socials a {
+                width: 40px;
+                height: 40px;
+            }
+            .footer-socials a svg {
+                width: 18px;
+                height: 18px;
+            }
+            .footer-copy {
+                font-size: 0.65rem;
+            }
+            .footer-legal a {
+                font-size: 0.6rem;
+            }
+
+            .dev-options-modal .modal-box {
+                max-width: 100%;
+                margin: 0.3rem;
+            }
+            .dev-options-modal .modal-body {
+                padding: 0.6rem 0.8rem;
+                max-height: 35vh;
+            }
+            .dev-row .dev-label {
+                font-size: 0.65rem;
+            }
+            .dev-number {
+                width: 50px;
+                font-size: 0.65rem;
+            }
+            .dev-number.small {
+                width: 44px;
+            }
+            .dev-actions .btn-dev {
+                font-size: 0.55rem;
+                padding: 0.3rem 0.8rem;
+                min-width: 60px;
+            }
+            .dev-profile-modal .modal-box {
+                max-width: 100%;
+                margin: 0.5rem;
+            }
+            .dev-profile-modal .modal-head .dev-avatar {
+                width: 60px;
+                height: 60px;
+            }
+            .dev-profile-modal .modal-head .modal-title {
+                font-size: 1.2rem;
+            }
+            .dev-profile-modal .modal-body .dev-bio {
+                font-size: 0.8rem;
+            }
+            .dev-profile-modal .modal-body .dev-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .dev-profile-modal .modal-body .dev-links a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
