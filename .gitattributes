@@ -1,0 +1,12 @@
+# GitHub Linguist: ensure correct language detection.
+# The site was refactored from a monolithic index.html into modules,
+# so HTML/CSS/JS are all counted by their real byte share.
+
+*.js linguist-detectable=true
+*.css linguist-detectable=true
+*.html linguist-detectable=true
+
+# Vendored / generated — don't let them skew stats
+dist/** linguist-vendored=true
+public/Assets/** linguist-vendored=true
+Assets/Source/** linguist-vendored=true
