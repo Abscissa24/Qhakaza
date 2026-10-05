@@ -1,0 +1,132 @@
+/* ════════════════════════════════════════════════════════════════════
+   BASE TYPOGRAPHY & UTILITIES
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Section Base ── */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 6rem 4rem;
+  overflow: hidden;
+  background: transparent;
+}
+section:first-of-type {
+  padding-top: 8rem;
+}
+
+/* ── Text Utilities ── */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+
+.body-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cream75);
+  max-width: 560px;
+}
+.body-text + .body-text {
+  margin-top: 1rem;
+}
+
+.highlight {
+  color: var(--gold);
+}
+
+/* ── Buttons ── */
+.btn-gold,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.4s var(--bounce-ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  box-shadow: 0 4px 20px rgba(201, 148, 58, 0.25);
+}
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-l), var(--gold));
+  opacity: 0;
+  transition: opacity 0.4s var(--smooth-ease);
+}
+.btn-gold:hover::before {
+  opacity: 1;
+}
+.btn-gold:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(201, 148, 58, 0.4);
+}
+
+.btn-ghost {
+  border: 1.5px solid var(--cream30);
+  color: var(--cream);
+  background: transparent;
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  background: rgba(201, 148, 58, 0.08);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-gold span,
+.btn-ghost span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.3s var(--bounce-ease);
+}
+.btn-gold:hover .btn-arrow,
+.btn-ghost:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Reveal Animation Base ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(70px) scale(0.92);
+  transition: opacity 0.8s var(--bounce-ease), transform 0.8s var(--bounce-ease);
+  will-change: transform, opacity;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.reveal-delay { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }

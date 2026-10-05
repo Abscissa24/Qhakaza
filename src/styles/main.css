@@ -1,0 +1,27 @@
+/* ════════════════════════════════════════════════════════════════════
+   QHAKAZA — Main Stylesheet Entry
+   Import order mirrors the original monolithic <style> cascade
+   so specificity and overrides behave identically.
+   ════════════════════════════════════════════════════════════════════ */
+
+@import './variables.css';
+@import './reset.css';
+@import './base.css';
+
+@import './components/nav.css';
+@import './components/hero.css';
+@import './components/stats.css';
+@import './components/mission.css';
+@import './components/founder.css';
+@import './components/athletes.css';
+@import './components/sponsors.css';
+@import './components/donate.css';
+@import './components/overlays.css';
+@import './components/footer.css';
+@import './components/modals.css';
+
+/* Authoritative responsive (verbatim from original) — wins on cascade */
+@import './responsive.css';
+
+/* Light-theme overrides last */
+@import './themes-light.css';

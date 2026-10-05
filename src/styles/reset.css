@@ -1,0 +1,134 @@
+/* ════════════════════════════════════════════════════════════════════
+   RESET & BASE
+   ════════════════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--green) var(--dark);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 4px;
+  border: 1px solid var(--dark);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #f5f0e8;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  color: var(--cream);
+  min-height: 100vh;
+  position: relative;
+  background: var(--dark);
+}
+
+/* ── Global Background ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at 30% 40%, #1a3a2a, #0e1f17 70%);
+  background-size: 200% 200%;
+  animation: bgShift 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  contain: strict;
+}
+
+@keyframes bgShift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+/* ── Global Particles Canvas ── */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  display: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+#particles-canvas.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--gold30);
+  color: var(--cream);
+}
+
+/* ── Focus Visible ── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ── Images ── */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Links ── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Buttons ── */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ── Inputs ── */
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
